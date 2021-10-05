@@ -36,7 +36,7 @@
 ## アプリケーション仕様書
   * [ER図](https://drive.google.com/file/d/1Cxi-dwXn-N-ZAbqi8cWorqwinPHTbYEy/view?usp=sharing)
   * [テーブル設計書](https://docs.google.com/spreadsheets/d/1LoBB523iXhZaQw6Lz8QLTr7LESZKHrFFpqvCBM-iw1k/edit?usp=sharing)
-  * [アプリケーション詳細設計書]('#')
+  * [アプリケーション詳細設計書](https://docs.google.com/spreadsheets/d/1YZ2UCKOAKU2-E2IPuswe27pOXxksCzGKdi9KrFE-4gY/edit#gid=0)
 ## バージョン
   * Rails 5.2.5
   * rubocop
