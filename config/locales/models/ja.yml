@@ -1,0 +1,32 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー
+      diary: 日記
+    attritubetes:
+      id: ID
+      created_at: 作成日時
+      updated_at: 更新日時
+      user:
+        name: 名前
+        policy: ポリシー
+        profile_image: プロフィール画像
+        email: メールアドレス
+        password: パスワード
+      diary:
+        user_id: ユーザーID
+        mood: 気分
+        keep: がんばったこと
+        problem: だめだったこと
+        try: もくひょう
+        text: 本文
+        image: 画像
+
+  enums:
+   diary:
+     mood:
+       so_bad: さいあく!!
+       bad: いまいち...
+       so_so: わるくない
+       good: いいね!
+       so_good: さいこう!!

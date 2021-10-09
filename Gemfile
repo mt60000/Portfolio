@@ -72,3 +72,5 @@ gem 'jquery-rails'
 gem 'font-awesome-sass'
 gem "simple_calendar", "~> 2.4"
 gem 'rspec-rails'
+gem 'rails-i18n'
+gem 'enum_help'
