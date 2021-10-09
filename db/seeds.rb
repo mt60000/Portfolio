@@ -12,9 +12,34 @@ User.create!(
   password: 'password'
 )
 
+User.create!(
+  name: 'おもち',
+  policy: 'てすとですよね',
+  email: 'b@gmail.com',
+  password: 'password'
+)
+
 Diary.create!(
   user_id: 1,
   mood: 2,
+  keep: 'てすとがんばった',
+  problem: 'てすとだめだった',
+  try: 'てすとがんばる！',
+  text: 'てすとのぶんしょうです。いっぱいかいておきます。がんばりました。'
+)
+
+Diary.create!(
+  user_id: 1,
+  mood: 3,
+  keep: 'てすとがんばった',
+  problem: 'てすとだめだった',
+  try: 'てすとがんばる！',
+  text: 'てすとのぶんしょうです。いっぱいかいておきます。がんばりました。'
+)
+
+Diary.create!(
+  user_id: 2,
+  mood: 4,
   keep: 'てすとがんばった',
   problem: 'てすとだめだった',
   try: 'てすとがんばる！',
