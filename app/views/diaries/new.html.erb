@@ -1,0 +1,11 @@
+<div class="container mt-3">
+  <div class="row">
+    <%= form_with model: @diary, local: true do |f| %>
+      <div class="form-group">
+        <%= f.collection_radio_buttons :mood, Diary.moods_i18n, :first, :last, include_hidden: false do |b| %>
+          <% b.label {b.radio_button + b.text} %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

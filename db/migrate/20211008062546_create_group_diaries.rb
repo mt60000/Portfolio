@@ -7,7 +7,7 @@ class CreateGroupDiaries < ActiveRecord::Migration[5.2]
       t.string :problem
       t.string :try
       t.text :text
-      t.string :image
+      t.string :image_id
       t.string :start_time
 
       t.timestamps

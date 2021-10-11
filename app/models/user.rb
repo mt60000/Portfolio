@@ -4,10 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  attachment :profile_image_id
+
   has_many :diaries
   has_many :groups, through: :group_users
   has_many :group_users
   has_many :group_diaries
   has_many :comments
   has_many :stapms
+
 end

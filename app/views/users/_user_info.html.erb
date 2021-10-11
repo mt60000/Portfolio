@@ -1,0 +1,5 @@
+<div class="container">
+  <div class="profile">
+    <%= link_to attachment_image_tag(current_user, :profile_image, :fill, 15, 15, fallback: "no_image.jpg", class: "profile"), user_path(current_user) %>
+  </div>
+</div>
