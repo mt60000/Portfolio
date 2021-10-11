@@ -22,8 +22,9 @@
 Rails.application.routes.draw do
   get '/top' => 'homes#top'
   devise_for :users
-  resources :users, only: [:show, :edit, :update]
-
+  resources :users, only: [:show, :edit, :update] do
+    resources :diaries
+  end
   patch "/users/:id/leave" => "users#leave"
 
   resources :diaries do

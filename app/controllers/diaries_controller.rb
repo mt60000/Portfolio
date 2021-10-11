@@ -4,10 +4,11 @@ class DiariesController < ApplicationController
   end
 
   def create
-    @diary = Diary.new(diary_params)
+    @user = current_user
+    @diary = @user.diaries.new(diary_params)
     if @diary.save
       flash[:notice] = "日記を投稿しました。"
-      redirect_to diary_url(@diary)
+      redirect_to diaries_url
     else
       flash[:notice] = "日記を投稿に失敗しました。"
       render :new
