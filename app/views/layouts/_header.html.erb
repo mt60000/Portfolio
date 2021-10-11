@@ -27,6 +27,8 @@
         <% end %>
       </ul>
     </div>
-    <%= link_to attachment_image_tag(current_user, :profile_image, :fill, 15, 15, fallback: "no_image.jpg", class: "header-profile", size: "15x15"), user_path(current_user) %>
+    <% if user_signed_in? %>
+      <%= link_to attachment_image_tag(current_user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile", size: "15x15"), user_path(current_user) %>
+    <% end %>
   </nav>
 </div>

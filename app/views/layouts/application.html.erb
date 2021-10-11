@@ -19,13 +19,17 @@
     <div class="container">
       <div class="row">
         <div class="left">
-          <%= render 'layouts/sidebar' %>
+          <% if user_signed_in? %>
+            <%= render 'layouts/sidebar' %>
+          <% end %>
         </div>
         <div class="center">
           <%= yield %>
         </div>
         <div class="right mt-2">
-          <%= render 'users/user_info' %>
+          <% if user_signed_in? %>
+            <%= render 'users/user_info' %>
+          <% end %>
         </div>
       </div>
     </main>

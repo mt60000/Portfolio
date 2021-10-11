@@ -19,6 +19,10 @@
   background-color: #f3eee4;
  }
 
+ img {
+  -webkit-backface-visibility: hidden;
+ }
+
  a,
  a:visited,
  a:active {
@@ -70,4 +74,10 @@
 
  .menu li {
   margin-bottom: 7px;
+ }
+
+ .diary-edit {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
  }

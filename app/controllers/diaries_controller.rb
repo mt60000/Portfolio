@@ -17,7 +17,7 @@ class DiariesController < ApplicationController
 
   def index
     @user = current_user
-    @diaries = @user.diaries
+    @diaries = @user.diaries.order(created_at: "DESC")
   end
 
   def show

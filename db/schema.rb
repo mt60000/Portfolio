@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2021_10_08_062546) do
     t.string "problem"
     t.string "try"
     t.text "text"
-    t.string "image"
+    t.string "image_id"
     t.string "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_10_08_062546) do
     t.string "problem"
     t.string "try"
     t.text "text"
-    t.string "image"
+    t.string "image_id"
     t.string "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_10_08_062546) do
   create_table "groups", force: :cascade do |t|
     t.string "name"
     t.string "policy"
-    t.string "image"
+    t.string "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,7 +80,8 @@ ActiveRecord::Schema.define(version: 2021_10_08_062546) do
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "policy"
-    t.string "profile_image"
+    t.string "profile_image_id"
+    t.boolean "is_valid", default: true, null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"

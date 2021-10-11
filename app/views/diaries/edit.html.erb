@@ -1,0 +1,40 @@
+<div class="container mt-3">
+  <div class="row">
+    <%= form_with model: @diary, local: true do |f| %>
+      <h2 class="text-center mb-2">日記投稿</h2>
+      <div class="form-group">
+        <%= f.collection_radio_buttons :mood, Diary.moods_i18n, :first, :last, include_hidden: false do |b| %>
+          <% b.label {b.radio_button + b.text} %>
+        <% end %>
+      </div>
+      <% hidden_field :user_id, current_user.id %>
+      <div class="form-group">
+        <%= f.label :keep %>
+        <%= f.text_field :keep, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :keep %>
+        <%= f.text_field :keep, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :problem %>
+        <%= f.text_field :problem, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :try %>
+        <%= f.text_field :try, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :text %>
+        <%= f.text_area :text, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.label :image %>
+        <%= f.file_field :image %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "投稿", class: "btn btn-outline-primary d-block ml-auto" %>
+      </div>
+    <% end %>
+  </div>
+</div>
