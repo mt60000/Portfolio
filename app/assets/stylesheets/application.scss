@@ -16,6 +16,7 @@
  @import "bootstrap";
 
  body {
+  margin-top: 66px;
   background-color: #f3eee4;
  }
 
@@ -33,10 +34,23 @@
  //  color: rgba(0, 0, 0, 0.6);
  // }
 
+ header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: #f3eee4;
+ }
+
+ .sidebar {
+  position: sticky;
+  top: 66px;
+ }
+
  .menu {
   list-style: none;
   text-decoration: none;
   color: rgba(0, 0, 0, 0.9);
+  background-color: #f3eee4;
  }
 
  .left{
@@ -81,3 +95,11 @@
   align-items: center;
   margin-left: auto;
  }
+
+ .timeline-item {
+ }
+
+ .image {
+  border-radius: 15px;
+ }
+
