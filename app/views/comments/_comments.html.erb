@@ -7,7 +7,7 @@
     <div class="mt-3">
       <p><%= comment.user.name %></p>
     </div>
-    <%= link_to "削除", diary_comments_path(diary, comment), method: :delete, class: "btn btn-outline-primary diary-edit" %>
+    <%= link_to "削除", diary_comments_path(diary, comment_id: comment.id), method: :delete, class: "btn btn-outline-primary diary-edit" %>
   </div>
   <div class="comment-content">
     <p><%= comment.text %></p>

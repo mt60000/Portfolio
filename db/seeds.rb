@@ -19,9 +19,29 @@ User.create!(
   password: 'password'
 )
 
+Mood.create!(
+  image: "so_bad"
+)
+
+Mood.create!(
+  image: "bad"
+)
+
+Mood.create!(
+  image: "so_so"
+)
+
+Mood.create!(
+  image: "good"
+)
+
+Mood.create!(
+  image: "so_good"
+)
+
 Diary.create!(
   user_id: 1,
-  mood: 2,
+  mood_id: 1,
   keep: 'てすとがんばった',
   problem: 'てすとだめだった',
   try: 'てすとがんばる！',
@@ -30,7 +50,7 @@ Diary.create!(
 
 Diary.create!(
   user_id: 1,
-  mood: 3,
+  mood_id: 4,
   keep: 'てすとがんばった',
   problem: 'てすとだめだった',
   try: 'てすとがんばる！',
@@ -39,7 +59,7 @@ Diary.create!(
 
 Diary.create!(
   user_id: 2,
-  mood: 4,
+  mood_id: 1,
   keep: 'てすとがんばった',
   problem: 'てすとだめだった',
   try: 'てすとがんばる！',

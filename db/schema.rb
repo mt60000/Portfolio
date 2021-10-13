@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_08_062546) do
+ActiveRecord::Schema.define(version: 2021_10_12_115358) do
+
+  create_table "applies", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_applies_on_group_id"
+    t.index ["user_id"], name: "index_applies_on_user_id"
+  end
+
+  create_table "authorities", force: :cascade do |t|
+    t.boolean "delete", default: false
+    t.boolean "change", default: false
+    t.boolean "member_control", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
@@ -24,7 +41,7 @@ ActiveRecord::Schema.define(version: 2021_10_08_062546) do
 
   create_table "diaries", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "mood"
+    t.integer "mood_id"
     t.string "keep"
     t.string "problem"
     t.string "try"
@@ -38,7 +55,8 @@ ActiveRecord::Schema.define(version: 2021_10_08_062546) do
 
   create_table "group_diaries", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "mood"
+    t.integer "group_id"
+    t.integer "mood_id"
     t.string "keep"
     t.string "problem"
     t.string "try"
@@ -47,14 +65,17 @@ ActiveRecord::Schema.define(version: 2021_10_08_062546) do
     t.string "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_diaries_on_group_id"
     t.index ["user_id"], name: "index_group_diaries_on_user_id"
   end
 
   create_table "group_users", force: :cascade do |t|
     t.integer "user_id"
     t.integer "group_id"
+    t.integer "authority_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["authority_id"], name: "index_group_users_on_authority_id"
     t.index ["group_id"], name: "index_group_users_on_group_id"
     t.index ["user_id"], name: "index_group_users_on_user_id"
   end
@@ -67,10 +88,16 @@ ActiveRecord::Schema.define(version: 2021_10_08_062546) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "moods", force: :cascade do |t|
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "stamps", force: :cascade do |t|
     t.integer "user_id"
     t.integer "dialy_id"
-    t.integer "stamp"
+    t.string "stamp_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dialy_id"], name: "index_stamps_on_dialy_id"

@@ -44,6 +44,6 @@ class DiariesController < ApplicationController
   private
 
     def diary_params
-      params.require(:diary).permit(:user_id, :mood, :keep, :problem, :try, :text, :image, :start_time)
+      params.require(:diary).permit(:user_id, :mood_id, :keep, :problem, :try, :text, :image, :start_time)
     end
 end

@@ -5,6 +5,7 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(group_params)
+    @group.users << current_user
     if @group.save
       flash[:notice] = "グループを作成しました。"
       redirect_to group_url(@group)
@@ -16,6 +17,10 @@ class GroupsController < ApplicationController
 
   def index
     @groups = Group.all
+  end
+
+  def user_groups
+    @groups = current_user.groups
   end
 
   def show
@@ -30,15 +35,8 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
-  def join
-  end
-
-  def leave
-  end
-
-
   private
     def group_params
-      params.require(:group).permit(:name, :password, :policy, :image)
+      params.require(:group).permit(:user_id, :name, :password, :policy, :image)
     end
 end

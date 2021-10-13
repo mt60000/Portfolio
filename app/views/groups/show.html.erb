@@ -1,0 +1,26 @@
+<div class="container">
+  <h4>
+    <%= @group.name %>
+    <%= link_to "編集", edit_group_path(@group), class: "btn btn-outline-primary group-edit" %>
+  </h4>
+  <div class="row">
+    <div class="group-content">
+      <p>ポリシー：<%= @group.policy %></p>
+      <p>メンバー：
+        <% @group.users.each do |user| %>
+          <%= user.name %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>
+
+<% if @group.user_join?(current_user) %>
+  <%= link_to '退会する', group_group_users_path(@group, @group_user), method: :delete %>
+<% elsif current_user %>
+  <% if @apply %>
+    <%= link_to '申請取消', group_apply_path(@group, @apply), method: :delete, class: "btn btn-outline-danger" %>
+  <% else %>
+    <%= link_to '加入申請', group_apply_path(@group), method: :post, class: "btn btn-outline-primary" %>
+  <% end %>
+<% end %>
