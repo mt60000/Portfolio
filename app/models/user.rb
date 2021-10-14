@@ -12,5 +12,6 @@ class User < ApplicationRecord
   has_many :group_diaries
   has_many :comments
   has_many :stapms
+  has_many :applies
 
 end

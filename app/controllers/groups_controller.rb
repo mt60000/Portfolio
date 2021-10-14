@@ -6,6 +6,8 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.users << current_user
+    @owner = @group.group_users.first
+    @owner.authority_id = 2  #seed.rbでオーナー権限作成済
     if @group.save
       flash[:notice] = "グループを作成しました。"
       redirect_to group_url(@group)
@@ -25,6 +27,12 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    if @group.user_join?(current_user)
+      @group_user = @group.group_users.find_by(user_id: current_user.id, group_id: @group.id)
+      @authority = @group_user.authority
+    end
+    @applies = current_user.applies
+    @apply = @applies.find_by(group_id: @group.id)
   end
 
   def edit

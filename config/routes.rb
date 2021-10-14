@@ -6,18 +6,20 @@ Rails.application.routes.draw do
   end
   patch "/users/:id/leave" => "users#leave"
 
-  resources :diaries do
+  root to: 'diaries#index'
+
+  resources :diaries, except: [:index] do
     post "/comments" => "comments#create"
     delete "/comments" => "comments#destroy"
     post "/stamps" => "stamps#create"
     delete "/stamps" => "stamps#destroy"
   end
 
-  resources :groups, path: '/' do
+  resources :groups do
     get "/join" => "groups#join"
     get "/leave" => "groups#leave"
     resources :group_diaries
-    resources :apllies, only: [:index, :create, :destroy]
-    resources :group_users, only: [:index, :create, :destroy]
+    resources :applies, only: [:index, :create, :destroy]
+    resources :group_users, only: [:create, :destroy]
   end
 end

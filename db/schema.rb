@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2021_10_12_115358) do
   end
 
   create_table "authorities", force: :cascade do |t|
-    t.boolean "delete", default: false
-    t.boolean "change", default: false
+    t.boolean "delete_group", default: false
+    t.boolean "change_group", default: false
     t.boolean "member_control", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

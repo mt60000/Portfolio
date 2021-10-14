@@ -8,7 +8,7 @@ class DiariesController < ApplicationController
     @diary = @user.diaries.new(diary_params)
     if @diary.save
       flash[:notice] = "日記を投稿しました。"
-      redirect_to diaries_url
+      redirect_to root_url
     else
       flash[:notice] = "日記を投稿に失敗しました。"
       render :new

@@ -2,6 +2,16 @@
   <h2>承認待ち一覧</h2>
   <div class="row">
     <% @applies.each do |apply| %>
+      <div class="row">
+        <div class="mr-3">
+          <%= attachment_image_tag apply.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
+        </div>
+        <div class="mt-3">
+          <p><%= apply.user.name %></p>
+        </div>
+        <%= link_to "承認", group_group_users_path(apply.group, apply_id: apply.id, user_id: apply.user.id), method: :post, class: "btn btn-outline-primary" %>
+        <%= link_to "却下", group_apply_path(apply.group, apply), method: :delete, class: "btn btn-outline-primary" %>
+      </div>
     <% end %>
   </div>
 </div>

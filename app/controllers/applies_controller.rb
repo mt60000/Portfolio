@@ -1,7 +1,7 @@
 class AppliesController < ApplicationController
   def index
     @group = Group.find(params[:group_id])
-    @applies = @group.apllies
+    @applies = @group.applies
   end
 
   def create
@@ -10,12 +10,11 @@ class AppliesController < ApplicationController
   end
 
   def destroy
-    @group = Group.find(params[:group_id])
-    @apply = @group.apllies.find(params[:id])
+    @apply = Apply.find(params[:id])
     if @apply.destroy
-      redirect_to group_url(@group)
+      redirect_to group_url(@apply.group)
     else
-      redirect_to group_applies_url(@group)
+      redirect_to group_url(@apply.group)
     end
   end
 
@@ -23,6 +22,6 @@ class AppliesController < ApplicationController
   private
 
     def apply_params
-      params.require(:apply).permit(:user_id, :group_id)
+      params.permit(:user_id, :group_id)
     end
 end

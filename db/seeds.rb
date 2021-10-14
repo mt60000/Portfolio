@@ -39,6 +39,18 @@ Mood.create!(
   image: "so_good"
 )
 
+Authority.create!(
+  delete_group: false,
+  change_group: false,
+  member_control: false
+)
+
+Authority.create!(
+  delete_group: true,
+  change_group: true,
+  member_control: true
+)
+
 Diary.create!(
   user_id: 1,
   mood_id: 1,
