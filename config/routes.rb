@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   patch "/users/:id/leave" => "users#leave"
 
   root to: 'diaries#index'
+  get '/diaries/calendar' => 'diaries#calendar'
 
   resources :diaries, except: [:index] do
     post "/comments" => "comments#create"

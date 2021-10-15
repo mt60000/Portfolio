@@ -1,10 +1,10 @@
 class GroupUsersController < ApplicationController
   def create
-    @group = Group.find(params[group_id])
-    @group_user = @group.group_users.create(user_id: group_user_params[:user_id])
+    @group = Group.find(params[:group_id])
+    @apply = Apply.find(params[:apply_id])
+    @group_user = @group.group_users.create(user_id: group_user_params[:user_id], authority_id: 1)
     Apply.find(group_user_params[:apply_id]).destroy!
-    @group_user.authority.id = 1
-    redirect_to group_applies_url(@group_user.group)
+    redirect_to group_applies_url(@group)
   end
 
   def destroy

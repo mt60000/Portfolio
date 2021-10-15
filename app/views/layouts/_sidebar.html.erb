@@ -10,7 +10,7 @@
       <%= link_to "グループ", groups_path(current_user), class: "nav-link" %>
     </li>
     <li>
-      <%= link_to "カレンダー", "#", class: "nav-link" %>
+      <%= link_to "カレンダー", diaries_calendar_path, class: "nav-link" %>
     </li>
     <li>
       <%= link_to "日記を投稿", new_user_diary_path(current_user), class: "btn btn-outline-primary nav-link" %>

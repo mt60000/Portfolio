@@ -20,6 +20,10 @@ class DiariesController < ApplicationController
     @diaries = @user.diaries.order(created_at: "DESC")
   end
 
+  def calendar
+    @diaries = current_user.diaries
+  end
+
   def show
     @diary = Diary.find(params[:id])
     @comment = Comment.new
