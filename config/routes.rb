@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get '/top' => 'homes#top'
+  get "favorites" => "favorites#index"
   devise_for :users
   resources :users, only: [:show, :edit, :update] do
     resources :diaries
@@ -10,10 +11,13 @@ Rails.application.routes.draw do
   get '/diaries/calendar' => 'diaries#calendar'
 
   resources :diaries, except: [:index] do
-    post "/comments" => "comments#create"
-    delete "/comments" => "comments#destroy"
-    post "/stamps" => "stamps#create"
-    delete "/stamps" => "stamps#destroy"
+    resources :comments, only: [:create, :destroy]
+    resources :favorites, only: [:create, :destroy]
+  end
+
+  resources :group_diaries do
+    resources :group_comments, only: [:create, :destroy]
+    resources :group_favorites, only: [:create, :destroy]
   end
 
   resources :groups do

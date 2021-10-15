@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_15_185221) do
+ActiveRecord::Schema.define(version: 2021_10_15_185648) do
 
   create_table "applies", force: :cascade do |t|
     t.integer "user_id"
@@ -60,6 +60,15 @@ ActiveRecord::Schema.define(version: 2021_10_15_185221) do
     t.datetime "updated_at", null: false
     t.index ["diary_id"], name: "index_favorites_on_diary_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "group_comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_diary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_diary_id"], name: "index_group_comments_on_group_diary_id"
+    t.index ["user_id"], name: "index_group_comments_on_user_id"
   end
 
   create_table "group_diaries", force: :cascade do |t|

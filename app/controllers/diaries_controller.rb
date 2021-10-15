@@ -1,5 +1,4 @@
 class DiariesController < ApplicationController
-  require "date"
   def new
     @diary = Diary.new
   end
@@ -19,6 +18,7 @@ class DiariesController < ApplicationController
   def index
     @user = current_user
     @diaries = @user.diaries.order(created_at: "DESC")
+    @favorite = Favorite.new
   end
 
   def calendar
@@ -28,6 +28,7 @@ class DiariesController < ApplicationController
   def show
     @diary = Diary.find(params[:id])
     @comment = Comment.new
+    @favorite = Favorite.new
   end
 
   def edit

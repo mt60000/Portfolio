@@ -1,0 +1,2 @@
+class GroupCommentsController < ApplicationController
+end
