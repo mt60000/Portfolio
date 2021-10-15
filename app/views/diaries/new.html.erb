@@ -2,6 +2,7 @@
   <div class="row">
     <%= form_with model: @diary, local: true do |f| %>
       <h2 class="text-center mb-2">日記投稿</h2>
+      <%= f.hidden_field :start_time, :value => Time.now %>
       <div class="form-group">
         <%= f.radio_button :mood_id, 1 %>
         <%= f.label :mood_id, image_tag("/assets/so_bad.jpg", class: "diary-mood", alt: "mood", size: "120x120"), value: 1 %>

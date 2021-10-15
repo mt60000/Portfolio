@@ -1,0 +1,12 @@
+
+[1mFrom:[0m /home/ec2-user/environment/PF/app/views/diaries/calendar.html.erb:3 ActionView::CompiledTemplates#_app_views_diaries_calendar_html_erb__2592923172157475862_69931486351140:
+
+    [1;34m1[0m: <%= month_calendar events: @diaries do |date, diaries| %>
+    [1;34m2[0m:   <% binding.pry %>
+ => [1;34m3[0m:   <%= date %>
+    [1;34m4[0m: 
+    [1;34m5[0m:   <% diaries.each do |diary| %>
+    [1;34m6[0m:     <div class="mood mb-3 text-center">
+    [1;34m7[0m:       <%= link_to diary_path(diary) do %>
+    [1;34m8[0m:         <%= image_tag("/assets/#{diary.mood.image}.jpg", class: "diary-mood", alt: "mood", size: "20x20") %><br/>
+

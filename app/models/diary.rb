@@ -6,5 +6,4 @@ class Diary < ApplicationRecord
   belongs_to :mood
 
   attachment :image
-
 end

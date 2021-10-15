@@ -1,10 +1,10 @@
 <%= month_calendar events: @diaries do |date, diaries| %>
   <%= date.day %>
+  <% diaries.first %>
   <% diaries.each do |diary| %>
     <div class="mood mb-3 text-center">
       <%= link_to diary_path(diary) do %>
-        <%= image_tag("/assets/#{diary.mood.image}.jpg", class: "diary-mood", alt: "mood", size: "20x20") %><br/>
-        <%= diary.mood.image %>
+        <%= image_tag("/assets/#{diary.mood.image}.jpg", class: "diary-mood", alt: "mood", size: "70x70") %><br/>
       <% end %>
     </div>
   <% end %>

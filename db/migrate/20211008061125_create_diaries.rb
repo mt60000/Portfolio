@@ -8,8 +8,7 @@ class CreateDiaries < ActiveRecord::Migration[5.2]
       t.string :try
       t.text :text
       t.string :image_id
-      t.string :start_time
-
+      t.datetime :start_time
       t.timestamps
     end
   end

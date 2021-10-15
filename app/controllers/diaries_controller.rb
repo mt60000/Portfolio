@@ -1,4 +1,5 @@
 class DiariesController < ApplicationController
+  require "date"
   def new
     @diary = Diary.new
   end

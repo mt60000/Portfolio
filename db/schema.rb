@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_12_115358) do
+ActiveRecord::Schema.define(version: 2021_10_15_185221) do
 
   create_table "applies", force: :cascade do |t|
     t.integer "user_id"
@@ -47,10 +47,19 @@ ActiveRecord::Schema.define(version: 2021_10_12_115358) do
     t.string "try"
     t.text "text"
     t.string "image_id"
-    t.string "start_time"
+    t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_diaries_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "diary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["diary_id"], name: "index_favorites_on_diary_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "group_diaries", force: :cascade do |t|
@@ -62,11 +71,20 @@ ActiveRecord::Schema.define(version: 2021_10_12_115358) do
     t.string "try"
     t.text "text"
     t.string "image_id"
-    t.string "start_time"
+    t.datetime "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_group_diaries_on_group_id"
     t.index ["user_id"], name: "index_group_diaries_on_user_id"
+  end
+
+  create_table "group_favorites", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "group_diary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_diary_id"], name: "index_group_favorites_on_group_diary_id"
+    t.index ["user_id"], name: "index_group_favorites_on_user_id"
   end
 
   create_table "group_users", force: :cascade do |t|
@@ -92,16 +110,6 @@ ActiveRecord::Schema.define(version: 2021_10_12_115358) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "stamps", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "dialy_id"
-    t.string "stamp_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["dialy_id"], name: "index_stamps_on_dialy_id"
-    t.index ["user_id"], name: "index_stamps_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
