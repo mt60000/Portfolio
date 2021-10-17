@@ -22,9 +22,6 @@
             </div>
           </div>
           <div class="diary-content">
-            <div class="time">
-              <h5 class="text-center mb-3"><%= diary.start_time.strftime('%m月%d日') %></h5>
-            </div>
             <div class="mood mb-3 text-center">
               <%= image_tag("/assets/#{diary.mood.image}.jpg", class: "diary-mood", alt: "mood", size: "120x120") %><br/>
               <%= diary.mood.image %>

@@ -9,4 +9,16 @@
   <div class="row">
     <%= link_to "編集", edit_user_path(current_user), class: "w-100 btn btn-outline-secondary mt-3" %>
   </div>
+  <div class="user-group mt-4">
+    <% current_user.groups.each do |group| %>
+      <div class="row">
+        <div class="mr-3">
+          <%= attachment_image_tag group, :image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
+        </div>
+        <div class="mt-3">
+          <p><%= link_to group.name, group_group_diaries_path(group) %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

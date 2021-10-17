@@ -14,10 +14,10 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find_by(params[:id])
     if @comment.destroy
-      redirect_to diary_url(@comment.diary)
+      redirect_to diary_url(@comment.diary_id)
     else
       flash[:notice] = "コメントの削除に失敗しました。"
-      redirect_to diary_url(@comment.diary)
+      redirect_to diary_url(@comment.diary_id)
     end
   end
 

@@ -15,14 +15,13 @@ Rails.application.routes.draw do
     resources :favorites, only: [:create, :destroy]
   end
 
-  resources :group_diaries do
+  resources :group_diaries, except: [:index] do
     resources :group_comments, only: [:create, :destroy]
     resources :group_favorites, only: [:create, :destroy]
   end
 
+  get "groups/search" => "groups#search"
   resources :groups do
-    get "/join" => "groups#join"
-    get "/leave" => "groups#leave"
     resources :group_diaries
     resources :applies, only: [:index, :create, :destroy]
     resources :group_users, only: [:create, :destroy]

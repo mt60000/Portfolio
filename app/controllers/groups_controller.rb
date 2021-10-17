@@ -1,6 +1,10 @@
 class GroupsController < ApplicationController
+  before_action :ensure_correct_group_user, only: [:edit, :update, :destroy]
+  before_action :authority_deletem, only: [:destroy]
+  before_action :authority_change, only: [:edit, :update]
+
   def new
-    @group = Group.new
+    @new_group = Group.new
   end
 
   def create
@@ -18,11 +22,11 @@ class GroupsController < ApplicationController
   end
 
   def index
-    @groups = Group.all
+    @groups = current_user.groups
   end
 
-  def user_groups
-    @groups = current_user.groups
+  def search
+    @groups = Group.all
   end
 
   def show
@@ -41,10 +45,48 @@ class GroupsController < ApplicationController
 
   def update
     @group = Group.find(params[:id])
+    if @group.update(group_params)
+      redirect_to group_url(@group)
+    else
+      redirect_to group_url(@group)
+    end
+  end
+
+  def destroy
+    @group = Group.find_by(params[:id])
+    if @group.destroy
+      redirect_to groups_url(current_user)
+    else
+      redirect_to groups_url(current_user)
+    end
   end
 
   private
     def group_params
       params.require(:group).permit(:user_id, :name, :password, :policy, :image)
     end
+
+    def ensure_correct_group_user
+      @group = Group.find(params[:id])
+      unless @group.user_join?(current_user)
+        redirect_to group_search_url
+      end
+    end
+
+    def authority_delete
+      @group = Group.find(params[:id])
+      @group_user = @group.group_users.find_by(user_id: current_user.id, group_id: @group.id)
+      unless @group_user.authority.delete_group == true
+        redirect_to group_search_url
+      end
+    end
+
+    def authority_change
+      @group = Group.find(params[:id])
+      @group_user = @group.group_users.find_by(user_id: current_user.id, group_id: @group.id)
+      unless @group_user.authority.change_group == true
+        redirect_to group_search_url
+      end
+    end
+
 end

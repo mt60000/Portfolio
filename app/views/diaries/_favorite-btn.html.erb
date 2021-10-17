@@ -1,0 +1,5 @@
+<% if current_user.already_favorited?(diary) %>
+  <%= link_to diary.favorites.count, diary_favorite_path(diary, diary.favorites), method: :delete, class: "fas fa-heart" %>
+<% else %>
+  <%= link_to diary.favorites.count, diary_favorites_path(diary), method: :post, class: "far fa-heart" %>
+<% end %>

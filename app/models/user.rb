@@ -7,8 +7,8 @@ class User < ApplicationRecord
   attachment :profile_image
 
   has_many :diaries, dependent: :destroy
-  has_many :groups, through: :group_users
   has_many :group_users
+  has_many :groups, through: :group_users
   has_many :group_diaries
   has_many :comments
   has_many :favorites

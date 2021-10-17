@@ -1,33 +1,39 @@
 <div class="container">
-  <h4>
+  <h4 class="text-center">
     <%= @group.name %>
-    <% if @authority && @authority.change_group == true %>
-      <%= link_to "編集", edit_group_path(@group), class: "btn btn-outline-primary group-edit" %>
-    <% end %>
   </h4>
   <div class="row">
     <div class="group-content">
-      <p>ポリシー：<%= @group.policy %></p>
-      <p>メンバー：
-        <% @group.users.each do |user| %>
-          <%= user.name %>
+      <div class="group-info">
+        <p>ポリシー：<%= @group.policy %></p>
+        <p>メンバー：
+          <% @group.users.each do |user| %>
+            <%= user.name %>
+          <% end %>
+        </p>
+      </div>
+      <div class="group-btn mb-3 text-center">
+        <% if @group.user_join?(current_user) %>
+          <%= link_to "日記一覧", group_group_diaries_path(@group), class: "btn btn-outline-primary" %>
+          <% if @authority.change_group == true %>
+            <%= link_to "編集する", edit_group_path(@group), class: "btn btn-outline-primary ml-3" %>
+          <% end %>
         <% end %>
-      </p>
-      <p>
+      </div>
+      <div class="text-center">
         <% if @authority && @authority.member_control == true %>
-          <%= link_to "申請一覧", group_applies_path(@group), class: "btn btn-outline-primary" %>
+          <%= link_to "申請一覧", group_applies_path(@group), class: "btn btn-outline-primary mr-3" %>
         <% end %>
-      </p>
+        <% if @group.user_join?(current_user) %>
+          <%= link_to '退会する', group_group_user_path(@group, @group_user), method: :delete, class: "btn btn-outline-danger" %>
+        <% elsif current_user %>
+          <% if @apply %>
+            <%= link_to '申請取消', group_apply_path(@group, @apply), method: :delete, class: "btn btn-outline-danger" %>
+          <% else %>
+            <%= link_to '加入申請', group_applies_path(@group), method: :post, class: "btn btn-outline-primary" %>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
-
-<% if @group.user_join?(current_user) %>
-  <%= link_to '退会する', group_group_users_path(@group, @group_user), method: :delete %>
-<% elsif current_user %>
-  <% if @apply %>
-    <%= link_to '申請取消', group_apply_path(@group, @apply), method: :delete, class: "btn btn-outline-danger" %>
-  <% else %>
-    <%= link_to '加入申請', group_applies_path(@group), method: :post, class: "btn btn-outline-primary" %>
-  <% end %>
-<% end %>

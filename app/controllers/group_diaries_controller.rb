@@ -1,14 +1,16 @@
 class GroupDiariesController < ApplicationController
+  before_action :current_user?, only: [:edit, :update, :destroy]
+
   def new
-    @diary = GroupDiary.new
+    @group = Group.find(params[:group_id])
+    @diary = @group.group_diaries.new
   end
 
   def create
-    @group = Group.find(params[:group_id])
-    @diary = @group.group_diaries.new(diary_params)
+    @diary = GroupDiary.new(group_diary_params)
     if @diary.save
       flash[:notice] = "日記を投稿しました。"
-      redirect_to group_diaries_url(@diary.group)
+      redirect_to group_diaries_url(@diary.group_id)
     else
       flash[:notice] = "日記を投稿に失敗しました。"
       render :new
@@ -28,12 +30,14 @@ class GroupDiariesController < ApplicationController
 
   def show
     @diary = GroupDiary.find(params[:id])
+    @group = @diary.group
     @comment = GroupComment.new
     @favorite = GroupFavorite.new
   end
 
   def edit
     @diary = GroupDiary.find(params[:id])
+    @group = @diary.group
   end
 
   def update
@@ -52,5 +56,12 @@ class GroupDiariesController < ApplicationController
 
     def group_diary_params
       params.require(:group_diary).permit(:user_id, :group_id, :mood_id, :keep, :problem, :try, :text, :image, :start_time)
+    end
+
+    def current_user?
+      @diary = GroupDiary.find(params[:id])
+      unless @diary.user_id == current_user.id
+        redirect_to group_group_diaries_url(@diary.group)
+      end
     end
 end
