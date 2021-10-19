@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get '/top' => 'homes#top'
-  get "favorites" => "favorites#index"
+  resources :favorites, only: [:index]
+  resources :notifications, only: [:index]
+  delete 'notifications/destroy_all' => 'notifications#destroy'
   devise_for :users
   resources :users, only: [:show, :edit, :update] do
     resources :diaries
@@ -22,7 +24,7 @@ Rails.application.routes.draw do
 
   get "groups/search" => "groups#search"
   resources :groups do
-    resources :group_diaries
+    resources :group_diaries, only: [:index, :new]
     resources :applies, only: [:index, :create, :destroy]
     resources :group_users, only: [:create, :destroy]
   end

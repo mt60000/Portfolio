@@ -14,10 +14,10 @@
                 <%= attachment_image_tag diary.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
               </div>
               <div class="mt-3">
-                <p><%= link_to diary.user.name, diary_path(diary) %></p>
+                <p><%= link_to diary.user.name, group_diary_path(diary) %></p>
               </div>
               <div class="mt-3 ml-auto">
-                <%= render '/diaries/favorite-btn', diary: diary %>
+                <%= render '/group_diaries/favorite-btn', group_diary: diary %>
               </div>
             </div>
           </div>

@@ -2,15 +2,23 @@ class GroupDiariesController < ApplicationController
   before_action :current_user?, only: [:edit, :update, :destroy]
 
   def new
-    @group = Group.find(params[:group_id])
-    @diary = @group.group_diaries.new
+    @diary = GroupDiary.new
+    @group = Group.find_by(id: params[:group_id])
+    @diary.user_id = current_user.id
+    @diary.group_id = @group.id
+    #binding.pry
   end
 
   def create
     @diary = GroupDiary.new(group_diary_params)
+    @group = Group.find_by(id: params[:group_diary][:group_id])
+    @diary.user_id = current_user.id
+    @diary.group_id = @group.id
+    #binding.pry
+    #binding.pry
     if @diary.save
       flash[:notice] = "日記を投稿しました。"
-      redirect_to group_diaries_url(@diary.group_id)
+      redirect_to group_group_diaries_url(@diary.group_id)
     else
       flash[:notice] = "日記を投稿に失敗しました。"
       render :new
@@ -18,7 +26,7 @@ class GroupDiariesController < ApplicationController
   end
 
   def index
-    @group = Group.find(params[:group_id])
+    @group = Group.find_by(id: params[:group_id])
     @diaries = @group.group_diaries.order(created_at: "DESC")
     @favorite = GroupFavorite.new
   end

@@ -1,6 +1,7 @@
 class DiariesController < ApplicationController
   def new
     @diary = Diary.new
+    binding.pry
   end
 
   def create

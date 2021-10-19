@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_15_185648) do
+ActiveRecord::Schema.define(version: 2021_10_18_032411) do
 
   create_table "applies", force: :cascade do |t|
     t.integer "user_id"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_10_15_185648) do
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "diary_id"
-    t.string "text"
+    t.string "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["diary_id"], name: "index_comments_on_diary_id"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2021_10_15_185648) do
   create_table "group_comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "group_diary_id"
+    t.string "text", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["group_diary_id"], name: "index_group_comments_on_group_diary_id"
@@ -119,6 +120,27 @@ ActiveRecord::Schema.define(version: 2021_10_15_185648) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "visitor_id", null: false
+    t.integer "visited_id", null: false
+    t.integer "apply_id"
+    t.integer "group_id"
+    t.integer "group_diary_id"
+    t.integer "group_favorite_id"
+    t.integer "group_comment_id"
+    t.string "action", default: "", null: false
+    t.boolean "checked", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["apply_id"], name: "index_notifications_on_apply_id"
+    t.index ["group_comment_id"], name: "index_notifications_on_group_comment_id"
+    t.index ["group_diary_id"], name: "index_notifications_on_group_diary_id"
+    t.index ["group_favorite_id"], name: "index_notifications_on_group_favorite_id"
+    t.index ["group_id"], name: "index_notifications_on_group_id"
+    t.index ["visited_id"], name: "index_notifications_on_visited_id"
+    t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
   create_table "users", force: :cascade do |t|

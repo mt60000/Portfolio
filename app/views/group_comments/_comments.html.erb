@@ -1,0 +1,15 @@
+<% diary.group_comments.each do |comment| %>
+  <div class="comment-user mb-3">
+  <div class="row">
+    <div class="mr-3">
+      <%= attachment_image_tag comment.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
+    </div>
+    <div class="mt-3">
+      <p><%= comment.user.name %></p>
+    </div>
+    <%= link_to "削除", group_diary_group_comment_path(diary, group_comment_id: comment.id), method: :delete, class: "btn btn-outline-primary diary-edit" %>
+  </div>
+  <div class="comment-content">
+    <p><%= comment.text %></p>
+  </div>
+<% end %>
