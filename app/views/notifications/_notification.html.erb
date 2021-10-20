@@ -13,7 +13,7 @@
 
       <% case notification.action %>
       <% when 'apply' then %>
-        <strong><%= link_to @group.name, group_path(@group) %></strong>
+        <strong><%= link_to notification.group.name, group_path(notification.group) %></strong>
         <%= 'に参加を申請しました' %>
       <% when 'group_favorite' %>
         <% if notification.group_diary.user_id == visited.id %>

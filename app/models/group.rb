@@ -11,15 +11,17 @@ class Group < ApplicationRecord
     users.include?(user)
   end
 
-  def create_notification_apply!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and group_id and action= ? ", current_user.id, apply.user_id, id, 'apply'])
-    if temp.blank?
-      notification = current_user.active_notifications.new(
-        visited_id: apply.user_id,
-        group_id: id,
-        apply_id: id,
-        action: 'apply'
-      )
+  def create_notification_apply!(current_user, group, apply)
+    group.users.each do |user|
+      temp = Notification.where(["visitor_id = ? and visited_id = ? and group_id = ? and action= ? ", current_user.id, user.id, id, 'apply'])
+      if temp.blank?
+        notification = current_user.active_notifications.new(
+          group_id: id,
+          apply_id: apply.id,
+          visited_id: user.id,
+          action: 'apply'
+        )
+      end
       if notification.visitor_id == notification.visited_id
         notification.checked = true
       end

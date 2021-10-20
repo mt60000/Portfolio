@@ -7,7 +7,7 @@ class AppliesController < ApplicationController
   def create
     @apply = current_user.applies.create(group_id: apply_params[:group_id])
     @group = @apply.group
-    @group.create_notification_apply!(current_user)
+    @group.create_notification_apply!(current_user, @group, @apply)
     redirect_to group_url(@group)
   end
 
