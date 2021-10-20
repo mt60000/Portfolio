@@ -4,7 +4,7 @@
   <% diaries.each do |diary| %>
     <div class="mood mb-3 text-center">
       <%= link_to diary_path(diary) do %>
-        <%= image_tag("/assets/#{diary.mood.image}.jpg", class: "diary-mood", alt: "mood", size: "70x70") %><br/>
+        <%= image_tag asset_path("/assets/#{diary.mood.image}.jpg", class: "diary-mood", alt: "mood", size: "70x70") %><br/>
       <% end %>
     </div>
   <% end %>

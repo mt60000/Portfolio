@@ -13,7 +13,7 @@
     </div>
     <div class="diary-content">
       <div class="mood mb-3 text-center">
-        <%= image_tag("/assets/#{@diary.mood.image}.jpg", class: "diary-mood", alt: "mood", size: "120x120") %><br/>
+        <%= image_tag asset_path("/assets/#{@diary.mood.image}.jpg", class: "diary-mood", alt: "mood", size: "120x120") %><br/>
         <%= @diary.mood.image %>
       </div>
       <div class="diary-kpt">
