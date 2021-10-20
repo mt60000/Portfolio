@@ -44,7 +44,7 @@
         <% end %>
         <%= "にコメントしました" %>
         <p class="text-muted mb-0">
-          <%= Comment.find_by(id: notification.group_comment_id)&.group_comment %>
+          <%= GroupComment.find_by(id: notification.group_comment_id)&.text %>
         </p>
       <% end %>
     </span>
