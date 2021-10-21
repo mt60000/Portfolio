@@ -14,8 +14,6 @@ class GroupDiariesController < ApplicationController
     @group = Group.find_by(id: params[:group_diary][:group_id])
     @diary.user_id = current_user.id
     @diary.group_id = @group.id
-    #binding.pry
-    #binding.pry
     if @diary.save
       flash[:notice] = "日記を投稿しました。"
       redirect_to group_group_diaries_url(@diary.group_id)
