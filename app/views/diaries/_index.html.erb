@@ -1,42 +1,40 @@
-<div class="row">
-  <div class="timeline">
-    <% diaries.each do |diary| %>
-      <hr>
-      <div class="timeline-item mb-4">
-        <div class="diary-user mb-3">
-          <div class="row">
-            <div class="mr-3">
-              <%= attachment_image_tag diary.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
-            </div>
-            <div class="mt-3">
-              <p><%= link_to diary.user.name, diary_path(diary) %></p>
-            </div>
-            <div class="mt-3 ml-auto">
-              <%= render '/diaries/favorite-btn', diary: diary %>
-            </div>
+<div class="timeline">
+  <% diaries.each do |diary| %>
+    <hr>
+    <div class="timeline-item mb-4">
+      <div class="diary-user mb-3">
+        <div class="row">
+          <div class="mr-3">
+            <%= attachment_image_tag diary.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
           </div>
-        </div>
-        <div class="diary-content">
-          <div class="time">
-            <h5 class="text-center mb-3"><%= diary.start_time.strftime('%m月%d日') %></h5>
+          <div class="mt-3">
+            <p><%= link_to diary.user.name, diary_path(diary) %></p>
           </div>
-          <div class="mood mb-3 text-center">
-            <%= image_tag(asset_path("/assets/#{diary.mood.image}.jpg"), class: "diary-mood", alt: "mood", size: "120x120") %><br/>
-            <%= diary.mood.image %>
-          </div>
-          <div class="diary-kpt">
-            <p class="mb-3"><%= Diary.human_attribute_name(:keep) %>：<%= diary.keep %></p>
-            <p class="mb-3"><%= Diary.human_attribute_name(:problem) %>：<%= diary.problem %></p>
-            <p class="mb-4"><%= Diary.human_attribute_name(:try) %>：<%= diary.try %></p>
-          </div>
-          <div class="diary-text class="mb-3"">
-            <p><%= diary.text %></p>
-          </div>
-          <div class="diary-img mb-3 text-center">
-            <%= attachment_image_tag diary, :image, :fill, 400, 400, class: "image" %>
+          <div class="mt-3 ml-auto">
+            <%= render '/diaries/favorite-btn', diary: diary %>
           </div>
         </div>
       </div>
-    <% end %>
-  </div>
+      <div class="diary-content">
+        <div class="time">
+          <h5 class="text-center mb-3"><%= diary.start_time.strftime('%m月%d日') %></h5>
+        </div>
+        <div class="mood mb-3 text-center">
+          <%= image_tag(asset_path("/assets/#{diary.mood.image}.jpg"), class: "diary-mood", alt: "mood", size: "120x120") %><br/>
+          <%= diary.mood.image %>
+        </div>
+        <div class="diary-kpt">
+          <p class="mb-3"><%= Diary.human_attribute_name(:keep) %>：<%= diary.keep %></p>
+          <p class="mb-3"><%= Diary.human_attribute_name(:problem) %>：<%= diary.problem %></p>
+          <p class="mb-4"><%= Diary.human_attribute_name(:try) %>：<%= diary.try %></p>
+        </div>
+        <div class="diary-text class="mb-3"">
+          <p><%= diary.text %></p>
+        </div>
+        <div class="diary-img mb-3 text-center">
+          <%= attachment_image_tag diary, :image, :fill, 400, 400, class: "image" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 </div>

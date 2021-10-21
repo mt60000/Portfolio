@@ -1,0 +1,32 @@
+<nav class="menu">
+  <li>
+    <% if @group && controller.controller_name == "groups" %>
+      <%= link_to group_group_diaries_path(@group), class: "fas fa-home nav-link text-center" do %>
+        <p>ホーム</p>
+      <% end %>
+    <% elsif @group && controller.controller_name == "group_diaries" %>
+      <%= link_to group_group_diaries_path(@group), class: "fas fa-home nav-link text-center" do %> <!-- 引数を渡す調整 -->
+        <p>ホーム</p>
+      <% end %>
+    <% else %>
+      <%= link_to root_path, class: "fas fa-home nav-link text-center" do %>
+        <p>ホーム</p>
+      <% end %>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to notifications_path, class: "fas fa-bell nav-link text-center" do %>
+     <p>通知</p>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to groups_path, class: "fas fa-users nav-link text-center" do %>
+     <p>グループ</p>
+    <% end %>
+  </li>
+  <li>
+    <%= link_to diaries_calendar_path, class: "far fa-calendar-alt nav-link text-center" do %>
+     <p class="font-weight-bold">カレンダー</p>
+    <% end %>
+  </li>
+</nav>

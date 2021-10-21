@@ -21,7 +21,12 @@
       <div class="row">
         <% if user_signed_in? %>
           <div class="left">
-            <%= render 'layouts/sidebar' %>
+            <div class="sidebar">
+              <%= render 'layouts/sidebar' %>
+            </div>
+            <div class="menu-bar">
+              <%= render 'layouts/menu-bar' %>
+            </div>
           </div>
           <div class="center w-60">
             <%= yield %>

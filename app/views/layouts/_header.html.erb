@@ -5,10 +5,6 @@
     <% else %>
       <a href="/top" class="navbar-brand"><span>moods</span></a>
     <% end %>
-    <button class="navbar-toggler collapsed ml-auto mr-2" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="navbar-collapse collapse" id="navbarNavDropdown">
       <ul class="navbar-nav ml-auto">
         <% unless user_signed_in? %>
           <li>
@@ -19,7 +15,6 @@
           </li>
         <% end %>
       </ul>
-    </div>
     <% if user_signed_in? %>
       <li>
         <%= link_to "diaries", root_path, class: "nav-link" %>
