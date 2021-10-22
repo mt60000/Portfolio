@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   patch "/users/:id/leave" => "users#leave"
 
   root to: 'diaries#index'
-  get '/diaries/calendar' => 'diaries#calendar'
+  get '/calendar' => 'diaries#calendar'
 
   resources :diaries, except: [:index] do
     resources :comments, only: [:create, :destroy]
@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   get "groups/search" => "groups#search"
   resources :groups do
     resources :group_diaries, only: [:index, :new]
+    get '/calendar' => 'group_diaries#calendar'
     resources :applies, only: [:index, :create, :destroy]
     resources :group_users, only: [:create, :destroy]
   end

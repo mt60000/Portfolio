@@ -28,11 +28,20 @@
       <div class="diary-img mb-3 text-center">
         <%= attachment_image_tag @diary, :image, :fill, 400, 400, class: "image" %>
       </div>
+      <div class="row">
+        <div class="count ml-auto">
+          <%= render 'diaries/count', diary: @diary %>
+        </div>
+      </div>
       <div class="time">
       </div>
       <div class="diary-comment">
-        <%= render 'comments/form', diary: @diary, comment: @comment %>
-        <%= render 'comments/comments', diary: @diary, comment: @comment %>
+        <div class="comment-form">
+          <%= render 'comments/form', diary: @diary, comment: @comment %>
+        </div>
+        <div id="comments">
+          <%= render 'comments/comments', diary: @diary, comments: @comments %>
+        </div>
       </div>
     </div>
   </div>

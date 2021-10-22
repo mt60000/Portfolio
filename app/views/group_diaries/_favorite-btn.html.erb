@@ -1,5 +1,0 @@
-<% if current_user.group_already_favorited?(group_diary) %>
-  <%= link_to group_diary.group_favorites.count, group_diary_group_favorite_path(group_diary, group_diary.group_favorites, group_diary.group), method: :delete, class: "fas fa-heart" %>
-<% else %>
-  <%= link_to group_diary.group_favorites.count, group_diary_group_favorites_path(group_diary, group_diary.group), method: :post, class: "far fa-heart" %>
-<% end %>

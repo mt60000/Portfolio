@@ -1,0 +1,3 @@
+$("#group_comments").html("<%= j(render 'group_comments/comments', {comments: @comments}) %>");
+$("#group_comment_text").val('');
+$(".count").html("<%= j(render 'group_diaries/count',{group_diary: @diary}) %>");

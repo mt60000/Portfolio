@@ -2,23 +2,16 @@ class CommentsController < ApplicationController
   def create
     @diary = Diary.find(params[:diary_id])
     @comment = @diary.comments.new(comment_params)
+    @comments = @diary.comments.order(created_at: 'desc')
     @comment.user_id = @diary.user_id
-    if @comment.save
-      redirect_to diary_url(@diary)
-    else
-      flash[:notice] = "コメントの送信に失敗しました。"
-      redirect_to diary_url(@diary)
-    end
+    @comment.save
   end
 
   def destroy
+    @diary = Diary.find(params[:diary_id])
     @comment = Comment.find_by(params[:id])
-    if @comment.destroy
-      redirect_to diary_url(@comment.diary_id)
-    else
-      flash[:notice] = "コメントの削除に失敗しました。"
-      redirect_to diary_url(@comment.diary_id)
-    end
+    @comments = @diary.comments.order(created_at: 'desc')
+    @comment.destroy
   end
 
 

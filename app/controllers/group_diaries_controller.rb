@@ -30,14 +30,15 @@ class GroupDiariesController < ApplicationController
   end
 
   def calendar
-    @group = Group.find(params[:group_id])
-    @diaries = @group.group_diaries
+    @group = Group.find_by(params[:group_id])
+    @group_users = @group.users
   end
 
   def show
     @diary = GroupDiary.find(params[:id])
     @group = @diary.group
     @comment = GroupComment.new
+    @comments = @diary.group_comments.order(created_at: 'desc')
     @favorite = GroupFavorite.new
   end
 

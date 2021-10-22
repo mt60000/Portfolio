@@ -1,0 +1,14 @@
+<h2 class="text-center">グループカレンダー</h2>
+<% @group_users.each do |user| %>
+  <% @diaries = user.group_diaries.where(group_id: @group.id) %>
+  <%= week_calendar events: @diaries do |date, diaries| %>
+    <p class="text-center"><%= date.day %></p>
+    <% diaries.each do |diary| %>
+      <div class="mood mb-3 text-center">
+        <%= link_to group_diary_path(diary.id) do %>
+          <%= image_tag(asset_path("/assets/#{diary.mood.image}.jpg"), class: "diary-mood", alt: "mood", size: "70x70") %><br/>
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

@@ -39,6 +39,11 @@ class GroupsController < ApplicationController
     @apply = @applies.find_by(group_id: @group.id)
   end
 
+  def calendar
+    @group = Group.find_by(params[:id])
+    @group_users = @group.users
+  end
+
   def edit
     @group = Group.find(params[:id])
   end

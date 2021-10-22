@@ -25,8 +25,18 @@
     <% end %>
   </li>
   <li>
-    <%= link_to diaries_calendar_path, class: "far fa-calendar-alt nav-link text-center" do %>
-     <p class="font-weight-bold">カレンダー</p>
+    <% if @group && controller.controller_name == "groups" %>
+      <%= link_to group_calendar_path(@group), class: "far fa-calendar-alt nav-link text-center" do %>
+        <p class="font-weight-bold">カレンダー</p>
+      <% end %>
+    <% elsif @group && controller.controller_name == "group_diaries" %>
+      <%= link_to group_calendar_path(@group), class: "far fa-calendar-alt nav-link text-center" do %>
+        <p class="font-weight-bold">カレンダー</p>
+      <% end %>
+    <% else %>
+      <%= link_to calendar_path, class: "far fa-calendar-alt nav-link text-center" do %>
+        <p class="font-weight-bold">カレンダー</p>
+      <% end %>
     <% end %>
   </li>
 </nav>
