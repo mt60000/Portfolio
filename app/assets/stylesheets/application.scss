@@ -255,10 +255,6 @@
   .has-events {}
 }
 
-.count {
- display: inline-block;
-}
-
 .diary-menu {
  display: flex;
  align-items: center;
@@ -267,4 +263,8 @@
 
 .circle-menu {
  border-radius: 50%;
+}
+
+.group-info {
+ word-break: break-all;
 }

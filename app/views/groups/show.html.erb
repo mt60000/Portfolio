@@ -1,39 +1,51 @@
-<div class="container">
+<div class="container w-100">
   <h2 class="text-center">
     <%= @group.name %>
   </h2>
-  <div class="row w-100 mt-5">
-    <div class="group-content mx-auto">
-      <div class="group-info">
-        <p>ポリシー：<%= @group.policy %></p>
-        <p>メンバー：
+  <div class="group-content mx-auto">
+    <div class="group-info my-5 text-center">
+      <h4>ポリシー</h4>
+      <p><%= @group.policy %></p>
+    </div>
+    <div class="group-btn mb-3 text-center">
+      <% if @group.user_join?(current_user) %>
+        <%= link_to "日記一覧", group_group_diaries_path(@group), class: "btn btn-outline-primary" %>
+        <% if @authority.change_group == true %>
+          <%= link_to "編集する", edit_group_path(@group), class: "btn btn-outline-primary ml-3" %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="text-center">
+      <% if @authority && @authority.member_control == true %>
+        <%= link_to "申請一覧", group_applies_path(@group), class: "btn btn-outline-primary mr-3" %>
+      <% end %>
+      <% if @group.user_join?(current_user) %>
+        <%= link_to '退会する', group_group_user_path(@group, @group_user), method: :delete, class: "btn btn-outline-danger" %>
+      <% elsif current_user %>
+        <% if @apply %>
+          <%= link_to '申請取消', group_apply_path(@group, @apply), method: :delete, class: "btn btn-outline-danger" %>
+        <% else %>
+          <%= link_to '加入申請', group_applies_path(@group), method: :post, class: "btn btn-outline-primary" %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="group-member mt-5">
+      <h3 class="text-center">メンバー</h3>
+      <table class="table w-100 mt-3">
+        <tbody>
           <% @group.users.each do |user| %>
-            <%= user.name %>
+            <tr>
+              <td>
+                <%= link_to user_path(user) do %>
+                  <%= attachment_image_tag user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
+                  <%= user.name %>
+                <% end %>
+              </td>
+              <td></td>
+            </tr>
           <% end %>
-        </p>
-      </div>
-      <div class="group-btn mb-3 text-center">
-        <% if @group.user_join?(current_user) %>
-          <%= link_to "日記一覧", group_group_diaries_path(@group), class: "btn btn-outline-primary" %>
-          <% if @authority.change_group == true %>
-            <%= link_to "編集する", edit_group_path(@group), class: "btn btn-outline-primary ml-3" %>
-          <% end %>
-        <% end %>
-      </div>
-      <div class="text-center">
-        <% if @authority && @authority.member_control == true %>
-          <%= link_to "申請一覧", group_applies_path(@group), class: "btn btn-outline-primary mr-3" %>
-        <% end %>
-        <% if @group.user_join?(current_user) %>
-          <%= link_to '退会する', group_group_user_path(@group, @group_user), method: :delete, class: "btn btn-outline-danger" %>
-        <% elsif current_user %>
-          <% if @apply %>
-            <%= link_to '申請取消', group_apply_path(@group, @apply), method: :delete, class: "btn btn-outline-danger" %>
-          <% else %>
-            <%= link_to '加入申請', group_applies_path(@group), method: :post, class: "btn btn-outline-primary" %>
-          <% end %>
-        <% end %>
-      </div>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

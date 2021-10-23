@@ -17,7 +17,7 @@
     <header>
       <%= render 'layouts/header' %>
     </header>
-    <div class="container h-100">
+    <div class="container">
       <div class="row">
         <% if user_signed_in? %>
           <div class="left">
@@ -31,7 +31,7 @@
           <div class="center col-md-7">
             <%= yield %>
           </div>
-          <div class="right mt-2">
+          <div class="right">
             <%= render 'users/user_info' %>
             <%= render 'users/group' %>
           </div>

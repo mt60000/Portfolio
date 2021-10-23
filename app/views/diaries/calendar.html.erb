@@ -8,12 +8,3 @@
     </div>
   <% end %>
 <% end %>
-
-
-<% diaries.each do |diary| %>
-  <div class="mood mb-3 text-center">
-    <%= link_to group_diary_path(diary.id) do %>
-      <%= image_tag(asset_path("/assets/#{diary.mood.image}.jpg"), class: "diary-mood", alt: "mood", size: "70x70") %><br/>
-    <% end %>
-  </div>
-<% end %>
