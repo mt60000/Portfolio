@@ -1,1 +1,1 @@
-$(".count").html("<%= j(render 'group_diaries/count', {group_diary: @diary}) %>");
+$("#favorite_<%= @diary.id %>").html("<%= j(render 'group_diaries/favorite-btn', {group_diary: @diary}) %>");

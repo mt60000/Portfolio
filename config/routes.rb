@@ -3,10 +3,9 @@ Rails.application.routes.draw do
   resources :favorites, only: [:index]
   resources :notifications, only: [:index]
   delete 'notifications/destroy_all' => 'notifications#destroy'
+  
   devise_for :users
-  resources :users, only: [:show, :edit, :update] do
-    resources :diaries
-  end
+  resources :users, only: [:show, :edit, :update]
   patch "/users/:id/leave" => "users#leave"
 
   root to: 'diaries#index'

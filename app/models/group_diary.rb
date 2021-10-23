@@ -2,8 +2,8 @@ class GroupDiary < ApplicationRecord
   belongs_to :user
   belongs_to :group
   belongs_to :mood
-  has_many :group_comments
-  has_many :group_favorites
+  has_many :group_comments, dependent: :destroy
+  has_many :group_favorites, dependent: :destroy
   has_many :notifications, dependent: :destroy
   attachment :image
 

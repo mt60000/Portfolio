@@ -1,28 +1,28 @@
 <div class="container">
   <nav class="menu">
-    <li>
+    <li class="menu-item">
       <%= link_to "ホーム", root_path, class: "nav-link" %>
     </li>
-    <li>
+    <li class="menu-item">
       <% if @group && controller.controller_name == "groups" %>
         <%= link_to "グループホーム", group_group_diaries_path(@group), class: "nav-link" %>
       <% elsif @group && controller.controller_name == "group_diaries" %>
         <%= link_to "グループホーム", group_group_diaries_path(@group), class: "nav-link" %> <!-- 引数を渡す調整 -->
       <% end %>
     </li>
-    <li>
+    <li class="menu-item">
       <%= link_to "通知", notifications_path, class: "nav-link" %>
-    </li>
-    <li>
+    </li class="menu-item">
+    <li class="menu-item">
       <%= link_to "グループ", groups_path, class: "nav-link" %>
     </li>
-    <li>
+    <li class="menu-item">
       <%= link_to "グループ検索", groups_search_path, class: "nav-link" %>
     </li>
-    <li>
+    <li class="menu-item">
       <%= link_to "カレンダー", calendar_path, class: "nav-link" %>
     </li>
-    <li>
+    <li class="menu-item">
       <% if @group && controller.controller_name == "groups" %>
         <%= link_to "カレンダー", group_calendar_path(@group), class: "nav-link" %>
       <% elsif @group && controller.controller_name == "group_diaries" %>

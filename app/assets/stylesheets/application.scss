@@ -26,14 +26,14 @@
  }
 
  a,
- a:visited,
  a:active {
    color: inherit;
  }
 
- // a:hover {
- //  color: rgba(0, 0, 0, 0.6);
- // }
+ a:hover {
+  text-decoration: none;
+  color: orange;
+ }
 
  header {
   width: 100%;
@@ -50,8 +50,19 @@
  .menu {
   list-style: none;
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.9);
+  color: #444;
   background-color: #f3eee4;
+  .menu-item {
+   font-size: 17px;
+   font-weight: bold;
+   margin-bottom: 10px;
+   &:hover {
+    border-bottom: 3px solid orange;
+   }
+  }
+  .btn {
+   margin-top: 10px;
+  }
  }
 
  .left {
@@ -101,6 +112,12 @@
 
  .right {
   margin-left: auto;
+  width: 20%;
+  .sidebar {
+   position: sticky;
+   top: 66px;
+   overflow-y: auto;
+  }
  }
 
  @media screen and (max-width: 1024px) {
@@ -118,9 +135,17 @@
 
  .header-profile {
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   object-fit: cover;
+  font-size: 40px;
+ }
+
+ .profile-name {
+  font-size: 20px;
+  &:hover {
+   border-bottom: 2px solid orange;
+  }
  }
 
  .profile {
@@ -128,10 +153,6 @@
   width: 120px;
   height: 120px;
   object-fit: cover;
- }
-
- .menu li {
-  margin-bottom: 7px;
  }
 
  .diary-moods {
@@ -151,6 +172,17 @@
   display: flex;
   align-items: center;
   margin-left: auto;
+ }
+
+ .heart:hover {
+  color: red;
+ }
+
+ .heart-red {
+  color: red;
+  &:hover {
+   color: red;
+  }
  }
 
  #mask {
@@ -195,7 +227,7 @@
  .timeline-item {
  }
 
- .image {
+ .diary-image {
   border-radius: 15px;
  }
 
@@ -225,4 +257,14 @@
 
 .count {
  display: inline-block;
+}
+
+.diary-menu {
+ display: flex;
+ align-items: center;
+ margin-left: auto;
+}
+
+.circle-menu {
+ border-radius: 50%;
 }

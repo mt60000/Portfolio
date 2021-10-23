@@ -58,6 +58,12 @@ class GroupDiariesController < ApplicationController
     end
   end
 
+  def destroy
+    @diary = GroupDiary.find(params[:id])
+    @diary.destroy
+    redirect_to group_diaries_url(@diary.group)
+  end
+
 
   private
 

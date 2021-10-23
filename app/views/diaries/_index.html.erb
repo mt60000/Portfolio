@@ -10,8 +10,13 @@
           <div class="mt-3">
             <p><%= link_to diary.user.name, diary_path(diary) %></p>
           </div>
-          <div class="count mt-3 ml-auto">
-            <%= render '/diaries/count', diary: diary %>
+          <div class="row mt-3 ml-auto">
+            <div id="comment_<%= diary.id %>">
+              <%= render 'comments/comment-count', diary: diary %>
+            </div>
+            <div id="favorite_<%= diary.id %>">
+              <%= render '/diaries/favorite-btn', diary: diary %>
+            </div>
           </div>
         </div>
       </div>
@@ -32,7 +37,7 @@
           <p><%= diary.text %></p>
         </div>
         <div class="diary-img mb-3 text-center">
-          <%= attachment_image_tag diary, :image, :fill, 400, 400, class: "image" %>
+          <%= attachment_image_tag diary, :image, :fill, 400, 400, class: "diary-image" %>
         </div>
       </div>
     </div>

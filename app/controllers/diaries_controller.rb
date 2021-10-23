@@ -50,7 +50,7 @@ class DiariesController < ApplicationController
   def destroy
     @diary = Diary.find(params[:id])
     @diary.destroy
-    redirect_to diaries_url
+    redirect_to root_url
   end
 
 

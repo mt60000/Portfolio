@@ -1,2 +1,2 @@
 $("#comments").html("<%= j(render 'comments/comments', {diary: @diary, comments: @comments}) %>");
-$(".count").html("<%= j(render 'diaries/count',{diary: @diary}) %>");
+$("#comment_<%= @diary.id %>").html("<%= j(render 'comments/comment-count',{diary: @diary}) %>");
