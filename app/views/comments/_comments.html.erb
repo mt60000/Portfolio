@@ -1,3 +1,4 @@
+<hr>
 <% comments.each do |comment| %>
   <div class="comment-user mb-3">
     <div class="row">
@@ -5,7 +6,7 @@
         <%= attachment_image_tag comment.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
       </div>
       <div class="mt-3">
-        <p><%= comment.user.name %></p>
+        <p class="user-name"><%= comment.user.name %></p>
       </div>
       <%= link_to "削除", diary_comment_path(diary, comment.id), method: :delete, remote: true, class: "btn btn-outline-primary diary-edit" %>
     </div>

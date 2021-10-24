@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.users << current_user
     @owner = @group.group_users.first
-    @owner.authority_id = 2  #seed.rbでオーナー権限作成済
+    @owner.authority_id = 1  #seed.rbでroleを作成
     if @group.save
       flash[:notice] = "グループを作成しました。"
       redirect_to group_url(@group)
@@ -81,7 +81,7 @@ class GroupsController < ApplicationController
     def authority_delete
       @group = Group.find(params[:id])
       @group_user = @group.group_users.find_by(user_id: current_user.id, group_id: @group.id)
-      unless @group_user.authority.delete_group == true
+      unless @group_user.authority.role == "leader"
         redirect_to group_search_url
       end
     end
@@ -89,7 +89,7 @@ class GroupsController < ApplicationController
     def authority_change
       @group = Group.find(params[:id])
       @group_user = @group.group_users.find_by(user_id: current_user.id, group_id: @group.id)
-      unless @group_user.authority.change_group == true
+      unless @group_user.authority.role == "leader" || @group_user.authority.role == "subleader"
         redirect_to group_search_url
       end
     end

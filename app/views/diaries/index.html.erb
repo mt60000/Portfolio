@@ -4,9 +4,11 @@
       <h2>タイムライン</h2>
     </div>
   </div>
-  <% if @diaries.blank? %>
-    <p class="text-center mt-5">投稿はありません</p>
-  <% else %>
-    <%= render '/diaries/index', diaries: @diaries %>
-  <% end %>
+  <div>
+    <% if @diaries.blank? %>
+      <p class="text-center mt-5">投稿はありません</p>
+    <% else %>
+      <%= render '/diaries/index', diaries: @diaries %>
+    <% end %>
+  </div>
 </div>

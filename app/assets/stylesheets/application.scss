@@ -19,6 +19,8 @@
  body {
   margin-top: 66px;
   background-color: #f3eee4;
+  font-family: 'Yomogi', cursive;
+  font-size: 19px;
  }
 
  img {
@@ -40,6 +42,7 @@
   position: fixed;
   top: 0;
   background-color: #f3eee4;
+  z-index: 3;
   li {
    list-style: none;
   }
@@ -90,6 +93,7 @@
     position: fixed;
     bottom: 0;
     background-color: #f3eee4;
+    z-index: 3;
     .menu {
      display: flex;
      justify-content: space-between;
@@ -103,6 +107,10 @@
      }
     }
    }
+  }
+  footer {
+   width: 100%;
+   height: 100px;
   }
  }
 
@@ -155,6 +163,18 @@
   object-fit: cover;
  }
 
+ .user-name {
+  font-weight: bold;
+ }
+
+ .day {
+  font-weight: bold;
+ }
+
+ .count {
+  font-size: 19px;
+ }
+
  .diary-moods {
   display: flex;
   justify-content: space-between;
@@ -172,6 +192,11 @@
   display: flex;
   align-items: center;
   margin-left: auto;
+ }
+
+ .calendar-mood {
+  width: 70px;
+  height: 70px;
  }
 
  .heart:hover {

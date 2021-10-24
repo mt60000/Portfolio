@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   get '/top' => 'homes#top'
   resources :favorites, only: [:index]
   resources :notifications, only: [:index]
+  get '/favorite_diaries' => 'users#favorite_diary'
+  get '/favorite_group_diaries' => 'users#favorite_group_diary'
   delete 'notifications/destroy_all' => 'notifications#destroy'
-  
+
   devise_for :users
   resources :users, only: [:show, :edit, :update]
   patch "/users/:id/leave" => "users#leave"
@@ -27,5 +29,7 @@ Rails.application.routes.draw do
     get '/calendar' => 'group_diaries#calendar'
     resources :applies, only: [:index, :create, :destroy]
     resources :group_users, only: [:create, :destroy]
+    get '/role' => 'group_users#role'
+    patch '/role_change' => 'group_users#role_change'
   end
 end

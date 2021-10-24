@@ -22,9 +22,7 @@ ActiveRecord::Schema.define(version: 2021_10_18_032411) do
   end
 
   create_table "authorities", force: :cascade do |t|
-    t.boolean "delete_group", default: false
-    t.boolean "change_group", default: false
-    t.boolean "member_control", default: false
+    t.string "role", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -41,7 +39,7 @@ ActiveRecord::Schema.define(version: 2021_10_18_032411) do
 
   create_table "diaries", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "mood_id"
+    t.integer "mood_id", null: false
     t.string "keep"
     t.string "problem"
     t.string "try"
@@ -75,7 +73,7 @@ ActiveRecord::Schema.define(version: 2021_10_18_032411) do
   create_table "group_diaries", force: :cascade do |t|
     t.integer "user_id"
     t.integer "group_id"
-    t.integer "mood_id"
+    t.integer "mood_id", null: false
     t.string "keep"
     t.string "problem"
     t.string "try"
@@ -109,7 +107,7 @@ ActiveRecord::Schema.define(version: 2021_10_18_032411) do
   end
 
   create_table "groups", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "policy"
     t.string "image_id"
     t.datetime "created_at", null: false
@@ -117,7 +115,7 @@ ActiveRecord::Schema.define(version: 2021_10_18_032411) do
   end
 
   create_table "moods", force: :cascade do |t|
-    t.string "image"
+    t.string "image", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

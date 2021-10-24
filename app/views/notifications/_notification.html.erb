@@ -15,7 +15,7 @@
         <%= 'に参加を申請しました' %>
       <% when 'group_favorite' %>
         <% if notification.group_diary.user_id == visited.id %>
-          <%= link_to "あなたの投稿", notification.group_diary, class: "" %>
+          <%= link_to "あなたの投稿", notification.group_diary, class: "font-weight-bold" %>
         <% else %>
           <span>
             <%= link_to group_group_diary_path(notification.group_diary) do %>
@@ -29,7 +29,7 @@
         <%= "にいいねしました" %>
       <% when 'group_comment' then %>
         <% if notification.group_diary.user_id == visited.id %>
-          <%= link_to "あなたの投稿", notification.group_diary, class: "" %>
+          <%= link_to "あなたの投稿", notification.group_diary, class: "font-weight-bold" %>
         <% end %>
         <%= "にコメントしました" %>
         <p class="text-muted mb-0">

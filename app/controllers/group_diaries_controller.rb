@@ -6,7 +6,6 @@ class GroupDiariesController < ApplicationController
     @group = Group.find_by(id: params[:group_id])
     @diary.user_id = current_user.id
     @diary.group_id = @group.id
-    #binding.pry
   end
 
   def create

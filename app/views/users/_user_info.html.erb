@@ -9,6 +9,7 @@
   <div class="row">
     <%= link_to "編集", edit_user_path(current_user), class: "w-100 btn btn-outline-secondary mt-3" %>
   </div>
+  <hr>
   <div class="user-group mt-4">
     <% current_user.groups.each do |group| %>
       <div class="row">

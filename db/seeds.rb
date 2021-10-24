@@ -40,15 +40,15 @@ Mood.create!(
 )
 
 Authority.create!(
-  delete_group: false,
-  change_group: false,
-  member_control: false
+  role: "leader"
 )
 
 Authority.create!(
-  delete_group: true,
-  change_group: true,
-  member_control: true
+  role: "subleader"
+)
+
+Authority.create!(
+  role: "member"
 )
 
 Diary.create!(

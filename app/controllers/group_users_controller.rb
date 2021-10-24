@@ -1,10 +1,29 @@
 class GroupUsersController < ApplicationController
   before_action :authority_member_control, only: [:create]
 
+  def role
+    @group = Group.find(params[:group_id])
+    @group_users = @group.group_users
+  end
+
+  def role_change
+    @group = Group.find(params[:group_id])
+    @group_users = @group.group_users
+    if @group_users.update(group_user_params)
+      redirect_to group_url(@group)
+    else
+      redirect_to group_url(@group)
+    end
+    # @group_users.each do |user|
+    #   user.update(group_user_params)
+    # end
+    # redirect_to group_url(@group)
+  end
+
   def create
     @group = Group.find(params[:group_id])
     @apply = Apply.find(params[:apply_id])
-    @group_user = @group.group_users.create(user_id: group_user_params[:user_id], authority_id: 1)
+    @group_user = @group.group_users.create(user_id: group_user_params[:user_id], authority_id: 3)
     Apply.find(group_user_params[:apply_id]).destroy!
     redirect_to group_applies_url(@group)
   end
@@ -33,7 +52,7 @@ class GroupUsersController < ApplicationController
   def authority_member_control
     @group = Group.find(params[:group_id])
     @group_user = @group.group_users.find_by(user_id: current_user.id, group_id: @group.id)
-    unless @group_user.authority.member_control == true
+    unless @group_user.authority.role == "leader" || @group_user.authority.role == "subleader"
       redirect_to group_search_url
     end
   end
