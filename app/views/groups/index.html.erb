@@ -3,9 +3,11 @@
     <div class="groups w-100">
       <div class="row mb-4">
           <div class="mx-auto">
-            <h2>グループ一覧</h2>
+            <div class="row">
+              <h2 class="mr-2">グループ一覧</h2>
+              <%= link_to "作成", new_group_path, class: "btn btn-outline-primary" %>
+            </div>
           </div>
-          <%= link_to "作成", new_group_path, class: "btn btn-outline-primary ml-auto" %>
       </div>
       <hr>
       <% @groups.each do |group| %>

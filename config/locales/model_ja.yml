@@ -3,7 +3,7 @@ ja:
     models:
       user: ユーザー
       diary: 日記
-    attritubetes:
+    attributes:
       id: ID
       created_at: 作成日時
       updated_at: 更新日時

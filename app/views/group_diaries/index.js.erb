@@ -1,0 +1,3 @@
+$('#timeline').append("<%= escape_javascript(render 'index', diaries: @diaries) %>");
+$("#timeline_more").replaceWith("<%= escape_javascript(
+link_to_next_page(@diaries, "もっと見る", remote: true, id: "timeline_more")) %>");

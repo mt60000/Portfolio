@@ -24,7 +24,7 @@ class GroupDiariesController < ApplicationController
 
   def index
     @group = Group.find_by(id: params[:group_id])
-    @diaries = @group.group_diaries.order(created_at: "DESC")
+    @diaries = @group.group_diaries.order(created_at: "desc").page(params[:page]).per(6)
     @favorite = GroupFavorite.new
   end
 

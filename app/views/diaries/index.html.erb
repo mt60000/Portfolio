@@ -4,11 +4,17 @@
       <h2>タイムライン</h2>
     </div>
   </div>
+  <hr>
   <div>
     <% if @diaries.blank? %>
       <p class="text-center mt-5">投稿はありません</p>
     <% else %>
-      <%= render '/diaries/index', diaries: @diaries %>
+      <div id="timeline">
+        <%= render '/diaries/index', diaries: @diaries %>
+      </div>
+      <div class="more text-center my-5">
+        <%= link_to_next_page @diaries, "もっと見る", remote: true, id: "timeline_more" %>
+      </div>
     <% end %>
   </div>
 </div>

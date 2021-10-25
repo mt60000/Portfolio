@@ -20,6 +20,10 @@ class User < ApplicationRecord
   # 相手からの通知
   has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
+  validates :name, length: { minimum: 1, maximum: 15 }
+  validates :policy, length: { maximum: 30 }
+  validates :is_valid, presence: true
+
   def already_favorited?(diary)
     self.favorites.exists?(diary_id: diary.id)
   end

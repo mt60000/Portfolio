@@ -5,50 +5,15 @@
   </div>
   <hr>
   <div class="mt-3">
-    <div class="timeline mx-auto">
-      <% @group_favorites.each do |favorite| %>
-        <div class="timeline-item mb-5">
-          <div class="diary-user mb-3">
-            <div class="row">
-              <%= link_to group_diary_path(favorite.group_diary), class: "user-name" do %>
-                <%= attachment_image_tag favorite.group_diary.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
-                <%= favorite.group_diary.user.name %>
-              <% end %>
-              <div class="row mt-3 ml-auto">
-                <div id="comment_<%= favorite.group_diary.id %>">
-                  <%= render 'group_comments/comment-count', group_diary: favorite.group_diary %>
-                </div>
-                <div id="favorite_<%= favorite.group_diary.id %>">
-                  <%= render 'group_diaries/favorite-btn', group_diary: favorite.group_diary %>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="diary-content">
-            <div class="time">
-              <h4 class="day text-center mb-3"><%= favorite.group_diary.start_time.strftime('%m月%d日') %></h4>
-            </div>
-            <div class="mood mb-3 text-center">
-              <%= link_to group_diary_path(favorite.group_diary) do %>
-                <%= image_tag(asset_path("/assets/#{favorite.group_diary.mood.image}.jpg"), class: "diary-mood", alt: "mood", size: "120x120") %><br/>
-                <%= favorite.group_diary.mood.image %>
-              <% end %>
-            </div>
-            <div class="diary-kpt">
-              <p class="mb-3"><%= Diary.human_attribute_name(:keep) %>：<%= favorite.group_diary.keep %></p>
-              <p class="mb-3"><%= Diary.human_attribute_name(:problem) %>：<%= favorite.group_diary.problem %></p>
-              <p class="mb-4"><%= Diary.human_attribute_name(:try) %>：<%= favorite.group_diary.try %></p>
-            </div>
-            <div class="diary-text mb-3">
-              <p><%= favorite.group_diary.text %></p>
-            </div>
-            <div class="diary-img mb-3 text-center">
-              <%= attachment_image_tag favorite.group_diary, :image, :fill, 400, 400, class: "diary-image" %>
-            </div>
-          </div>
-        </div>
-        <hr>
-      <% end %>
-    </div>
+    <% if @group_diaries.blank? %>
+      <p class="text-center mt-5">お気に入りの投稿はありません</p>
+    <% else %>
+      <div id="timeline">
+        <%= render 'favorite_group_diary', group_diaries: @group_diaries %>
+      </div>
+      <div class="more text-center my-5">
+        <%= link_to_next_page @group_diaries, "もっと見る", remote: true, id: "timeline_more" %>
+      </div>
+    <% end %>
   </div>
 </div>

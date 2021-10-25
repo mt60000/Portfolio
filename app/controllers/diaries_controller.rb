@@ -17,7 +17,7 @@ class DiariesController < ApplicationController
 
   def index
     @user = current_user
-    @diaries = @user.diaries.order(created_at: "DESC")
+    @diaries = @user.diaries.order(created_at: "desc").page(params[:page]).per(6)
     @favorite = Favorite.new
   end
 

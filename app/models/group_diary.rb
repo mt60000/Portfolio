@@ -7,6 +7,15 @@ class GroupDiary < ApplicationRecord
   has_many :notifications, dependent: :destroy
   attachment :image
 
+  validates :user_id, presence: true
+  validates :group_id, presence: true
+  validates :mood_id, presence: true
+  validates :keep, length: { maximum: 25 }
+  validates :problem, length: { maximum: 25 }
+  validates :try, length: { maximum: 25 }
+  validates :text, length: { maximum: 255 }
+  validates :start_time, presence: true
+
   def create_notification_favorite!(current_user)
     temp = Notification.where(["visitor_id = ? and visited_id = ? and group_diary_id = ? and action= ? ", current_user.id, user_id, id, 'group_favorite'])
     if temp.blank?

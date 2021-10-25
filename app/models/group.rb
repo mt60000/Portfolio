@@ -8,6 +8,9 @@ class Group < ApplicationRecord
 
   attachment :image
 
+  validates :name, length: { minimum: 1, maximum: 15 }
+  validates :policy, length: { maximum: 30 }
+
   def user_join?(user)
     users.include?(user)
   end

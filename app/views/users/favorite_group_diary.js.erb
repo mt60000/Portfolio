@@ -1,0 +1,3 @@
+$('#timeline').append("<%= escape_javascript(render 'favorite_group_diary', group_diaries: @group_diaries) %>");
+$("#timeline_more").replaceWith("<%= escape_javascript(
+link_to_next_page(@group_diaries, "もっと見る", remote: true, id: "timeline_more")) %>");

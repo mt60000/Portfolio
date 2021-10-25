@@ -2,16 +2,16 @@
   <div class="timeline-item mb-5">
     <div class="diary-user mb-3">
       <div class="row">
-        <%= link_to group_diary_path(diary), class: "user-name" do %>
+        <%= link_to diary_path(diary), class: "user-name" do %>
           <%= attachment_image_tag diary.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
           <%= diary.user.name %>
         <% end %>
         <div class="row mt-3 ml-auto">
           <div id="comment_<%= diary.id %>">
-            <%= render 'group_comments/comment-count', group_diary: diary %>
+            <%= render 'comments/comment-count', diary: diary %>
           </div>
           <div id="favorite_<%= diary.id %>">
-            <%= render '/group_diaries/favorite-btn', group_diary: diary %>
+            <%= render 'diaries/favorite-btn', diary: diary %>
           </div>
         </div>
       </div>
@@ -21,21 +21,15 @@
         <h4 class="day text-center mb-3"><%= diary.start_time.strftime('%m月%d日') %></h4>
       </div>
       <div class="mood mb-3 text-center">
-        <%= link_to group_diary_path(diary) do %>
+        <%= link_to diary_path(diary) do %>
           <%= image_tag(asset_path("/assets/#{diary.mood.image}.jpg"), class: "diary-mood", alt: "mood", size: "120x120") %><br/>
           <%= diary.mood.image %>
         <% end %>
       </div>
       <div class="diary-kpt">
-        <% if diary.keep.present? %>
-          <p class="mb-3"><%= Diary.human_attribute_name(:keep) %>：<%= diary.keep %></p>
-        <% end %>
-        <% if diary.problem.present? %>
-          <p class="mb-3"><%= Diary.human_attribute_name(:problem) %>：<%= diary.problem %></p>
-        <% end %>
-        <% if diary.try.present? %>
-          <p class="mb-4"><%= Diary.human_attribute_name(:try) %>：<%= diary.try %></p>
-        <% end %>
+        <p class="mb-3"><%= Diary.human_attribute_name(:keep) %>：<%= diary.keep %></p>
+        <p class="mb-3"><%= Diary.human_attribute_name(:problem) %>：<%= diary.problem %></p>
+        <p class="mb-4"><%= Diary.human_attribute_name(:try) %>：<%= diary.try %></p>
       </div>
       <div class="diary-text mb-3">
         <p><%= diary.text %></p>
