@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+
   get '/top' => 'homes#top'
   resources :favorites, only: [:index]
   resources :notifications, only: [:index]
@@ -6,9 +8,10 @@ Rails.application.routes.draw do
   get '/favorite_group_diaries' => 'users#favorite_group_diary'
   delete 'notifications/destroy_all' => 'notifications#destroy'
 
-  devise_for :users
+
   resources :users, only: [:show, :edit, :update]
-  patch "/users/:id/leave" => "users#leave"
+  patch "/users/:id/leave" => "users#leave", as: 'leave'
+  get 'users/:id/confirm' => 'users#confirm', as: "user_confirm" #ユーザー退会機能
 
   root to: 'diaries#index'
   get '/calendar' => 'diaries#calendar'

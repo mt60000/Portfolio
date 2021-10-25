@@ -28,4 +28,8 @@ class User < ApplicationRecord
     self.group_favorites.exists?(group_diary_id: group_diary.id)
   end
 
+  def active_for_authentication?
+    super && (self.is_valid == true)
+  end
+
 end

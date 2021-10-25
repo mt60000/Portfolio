@@ -13,10 +13,10 @@ class GroupsController < ApplicationController
     @owner = @group.group_users.first
     @owner.authority_id = 1  #seed.rbでroleを作成
     if @group.save
-      flash[:notice] = "グループを作成しました。"
+      flash[:alert] = "グループを作成しました！"
       redirect_to group_url(@group)
     else
-      flash[:notice] = "グループの作成に失敗しました。"
+      flash[:alert] = "グループの作成に失敗しました。"
       render :new
     end
   end
@@ -57,8 +57,10 @@ class GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update(group_params)
+      flash[:alert] = "グループを更新しました！"
       redirect_to group_url(@group)
     else
+      flash[:alert] = "グループを更新できませんでした。"
       redirect_to group_url(@group)
     end
   end
@@ -66,8 +68,10 @@ class GroupsController < ApplicationController
   def destroy
     @group = Group.find_by(params[:id])
     if @group.destroy
+      flash[:alert] = "グループ「#{@group.name}」を削除しました！"
       redirect_to groups_url(current_user)
     else
+      flash[:alert] = "グループを削除できませんでした。"
       redirect_to groups_url(current_user)
     end
   end

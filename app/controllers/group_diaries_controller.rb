@@ -14,10 +14,10 @@ class GroupDiariesController < ApplicationController
     @diary.user_id = current_user.id
     @diary.group_id = @group.id
     if @diary.save
-      flash[:notice] = "日記を投稿しました。"
+      flash[:alert] = "日記を投稿しました！"
       redirect_to group_group_diaries_url(@diary.group_id)
     else
-      flash[:notice] = "日記を投稿に失敗しました。"
+      flash[:alert] = "日記の投稿に失敗しました。"
       render :new
     end
   end
@@ -49,10 +49,10 @@ class GroupDiariesController < ApplicationController
   def update
     @diary = GroupDiary.find(params[:id])
     if @diary.update(group_diary_params)
-      flash[:notice] = "日記を更新しました。"
+      flash[:alert] = "日記を更新しました！"
       redirect_to group_diary_url(@diary)
     else
-      flash[:notice] = "日記の更新に失敗しました。"
+      flash[:alert] = "日記の更新に失敗しました。"
       render :edit
     end
   end
@@ -60,6 +60,7 @@ class GroupDiariesController < ApplicationController
   def destroy
     @diary = GroupDiary.find(params[:id])
     @diary.destroy
+    flash[:alert] = "日記を削除しました！"
     redirect_to group_diaries_url(@diary.group)
   end
 

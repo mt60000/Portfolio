@@ -18,15 +18,24 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "ユーザー情報を変更しました。"
+      flash[:alert] = "ユーザー情報を変更しました！"
       redirect_to root_url
     else
-      flash[:notice] = "ユーザー情報の変更に失敗しました。"
+      flash[:alert] = "ユーザー情報の変更に失敗しました。"
       render :edit
     end
   end
 
+  def confirm
+    @user = current_user
+  end
+
   def leave
+    @user = current_user
+    @user.update(is_valid: false)
+    reset_session
+    redirect_to top_url
+    flash[:alert] = "退会が完了しました。ご利用ありがとうございました！"
   end
 
 
