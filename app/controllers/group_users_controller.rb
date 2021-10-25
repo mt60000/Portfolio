@@ -8,16 +8,13 @@ class GroupUsersController < ApplicationController
 
   def role_change
     @group = Group.find(params[:group_id])
-    @group_users = @group.group_users
-    if @group_users.update(group_user_params)
-      redirect_to group_url(@group)
-    else
-      redirect_to group_url(@group)
+    @group_users = group_users_params
+    @group_users.to_h.map do |id, group_user_params|
+      group_user = GroupUser.find(id)
+      group_user.update_attributes(group_user_params)
+      group_user
     end
-    # @group_users.each do |user|
-    #   user.update(group_user_params)
-    # end
-    # redirect_to group_url(@group)
+    redirect_to group_url(@group)
   end
 
   def create
@@ -46,7 +43,11 @@ class GroupUsersController < ApplicationController
   private
 
   def group_user_params
-    params.permit(:group_id, :user_id, :apply_id, :authority_id)
+    params.require(:group_user).permit(:group_id, :user_id, :apply_id, :authority_id)
+  end
+
+  def group_users_params
+    params.require(:group_user).permit(group_users: :authority_id)[:group_users]
   end
 
   def authority_member_control

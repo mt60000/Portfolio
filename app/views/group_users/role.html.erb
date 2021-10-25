@@ -4,17 +4,17 @@
   </div>
   <hr>
   <% @group_users.each do |group_user| %>
-    <%= f.fields_for "group_user[]", group_user do |group_user_fields| %>
+    <%= f.fields_for "group_users[]", group_user do |fu| %>
       <div class="form-group">
         <div class="row">
           <div class="mr-3">
-            <%= attachment_image_tag group_user_fields.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
+            <%= attachment_image_tag group_user.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
           </div>
           <div class="mt-3">
-            <p class="user-name"><%= group_user_fields.user.name %></p>
+            <p class="user-name"><%= group_user.user.name %></p>
           </div>
           <div class="role mt-3 ml-auto">
-            <%= f.collection_select(group_user_fields.authority_id, Authority.all, :id, :role, selected: group_user_fields.authority.id, class: "form-control") %>
+            <%= fu.collection_select(:authority_id, Authority.all, :id, :role, selected: group_user.authority.id, class: "form-control") %>
           </div>
         </div>
         <hr>

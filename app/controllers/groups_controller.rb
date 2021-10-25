@@ -44,6 +44,12 @@ class GroupsController < ApplicationController
     @group_users = @group.users
   end
 
+  def role
+    @group = Group.find(params[:group_id])
+  end
+
+  
+
   def edit
     @group = Group.find(params[:id])
   end
@@ -68,7 +74,7 @@ class GroupsController < ApplicationController
 
   private
     def group_params
-      params.require(:group).permit(:user_id, :name, :password, :policy, :image)
+      params.require(:group).permit(:user_id, :name, :password, :policy, :image, group_user_attributes: [:authority_id])
     end
 
     def ensure_correct_group_user

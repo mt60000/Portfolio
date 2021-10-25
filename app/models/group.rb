@@ -4,6 +4,7 @@ class Group < ApplicationRecord
   has_many :group_diaries, dependent: :destroy
   has_many :applies, dependent: :destroy
   has_many :notifications, dependent: :destroy
+  accepts_nested_attributes_for :group_users
 
   attachment :image
 
