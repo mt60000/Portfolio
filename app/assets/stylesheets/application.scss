@@ -21,13 +21,8 @@
   background-color: #f3eee4;
   font-family: 'Yomogi', cursive;
   font-size: 19px;
+  color: #222;
  }
-
- // .alert {
- //  position: fixed;
- //  bottom: 0;
- //  z-index: 3;
- // }
 
  img {
   -webkit-backface-visibility: hidden;
@@ -53,8 +48,6 @@
    list-style: none;
   }
  }
-
-
 
  .menu {
   list-style: none;
@@ -184,10 +177,34 @@
  .diary-moods {
   display: flex;
   justify-content: space-between;
-  input {
+  input[type="radio"] {
    display: none;
   }
  }
+
+ .mood-btn {
+  .diary-mood {
+   cursor: pointer;
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+   -webkit-transition: all .3s;
+   transition: all .3s;
+   z-index: 1;
+   &:hover {
+    -webkit-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    transform: translateY(-5px);
+   }
+  }
+  input[type="radio"]:checked + label {
+   border-radius: 45%;
+   -webkit-transition: background-color .3s;
+   transition: background-color .3s;
+   background-color: #6479e338;
+  }
+ }
+
 
  // .diary-mood {
  //  width: 40%;
@@ -221,6 +238,10 @@
  }
 
  .timeline-item {
+ }
+
+ .time-text {
+  color: #555;
  }
 
  .diary-image {

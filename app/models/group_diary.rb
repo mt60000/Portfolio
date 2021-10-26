@@ -7,8 +7,6 @@ class GroupDiary < ApplicationRecord
   has_many :notifications, dependent: :destroy
   attachment :image
 
-  validates :user_id, presence: true
-  validates :group_id, presence: true
   validates :mood_id, presence: true
   validates :keep, length: { maximum: 25 }
   validates :problem, length: { maximum: 25 }

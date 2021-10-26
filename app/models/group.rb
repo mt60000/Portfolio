@@ -32,4 +32,8 @@ class Group < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+
+  def self.search(keyword)
+    where(["name LIKE?", "%#{keyword}%"])
+  end
 end

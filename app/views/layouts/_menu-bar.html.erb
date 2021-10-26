@@ -1,10 +1,10 @@
 <nav class="menu">
   <li>
-    <% if @group && controller.controller_name == "groups" %>
+    <% if @group && @group.user_join?(current_user) && controller.controller_name == "groups" %>
       <%= link_to group_group_diaries_path(@group), class: "fas fa-home nav-link text-center" do %>
         <p>ホーム</p>
       <% end %>
-    <% elsif @group && controller.controller_name == "group_diaries" %>
+    <% elsif @group && @group.user_join?(current_user) && controller.controller_name == "group_diaries" %>
       <%= link_to group_group_diaries_path(@group), class: "fas fa-home nav-link text-center" do %> <!-- 引数を渡す調整 -->
         <p>ホーム</p>
       <% end %>
@@ -25,11 +25,11 @@
     <% end %>
   </li>
   <li>
-    <% if @group && controller.controller_name == "groups" %>
+    <% if @group && @group.user_join?(current_user) && controller.controller_name == "groups" %>
       <%= link_to group_calendar_path(@group), class: "far fa-calendar-alt nav-link text-center" do %>
         <p class="font-weight-bold">カレンダー</p>
       <% end %>
-    <% elsif @group && controller.controller_name == "group_diaries" %>
+    <% elsif @group && @group.user_join?(current_user) && controller.controller_name == "group_diaries" %>
       <%= link_to group_calendar_path(@group), class: "far fa-calendar-alt nav-link text-center" do %>
         <p class="font-weight-bold">カレンダー</p>
       <% end %>

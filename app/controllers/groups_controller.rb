@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :ensure_correct_group_user, only: [:edit, :update, :destroy]
+  before_action :ensure_correct_group_user, only: [:edit, :update, :destroy, :calendar]
   before_action :authority_deletem, only: [:destroy]
   before_action :authority_change, only: [:edit, :update]
 
@@ -17,7 +17,7 @@ class GroupsController < ApplicationController
       redirect_to group_url(@group)
     else
       flash[:alert] = "グループの作成に失敗しました。"
-      render :new
+      redirect_to root_url
     end
   end
 
@@ -27,6 +27,9 @@ class GroupsController < ApplicationController
 
   def search
     @groups = Group.all
+    @search_groups = Group.search(params[:keyword])
+    @keyword = params[:keyword]
+    render :search
   end
 
   def show
@@ -43,12 +46,6 @@ class GroupsController < ApplicationController
     @group = Group.find_by(params[:id])
     @group_users = @group.users
   end
-
-  def role
-    @group = Group.find(params[:group_id])
-  end
-
-  
 
   def edit
     @group = Group.find(params[:id])
@@ -78,7 +75,7 @@ class GroupsController < ApplicationController
 
   private
     def group_params
-      params.require(:group).permit(:user_id, :name, :password, :policy, :image, group_user_attributes: [:authority_id])
+      params.require(:group).permit(:name, :policy, :image)
     end
 
     def ensure_correct_group_user

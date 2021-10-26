@@ -11,7 +11,7 @@
     <% diaries.first(1).each do |diary| %>
       <div class="calendar-mood mb-3 text-center">
         <%= link_to group_diary_path(diary.id) do %>
-          <%= image_tag(asset_path("/assets/#{diary.mood.image}.jpg"), class: "diary-mood", alt: "mood", size: "70x70") %><br/>
+          <%= image_tag(asset_path("/assets/#{diary.mood.image}.png"), class: "diary-mood", alt: "mood", size: "70x70") %><br/>
         <% end %>
       </div>
     <% end %>

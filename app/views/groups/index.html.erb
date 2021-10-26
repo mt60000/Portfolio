@@ -10,6 +10,12 @@
           </div>
       </div>
       <hr>
+      <div class="search-form">
+        <%= form_with url: group_search_path, method: :get, local: true do |f| %>
+          <%= f.text_field :keyword, value: @keyword %>
+          <%= f.submit "検索" %>
+        <% end %>
+      </div>
       <% @groups.each do |group| %>
         <div class="group">
           <div class="group-profile row">

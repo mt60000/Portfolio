@@ -4,15 +4,18 @@
       <%= link_to "ホーム", root_path, class: "nav-link" %>
     </li>
     <li class="menu-item">
-      <% if @group && controller.controller_name == "groups" %>
-        <%= link_to "グループホーム", group_group_diaries_path(@group), class: "nav-link" %>
-      <% elsif @group && controller.controller_name == "group_diaries" %>
-        <%= link_to "グループホーム", group_group_diaries_path(@group), class: "nav-link" %> <!-- 引数を渡す調整 -->
-      <% end %>
-    </li>
-    <li class="menu-item">
       <%= link_to "通知", notifications_path, class: "nav-link" %>
     </li class="menu-item">
+    <li class="menu-item">
+      <%= link_to "お気に入り", favorite_diaries_path, class: "nav-link" %>
+    </li>
+    <li class="menu-item">
+      <%= link_to "カレンダー", calendar_path, class: "nav-link" %>
+    </li>
+    <li>
+      <%= link_to "日記を投稿", new_diary_path, class: "btn btn-outline-primary nav-link" %>
+    </li>
+    <hr>
     <li class="menu-item">
       <%= link_to "グループ", groups_path, class: "nav-link" %>
     </li>
@@ -20,29 +23,25 @@
       <%= link_to "グループ検索", groups_search_path, class: "nav-link" %>
     </li>
     <li class="menu-item">
-      <%= link_to "お気に入り", favorite_diaries_path, class: "nav-link" %>
-    </li>
-    <li class="menu-item">
-      <%= link_to "カレンダー", calendar_path, class: "nav-link" %>
-    </li>
-    <li class="menu-item">
-      <% if @group && controller.controller_name == "groups" %>
-        <%= link_to "カレンダー", group_calendar_path(@group), class: "nav-link" %>
+      <% if @group && @group.user_join?(current_user) && controller.controller_name == "groups" %>
+        <%= link_to "グループホーム", group_group_diaries_path(@group), class: "nav-link" %>
       <% elsif @group && controller.controller_name == "group_diaries" %>
+        <%= link_to "グループホーム", group_group_diaries_path(@group), class: "nav-link" %> <!-- 引数を渡す調整 -->
+      <% end %>
+    </li>
+    <li class="menu-item">
+      <% if @group && @group.user_join?(current_user) && controller.controller_name == "groups" %>
+        <%= link_to "カレンダー", group_calendar_path(@group), class: "nav-link" %>
+      <% elsif @group && @group.user_join?(current_user) && controller.controller_name == "group_diaries" %>
         <%= link_to "カレンダー", group_calendar_path(@group), class: "nav-link" %>
       <% end %>
     </li>
     <li>
-      <%= link_to "日記を投稿", new_diary_path, class: "btn btn-outline-primary nav-link" %>
+      <% if @group && @group.user_join?(current_user) && controller.controller_name == "groups" %>
+        <%= link_to "グループに投稿", new_group_group_diary_path(@group), class: "btn btn-outline-primary nav-link" %>
+      <% elsif @group && @group.user_join?(current_user) && controller.controller_name == "group_diaries" %>
+        <%= link_to "グループに投稿", new_group_group_diary_path(@group), class: "btn btn-outline-primary nav-link" %>
+      <% end %>
     </li>
-    <% if @group && controller.controller_name == "groups" %>
-      <li>
-        <%= link_to "グループに投稿", new_group_group_diary_path(@group), class: "btn btn-outline-primary nav-link" %>
-      </li>
-    <% elsif @group && controller.controller_name == "group_diaries" %>
-      <li>
-        <%= link_to "グループに投稿", new_group_group_diary_path(@group), class: "btn btn-outline-primary nav-link" %>
-      </li>
-    <% end %>
   </nav>
 </div>

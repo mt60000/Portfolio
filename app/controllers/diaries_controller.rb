@@ -10,7 +10,7 @@ class DiariesController < ApplicationController
       flash[:alert] = "日記を投稿しました！"
       redirect_to root_url
     else
-      flash[:alert] = "日記の投稿に失敗しました。"
+      flash.now[:alert] = "日記の投稿に失敗しました。"
       render :new
     end
   end
@@ -42,7 +42,7 @@ class DiariesController < ApplicationController
       flash[:alert] = "日記を更新しました！"
       redirect_to diary_url(@diary)
     else
-      flash[:alert] = "日記の更新に失敗しました。"
+      flash.now[:alert] = "日記の更新に失敗しました。"
       render :edit
     end
   end

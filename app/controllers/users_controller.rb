@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       flash[:alert] = "ユーザー情報を変更しました！"
       redirect_to root_url
     else
-      flash[:alert] = "ユーザー情報の変更に失敗しました。"
+      flash.now[:alert] = "ユーザー情報の変更に失敗しました。"
       render :edit
     end
   end

@@ -14,6 +14,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yomogi&display=swap" rel="stylesheet">
+    <script>
+      /* bootstrap alertをx秒後に消す */
+      $(document).ready(function()
+      {
+        $(window).load(function()
+        {
+          window.setTimeout("$('#alert').fadeOut()", 8000);
+        });
+      });
+    </script>
   </head>
 
   <body>
@@ -22,7 +32,7 @@
     </header>
     <div class="container">
       <% if flash[:alert] %>
-        <div class="alert alert-primary fade show text-center font-weight-bold" role="alert">
+        <div id="alert" class="alert alert-primary fade show text-center font-weight-bold" role="alert">
           <%= flash[:alert] %>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>

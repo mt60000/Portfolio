@@ -17,7 +17,7 @@ class GroupDiariesController < ApplicationController
       flash[:alert] = "日記を投稿しました！"
       redirect_to group_group_diaries_url(@diary.group_id)
     else
-      flash[:alert] = "日記の投稿に失敗しました。"
+      flash.now[:alert] = "日記の投稿に失敗しました。"
       render :new
     end
   end
@@ -52,7 +52,7 @@ class GroupDiariesController < ApplicationController
       flash[:alert] = "日記を更新しました！"
       redirect_to group_diary_url(@diary)
     else
-      flash[:alert] = "日記の更新に失敗しました。"
+      flash.now[:alert] = "日記の更新に失敗しました。"
       render :edit
     end
   end

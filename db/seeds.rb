@@ -20,7 +20,7 @@ User.create!(
 )
 
 Mood.create!(
-  image: "so_bad"
+  image: "so_bad!!"
 )
 
 Mood.create!(
@@ -32,11 +32,11 @@ Mood.create!(
 )
 
 Mood.create!(
-  image: "good"
+  image: "good!"
 )
 
 Mood.create!(
-  image: "so_good"
+  image: "so_good!!"
 )
 
 Authority.create!(

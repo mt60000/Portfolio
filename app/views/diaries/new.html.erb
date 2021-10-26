@@ -2,19 +2,32 @@
   <div>
     <%= form_with model: @diary, local: true do |f| %>
       <h2 class="text-center mb-2">日記投稿</h2>
+      <hr>
       <%= f.hidden_field :start_time, :value => Time.now %>
-      <div class="form-group diary-moods">
-        <%= f.radio_button :mood_id, 1 %>
-        <%= f.label :mood_id, image_tag(asset_path("/assets/so_bad.jpg"), class: "diary-mood", alt: "mood", size: "90x90"), value: 1 %>
-        <%= f.radio_button :mood_id, 2 %>
-        <%= f.label :mood_id, image_tag(asset_path("/assets/bad.jpg"), class: "diary-mood", alt: "mood", size: "90x90"), value: 2 %>
-        <%= f.radio_button :mood_id, 3 %>
-        <%= f.label :mood_id, image_tag(asset_path("/assets/so_so.jpg"), class: "diary-mood", alt: "mood", size: "90x90"), value: 3 %>
-        <%= f.radio_button :mood_id, 4 %>
-        <%= f.label :mood_id, image_tag(asset_path("/assets/good.jpg"), class: "diary-mood", alt: "mood", size: "90x90"), value: 4 %>
-        <%= f.radio_button :mood_id, 5 %>
-        <%= f.label :mood_id, image_tag(asset_path("/assets/so_good.jpg"), class: "diary-mood", alt: "mood", size: "90x90"), value: 5 %>
+      <h4 class="text-center">今日の気分</h4>
+      <div class="form-group diary-moods mx-auto">
+        <div class="mood-btn">
+          <%= f.radio_button :mood_id, 1 %>
+          <%= f.label :mood_id, image_tag(asset_path("/assets/so_bad!!.png"), class: "diary-mood", alt: "mood", size: "87x87"), value: 1 %>
+        </div>
+        <div class="mood-btn">
+          <%= f.radio_button :mood_id, 2 %>
+          <%= f.label :mood_id, image_tag(asset_path("/assets/bad.png"), class: "diary-mood", alt: "mood", size: "87x87"), value: 2 %>
+        </div>
+        <div class="mood-btn">
+          <%= f.radio_button :mood_id, 3 %>
+          <%= f.label :mood_id, image_tag(asset_path("/assets/so_so.png"), class: "diary-mood", alt: "mood", size: "87x87"), value: 3 %>
+        </div>
+        <div class="mood-btn">
+          <%= f.radio_button :mood_id, 4 %>
+          <%= f.label :mood_id, image_tag(asset_path("/assets/good!.png"), class: "diary-mood", alt: "mood", size: "87x87"), value: 4 %>
+        </div>
+        <div class="mood-btn">
+          <%= f.radio_button :mood_id, 5 %>
+          <%= f.label :mood_id, image_tag(asset_path("/assets/so_good!!.png"), class: "diary-mood", alt: "mood", size: "87x87"), value: 5 %>
+        </div>
       </div>
+      <hr>
       <div class="form-group">
         <%= f.label :keep %>
         <%= f.text_field :keep, class: "form-control" %>
