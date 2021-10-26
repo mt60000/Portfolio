@@ -21,12 +21,10 @@ ja:
         try: もくひょう
         text: 本文
         image: 画像
-
-  enums:
-    diary:
       mood:
-        so_bad: さいあく!!
-        bad: いまいち...
-        so_so: わるくない
-        good: いいね!
-        so_good: さいこう!!
+        image:
+          so_bad!!: さいあく!!
+          bad: いまいち...
+          so_so: わるくない
+          good!: いいね!
+          so_good!!: さいこう!!

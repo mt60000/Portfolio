@@ -27,9 +27,15 @@
         <% end %>
       </div>
       <div class="diary-kpt">
-        <p class="mb-3"><%= Diary.human_attribute_name(:keep) %>：<%= diary.keep %></p>
-        <p class="mb-3"><%= Diary.human_attribute_name(:problem) %>：<%= diary.problem %></p>
-        <p class="mb-4"><%= Diary.human_attribute_name(:try) %>：<%= diary.try %></p>
+        <% if diary.keep.present? %>
+          <p class="mb-3"><%= Diary.human_attribute_name(:keep) %>：<%= diary.keep %></p>
+        <% end %>
+        <% if diary.problem.present? %>
+          <p class="mb-3"><%= Diary.human_attribute_name(:problem) %>：<%= diary.problem %></p>
+        <% end %>
+        <% if diary.try.present? %>
+          <p class="mb-4"><%= Diary.human_attribute_name(:try) %>：<%= diary.try %></p>
+        <% end %>
       </div>
       <div class="diary-text mb-3">
         <p><%= diary.text %></p>

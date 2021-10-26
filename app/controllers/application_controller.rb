@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    flash[:alert] = "おかえりなさい#{current_user.name}さん！"
+    flash[:alert] = "ようこそ！「#{current_user.name}」さん！"
     root_path
   end
 

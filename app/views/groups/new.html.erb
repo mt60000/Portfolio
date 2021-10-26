@@ -2,6 +2,8 @@
   <div class="row">
     <%= form_with model: @new_group, local: true, class: "mx-auto" do |f| %>
       <h2 class="text-center">グループ作成</h2>
+      <hr>
+      <%= render 'layouts/errors', model: f.object %>
       <div class="form-group">
         <%= f.label :name %>
         <%= f.text_field :name, class: "form-control" %>

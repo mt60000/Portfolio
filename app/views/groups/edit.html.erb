@@ -2,6 +2,8 @@
   <div class="row">
     <%= form_with model: @group, local: true, class: "mx-auto" do |f| %>
       <h2 class="text-center">グループ編集</h2>
+      <hr>
+      <%= render 'layouts/errors', model: f.object %>
       <div class="from-group row">
         <%= link_to "権限を変更", group_role_path(@group), class: "btn btn-outline-primary ml-auto" %>
       </div>

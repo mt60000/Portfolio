@@ -6,7 +6,7 @@
           <%= attachment_image_tag diary.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
           <%= diary.user.name %>
         <% end %>
-        <div class="row mt-3 ml-auto">
+        <div class="row mt-3 ml-auto mr-1">
           <div id="comment_<%= diary.id %>">
             <%= render 'group_comments/comment-count', group_diary: diary %>
           </div>
@@ -23,7 +23,7 @@
       <div class="mood mb-3 text-center">
         <%= link_to group_diary_path(diary) do %>
           <%= image_tag(asset_path("/assets/#{diary.mood.image}.png"), class: "diary-mood", alt: "mood", size: "120x120") %><br/>
-          <%= diary.mood.image %>
+          <%= t(diary.mood.image) %>
         <% end %>
       </div>
       <div class="diary-kpt">

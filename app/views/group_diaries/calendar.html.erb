@@ -1,4 +1,4 @@
-<h2 class="text-center">グループカレンダー</h2>
+<h2 class="text-center">みんなの気分</h2>
 <hr>
 <% @group_users.each do |user| %>
   <% @diaries = user.group_diaries.where(group_id: @group.id) %>

@@ -6,7 +6,6 @@ class Diary < ApplicationRecord
 
   attachment :image
 
-  validates :mood_id, presence: true
   validates :keep, length: { maximum: 25 }
   validates :problem, length: { maximum: 25 }
   validates :try, length: { maximum: 25 }

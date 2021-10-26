@@ -20,23 +20,23 @@ User.create!(
 )
 
 Mood.create!(
-  image: "so_bad!!"
+  image: "さいあく！！"
 )
 
 Mood.create!(
-  image: "bad"
+  image: "いまいち"
 )
 
 Mood.create!(
-  image: "so_so"
+  image: "わるくない"
 )
 
 Mood.create!(
-  image: "good!"
+  image: "いいね！"
 )
 
 Mood.create!(
-  image: "so_good!!"
+  image: "さいこう！！"
 )
 
 Authority.create!(

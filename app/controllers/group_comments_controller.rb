@@ -3,10 +3,12 @@ class GroupCommentsController < ApplicationController
     @diary = GroupDiary.find(params[:group_diary_id])
     @comment = @diary.group_comments.new(group_comment_params)
     @comment.user_id = @diary.user_id
-    @comment.save
+    if @comment.save
+      @diary.create_notification_comment!(current_user, @comment.id)
+    else
+      render :error
+    end
     @comments = @diary.group_comments.order(created_at: 'desc')
-    flash[:alert] = "コメントを送信しました！"
-    @diary.create_notification_comment!(current_user, @comment.id)
   end
 
   def destroy

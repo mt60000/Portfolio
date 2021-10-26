@@ -10,7 +10,7 @@
       <%= link_to "お気に入り", favorite_diaries_path, class: "nav-link" %>
     </li>
     <li class="menu-item">
-      <%= link_to "カレンダー", calendar_path, class: "nav-link" %>
+      <%= link_to "あなたの気分", calendar_path, class: "nav-link" %>
     </li>
     <li>
       <%= link_to "日記を投稿", new_diary_path, class: "btn btn-outline-primary nav-link" %>
@@ -31,9 +31,9 @@
     </li>
     <li class="menu-item">
       <% if @group && @group.user_join?(current_user) && controller.controller_name == "groups" %>
-        <%= link_to "カレンダー", group_calendar_path(@group), class: "nav-link" %>
+        <%= link_to "みんなの気分", group_calendar_path(@group), class: "nav-link" %>
       <% elsif @group && @group.user_join?(current_user) && controller.controller_name == "group_diaries" %>
-        <%= link_to "カレンダー", group_calendar_path(@group), class: "nav-link" %>
+        <%= link_to "みんなの気分", group_calendar_path(@group), class: "nav-link" %>
       <% end %>
     </li>
     <li>

@@ -1,3 +1,5 @@
+<h2 class="text-center">あなたの気分</h2>
+<hr>
 <%= month_calendar events: @diaries do |date, diaries| %>
   <%= date.day %>
   <% diaries.first(1).each do |diary| %>

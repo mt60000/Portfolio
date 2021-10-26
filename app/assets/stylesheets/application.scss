@@ -49,6 +49,34 @@
   }
  }
 
+ .left {
+  margin-right: auto;
+  .sidebar {
+   position: sticky;
+   top: 66px;
+   overflow-y: auto;
+  }
+  .menu-bar {
+   display: none;
+  }
+ }
+
+ .center {
+  margin: 0 auto;
+  border-right: 1px solid #dbdbdb85;
+  border-left: 1px solid #dbdbdb85;
+ }
+
+ .right {
+  margin-left: auto;
+  width: 20%;
+  .sidebar {
+   position: sticky;
+   top: 66px;
+   overflow-y: auto;
+  }
+ }
+
  .menu {
   list-style: none;
   text-decoration: none;
@@ -64,72 +92,6 @@
   }
   .btn {
    margin-top: 10px;
-  }
- }
-
- .left {
-  margin-right: auto;
-  .sidebar {
-   position: sticky;
-   top: 66px;
-   overflow-y: auto;
-  }
-  .menu-bar {
-   display: none;
-  }
- }
-
- //下部にメニューバー表示に変更
-
- @media screen and (max-width: 768px) {
-  .left {
-   .sidebar {
-    display: none;
-   }
-   .menu-bar {
-    display: block;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    background-color: #f3eee4;
-    z-index: 3;
-    .menu {
-     display: flex;
-     justify-content: space-between;
-    }
-    li {
-     width: 100%;
-     font-size: 40px;
-     color: #555;
-     p {
-      font-size: 15px;
-     }
-    }
-   }
-  }
-  footer {
-   width: 100%;
-   height: 100px;
-  }
- }
-
- .center {
-  margin: 0 auto;
- }
-
- .right {
-  margin-left: auto;
-  width: 20%;
-  .sidebar {
-   position: sticky;
-   top: 66px;
-   overflow-y: auto;
-  }
- }
-
- @media screen and (max-width: 1024px) {
-  .right {
-   display: none;
   }
  }
 
@@ -174,6 +136,8 @@
   font-size: 19px;
  }
 
+//日記投稿機能のcss//
+
  .diary-moods {
   display: flex;
   justify-content: space-between;
@@ -205,17 +169,13 @@
   }
  }
 
-
- // .diary-mood {
- //  width: 40%;
- //  height: auto;
- // }
-
  .diary-edit {
   display: flex;
   align-items: center;
   margin-left: auto;
  }
+
+ //ここまで//
 
  .calendar-mood {
   width: 70px;
@@ -233,10 +193,6 @@
   }
  }
 
- @media screen and (max-width: 1024px) {
-
- }
-
  .timeline-item {
  }
 
@@ -249,27 +205,11 @@
  }
 
  .simple-calendar {
-  .day {}
-
-  .wday-0 {}
-  .wday-1 {}
-  .wday-2 {}
-  .wday-3 {}
-  .wday-4 {}
-  .wday-5 {}
-  .wday-6 {}
-
-  .today {}
-  .past {}
-  .future {}
-
-  .start-date {}
-
-  .prev-month {}
-  .next-month { }
-  .current-month {}
-
-  .has-events {}
+  .prev-btn,
+  .next-btn,
+  .calendar-title {
+   font-weight: bold;
+  }
 }
 
 .diary-menu {
@@ -285,3 +225,93 @@
 .group-info {
  word-break: break-all;
 }
+
+//検索窓のcss//
+
+.search-form{
+ box-sizing: border-box;
+ position: relative;
+ border: 1px solid #999;
+ display: block;
+ margin: 0 auto;
+ padding: 3px 10px;
+ border-radius: 20px;
+ height: 2.3em;
+ width: 265px;
+ overflow: hidden;
+ background-color: white;
+ input[type="text"]{
+  border: none;
+  height: 2.0em;
+ }
+ input[type="text"]:focus {
+  outline: 0;
+ }
+ button[type="submit"]{
+  height: 10px;
+  cursor: pointer;
+  border: none;
+  background: #3879D9;
+  color: #fff;
+  position: absolute;
+  width: 3.5em;
+  height: 3.0em;
+  right:0px;
+  top: -3px;
+  outline : none;
+ }
+}
+
+//ここまで//
+
+//下部にメニューバー表示に変更//
+
+ @media screen and (max-width: 768px) {
+  .center {
+   border-left: none;
+  }
+  .left {
+   .sidebar {
+    display: none;
+   }
+   .menu-bar {
+    display: block;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: #f3eee4;
+    z-index: 3;
+    .menu {
+     display: flex;
+     justify-content: space-between;
+    }
+    li {
+     width: 100%;
+     font-size: 40px;
+     color: #555;
+     p {
+      font-size: 15px;
+     }
+    }
+   }
+  }
+  footer {
+   width: 100%;
+   height: 100px;
+  }
+ }
+
+ //ここまで//
+
+ //サイドバー右を非表示//
+
+ @media screen and (max-width: 1024px) {
+  .center {
+   border-right: none;
+  }
+  .right {
+   display: none;
+  }
+ }
+
+ //ここまで//

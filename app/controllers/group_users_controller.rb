@@ -23,7 +23,7 @@ class GroupUsersController < ApplicationController
     @apply = Apply.find(params[:apply_id])
     @group_user = @group.group_users.create(user_id: group_user_params[:user_id], authority_id: 3)
     Apply.find(group_user_params[:apply_id]).destroy!
-    flash[:alert] = "「#{@group_user.user.name}」さんがグループ「#{@group.name}に参加しました！」"
+    flash[:alert] = "「#{@group_user.user.name}」さんがグループ「#{@group.name}」に参加しました！"
     redirect_to group_applies_url(@group)
   end
 

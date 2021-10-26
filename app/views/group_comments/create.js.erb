@@ -1,3 +1,4 @@
 $("#group_comments").html("<%= j(render 'group_comments/comments', {comments: @comments}) %>");
+$('#error_explanation').remove();
 $("#group_comment_text").val('');
 $("#comment_<%= @diary.id %>").html("<%= j(render 'group_comments/comment-count',{group_diary: @diary}) %>");
