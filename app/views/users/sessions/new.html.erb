@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container mt-5">
   <div class="col-sm-10 col-md-8 col-lg-6 mx-auto">
-    <h2>Log in</h2>
+    <h2 class="mb-3">ログイン</h2>
 
     <%= form_with model: resource, scope: resource_name, url: session_path(resource_name), local: true do |f| %>
       <div class="form-group">
@@ -21,7 +21,7 @@
       <% end %>
 
       <div class="form-group">
-        <%= f.submit "Log in", class: "btn btn-primary" %>
+        <%= f.submit "ログイン", class: "btn btn-primary" %>
       </div>
     <% end %>
 

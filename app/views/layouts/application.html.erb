@@ -7,31 +7,29 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a426ae5244.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yomogi&display=swap" rel="stylesheet">
-    <script>
-      /* bootstrap alertをx秒後に消す */
-      $(document).ready(function()
-      {
-        $(window).load(function()
-        {
-          window.setTimeout("$('#alert').fadeOut()", 8000);
-        });
-      });
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <header>
       <%= render 'layouts/header' %>
     </header>
-    <div class="container">
+    <div class="container main">
       <% if flash[:alert] %>
+        <div id="alert" class="alert alert-danger fade show text-center font-weight-bold" role="alert">
+          <%= flash[:alert] %>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% elsif flash[:notice] %>
         <div id="alert" class="alert alert-primary fade show text-center font-weight-bold" role="alert">
           <%= flash[:alert] %>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -49,8 +47,11 @@
               <%= render 'layouts/menu-bar' %>
             </div>
           </div>
-          <div class="center col-md-7">
+          <div class="center col-md-7 mt-4">
             <%= yield %>
+            <div id="back">
+              <i class="fas fa-angle-up arrow"></i>
+            </div>
           </div>
           <div class="right">
             <%= render 'users/user_info' %>
@@ -62,7 +63,6 @@
         <% end %>
       </div>
     </div>
-
     </div>
   </body>
 </html>

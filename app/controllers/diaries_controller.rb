@@ -7,7 +7,7 @@ class DiariesController < ApplicationController
     @user = current_user
     @diary = @user.diaries.new(diary_params)
     if @diary.save
-      flash[:alert] = "日記を投稿しました！"
+      flash[:notice] = "日記を投稿しました！"
       redirect_to root_url
     else
       flash.now[:alert] = "日記の投稿に失敗しました。"
@@ -39,7 +39,7 @@ class DiariesController < ApplicationController
   def update
     @diary = Diary.find(params[:id])
     if @diary.update(diary_params)
-      flash[:alert] = "日記を更新しました！"
+      flash[:notice] = "日記を更新しました！"
       redirect_to diary_url(@diary)
     else
       flash.now[:alert] = "日記の更新に失敗しました。"
@@ -50,7 +50,7 @@ class DiariesController < ApplicationController
   def destroy
     @diary = Diary.find(params[:id])
     if @diary.destroy
-      flash[:alert] = "日記を削除しました！"
+      flash[:notice] = "日記を削除しました！"
       redirect_to root_url
     else
       flash[:alert] = "日記を削除できませんでした。"

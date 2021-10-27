@@ -49,11 +49,16 @@
   }
  }
 
+ .main {
+  position: relative;
+  top: 12px;
+ }
+
  .left {
   margin-right: auto;
   .sidebar {
    position: sticky;
-   top: 66px;
+   top: 78px;
    overflow-y: auto;
   }
   .menu-bar {
@@ -72,7 +77,7 @@
   width: 20%;
   .sidebar {
    position: sticky;
-   top: 66px;
+   top: 78px;
    overflow-y: auto;
   }
  }
@@ -97,9 +102,29 @@
 
  .top {
   height: 400px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+ }
+
+ .logo {
+  font-size: 35px;
+  font-family: 'Indie Flower';
+ }
+
+ #back {
+  position: fixed;
+  right: 50px;
+  bottom: 20px;
+  cursor: pointer;
+  .arrow {
+   padding-top: 1px;
+   display: inline-block;
+   font-size: 25px;
+   border-radius: 50%;
+   width: 30px;
+   height: 30px;
+   color: #666;
+   background-color: #dbdbdb;
+   text-align: center;
+  }
  }
 
  .header-profile {

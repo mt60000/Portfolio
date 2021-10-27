@@ -14,7 +14,7 @@ class GroupUsersController < ApplicationController
       group_user.update_attributes(group_user_params)
       group_user
     end
-    flash[:alert] = "権限を変更しました！"
+    flash[:notice] = "権限を変更しました！"
     redirect_to group_url(@group)
   end
 
@@ -23,7 +23,7 @@ class GroupUsersController < ApplicationController
     @apply = Apply.find(params[:apply_id])
     @group_user = @group.group_users.create(user_id: group_user_params[:user_id], authority_id: 3)
     Apply.find(group_user_params[:apply_id]).destroy!
-    flash[:alert] = "「#{@group_user.user.name}」さんがグループ「#{@group.name}」に参加しました！"
+    flash[:notice] = "「#{@group_user.user.name}」さんがグループ「#{@group.name}」に参加しました！"
     redirect_to group_applies_url(@group)
   end
 
@@ -33,10 +33,10 @@ class GroupUsersController < ApplicationController
     if @group_user.destroy
       if @group.group_users.blank?  #メンバーが0のときグループを削除
         @group.destroy
-        flash[:alert] = "グループ「#{@group.name}」を削除しました。"
+        flash[:notice] = "グループ「#{@group.name}」を削除しました。"
         return redirect_to groups_search_url
       end
-      flash[:alert] = "グループ「#{@group.name}」を退会しました。"
+      flash[:notice] = "グループ「#{@group.name}」を退会しました。"
       redirect_to group_url(@group_user.group)
     else
       flash[:alert] = "グループ「#{@group.name}」を退会できませんでした。。"

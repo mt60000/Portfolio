@@ -1,7 +1,18 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
     <div class="top mx-auto">
-      <h4>とっぷぺーじ</h4>
+      <div class="text-center">
+        <%= image_tag(asset_path("/assets/いいね！.png"), alt: "mood", size: "300x300") %>
+      </div>
+      <h1 class="text-center mb-3">ようこそ <span class="logo">Moods</span> へ！</h1>
+      <h5 class="text-center">
+        <span class="logo">Moods</span> はSNS風の日記投稿サイトです。<br/>
+        だれもが気軽に続けられる日記を目指し、作成しました。
+      </h5>
+      <div class="buttons text-center mt-4">
+        <%= link_to "Moodsを始める！", new_user_registration_path, class: "btn btn-success font-weight-bold" %>
+        <%= link_to "ログインする！", new_user_session_path, class: "btn btn-primary font-weight-bold" %>
+      </div>
     </div>
   </div>
 </div>
