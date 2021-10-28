@@ -31,9 +31,9 @@
     </li>
     <li class="menu-item">
       <% if @group && @group.user_join?(current_user) && controller.controller_name == "groups" %>
-        <%= link_to "みんなの気分", group_calendar_path(@group), class: "nav-link" %>
+        <%= link_to "みんなの気分", calendar_group_path(@group), class: "nav-link" %>
       <% elsif @group && @group.user_join?(current_user) && controller.controller_name == "group_diaries" %>
-        <%= link_to "みんなの気分", group_calendar_path(@group), class: "nav-link" %>
+        <%= link_to "みんなの気分", calendar_group_path(@group), class: "nav-link" %>
       <% end %>
     </li>
     <li>

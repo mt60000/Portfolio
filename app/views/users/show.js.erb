@@ -1,0 +1,3 @@
+$('#user_groups').append("<%= escape_javascript(render 'user_groups', groups: @groups) %>");
+$("#user_groups_more").replaceWith("<%= escape_javascript(
+link_to_next_page(@groups, "もっと見る", remote: true, id: "user_groups_more")) %>");

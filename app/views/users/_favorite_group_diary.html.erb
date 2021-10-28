@@ -6,7 +6,7 @@
           <%= attachment_image_tag diary.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
           <%= diary.user.name %>
         <% end %>
-        <div class="row mt-3 ml-auto">
+        <div class="row mt-3 ml-auto mr-1">
           <div id="comment_<%= diary.id %>">
             <%= render 'group_comments/comment-count', group_diary: diary %>
           </div>
@@ -23,21 +23,30 @@
       <div class="mood mb-3 text-center">
         <%= link_to group_diary_path(diary) do %>
           <%= image_tag(asset_path("/assets/#{diary.mood.image}.png"), class: "diary-mood", alt: "mood", size: "120x120") %><br/>
-          <%= diary.mood.image %>
+          <strong class="mood-name"><%= diary.mood.image %></strong>
         <% end %>
       </div>
       <div class="diary-kpt">
         <% if diary.keep.present? %>
-          <p class="mb-3"><%= Diary.human_attribute_name(:keep) %>：<%= diary.keep %></p>
+          <p class="mb-3 text-center">
+           <span class="kpt"><%= Diary.human_attribute_name(:keep) %></span><br/>
+           <strong><%= diary.keep %></strong>
+          </p>
         <% end %>
         <% if diary.problem.present? %>
-          <p class="mb-3"><%= Diary.human_attribute_name(:problem) %>：<%= diary.problem %></p>
+          <p class="mb-3 text-center">
+            <span class="kpt"><%= Diary.human_attribute_name(:problem) %></span><br/>
+            <strong><%= diary.problem %></strong>
+          </p>
         <% end %>
         <% if diary.try.present? %>
-          <p class="mb-4"><%= Diary.human_attribute_name(:try) %>：<%= diary.try %></p>
+          <p class="mb-4 text-center">
+            <span class="kpt"><%= Diary.human_attribute_name(:try) %></span><br/>
+            <strong><%= diary.try %></strong>
+          </p>
         <% end %>
       </div>
-      <div class="diary-text mb-3">
+      <div class="diary-text mb-3 text-center">
         <p><%= diary.text %></p>
       </div>
       <div class="diary-img mb-3 text-center">

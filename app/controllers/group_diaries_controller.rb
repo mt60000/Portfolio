@@ -28,11 +28,6 @@ class GroupDiariesController < ApplicationController
     @favorite = GroupFavorite.new
   end
 
-  def calendar
-    @group = Group.find_by(params[:group_id])
-    @group_users = @group.users
-  end
-
   def show
     @diary = GroupDiary.find(params[:id])
     @group = @diary.group

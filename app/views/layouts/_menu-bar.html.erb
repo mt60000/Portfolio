@@ -26,11 +26,11 @@
   </li>
   <li>
     <% if @group && @group.user_join?(current_user) && controller.controller_name == "groups" %>
-      <%= link_to group_calendar_path(@group), class: "far fa-calendar-alt nav-link text-center" do %>
+      <%= link_to calendar_group_path(@group), class: "far fa-calendar-alt nav-link text-center" do %>
         <p class="font-weight-bold">カレンダー</p>
       <% end %>
     <% elsif @group && @group.user_join?(current_user) && controller.controller_name == "group_diaries" %>
-      <%= link_to group_calendar_path(@group), class: "far fa-calendar-alt nav-link text-center" do %>
+      <%= link_to calendar_group_path(@group), class: "far fa-calendar-alt nav-link text-center" do %>
         <p class="font-weight-bold">カレンダー</p>
       <% end %>
     <% else %>

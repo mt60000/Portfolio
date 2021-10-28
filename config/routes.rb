@@ -29,14 +29,17 @@ Rails.application.routes.draw do
     resources :group_comments, only: [:create, :destroy]
     resources :group_favorites, only: [:create, :destroy]
   end
-
+  
   get "groups/search" => "groups#search"
   resources :groups do
     resources :group_diaries, only: [:index, :new]
-    get '/calendar' => 'group_diaries#calendar'
     resources :applies, only: [:index, :create, :destroy]
     resources :group_users, only: [:create, :destroy]
+    member do
+      get '/calendar' => 'groups#calendar'
+    end
     get '/role' => 'group_users#role'
     patch '/role_change' => 'group_users#role_change'
   end
+  
 end

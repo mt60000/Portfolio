@@ -1,8 +1,56 @@
-<div class="container w-100">
-  <div class="row">
-    <div class="mx-auto">
-      <h2 class="text-center">マイページ</h2>
-      
+<div class="container">
+  <div class="user-show w-100">
+    <div class="row">
+      <div class="mx-auto">
+        <% if @user == current_user %>
+          <h2>マイページ</h2>
+        <% else %>
+          <h2 class="font-weight-bold"><%= @user.name %> さんのページ</h2>
+        <% end %>
+      </div>
+    </div>
+    <hr>
+    <div class="profile mb-2">
+      <%= attachment_image_tag(@user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "profile-image mx-auto") %>
+    </div>
+    <div class="profile-text">
+      <p class="text-center font-weight-bold"><%= @user.name %></p>
+      <p class="text-center"><%= @user.policy %></p>
+    </div>
+    <% if @user == current_user %>
+      <div class="row">
+        <%= link_to "編集", edit_user_path(current_user), class: "btn btn-outline-secondary mt-3 user-btn" %>
+      </div>
+    <% end %>
+    <hr>
+    <div class="row user-count">
+      <div class="mx-auto">
+        <p class="text-center">投稿</p>
+        <p class="text-center">
+          <%= @user.diaries.count + @user.group_diaries.count %>
+        </p>
+      </div>
+      <div class="mx-auto">
+        <p class="text-center">グループ</p>
+        <p class="text-center">
+          <%= @user.group_users.count %>
+        </p>
+      </div>
+      <div class="">
+        <p class="text-center">お気に入り</p>
+        <p class="text-center">
+          <%= @user.favorites.count + @user.group_favorites.count %>
+        </p>
+      </div>
+    </div>
+    <hr>
+    <h3 class="text-center"><%= @user.name %> さんのグループ</h3>
+    <hr>
+    <div id="user_groups">
+      <%= render 'user_groups', groups: @groups %>
+    </div>
+    <div class="more text-center my-5">
+      <%= link_to_next_page @groups, "もっと見る", remote: true, id: "user_groups_more" %>
     </div>
   </div>
 </div>

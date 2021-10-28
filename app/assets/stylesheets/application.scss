@@ -106,7 +106,7 @@
 
  .logo {
   font-size: 35px;
-  font-family: 'Indie Flower';
+  font-family: 'Indie Flower', cursive;
  }
 
  #back {
@@ -142,7 +142,8 @@
   }
  }
 
- .profile {
+ .profile-image {
+  display: block;
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -151,6 +152,27 @@
 
  .user-name {
   font-weight: bold;
+ }
+
+ .user-count div {
+  &:nth-child(1) {
+   width: 29%;
+  }
+  &:nth-child(2) {
+   width: 36%;
+   padding: 0 30px;
+   border-right: 1px solid #999;
+   border-left: 1px solid #999;
+  }
+  &:nth-child(3) {
+   width: 29%;
+  }
+ }
+
+ .user-btn {
+  width: 45%;
+  display: block;
+  margin: 0 auto;
  }
 
  .day {
@@ -229,6 +251,16 @@
   border-radius: 15px;
  }
 
+ .mood {
+  .mood-name {
+   font-size: 27px;
+  }
+ }
+
+ .kpt {
+  border-bottom: dashed 2px #b5b5b5;
+ }
+
  .simple-calendar {
   .prev-btn,
   .next-btn,
@@ -282,7 +314,7 @@
   width: 3.5em;
   height: 3.0em;
   right:0px;
-  top: -3px;
+  top: -6px;
   outline : none;
  }
 }
@@ -294,6 +326,10 @@
  @media screen and (max-width: 768px) {
   .center {
    border-left: none;
+   #back {
+    right: 25px;
+    bottom: 90px;
+   }
   }
   .left {
    .sidebar {

@@ -31,7 +31,7 @@
         </div>
       <% elsif flash[:notice] %>
         <div id="alert" class="alert alert-primary fade show text-center font-weight-bold" role="alert">
-          <%= flash[:alert] %>
+          <%= flash[:notice] %>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -55,7 +55,6 @@
           </div>
           <div class="right">
             <%= render 'users/user_info' %>
-            <%= render 'users/group' %>
           </div>
           <footer></footer>
         <% else %>

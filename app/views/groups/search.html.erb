@@ -18,13 +18,19 @@
           <% end %>
         <% end %>
       </div>
+      <% if @keyword %>
+        <hr>
+        <h3 class="text-center mt-3">
+          "<%= @keyword %>"の検索結果
+        </h3>
+      <% end %>
       <hr>
       <% if @serch_groups %>
         <% @groups.each do |group| %>
           <div class="group">
             <div class="group-profile row">
-              <%= link_to group_path(group) do %>
-                <%= attachment_image_tag group, :image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
+              <%= link_to group_path(group), class: "ml-1" do %>
+                <%= attachment_image_tag group, :image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile ml-2" %>
                 <span class="profile-name"><%= group.name %></span>
               <% end %>
             </div>
@@ -32,17 +38,7 @@
           <hr>
         <% end %>
       <% else %>
-        <%@search_groups.each do |group| %>
-          <div class="group">
-            <div class="group-profile row">
-              <%= link_to group_path(group) do %>
-                <%= attachment_image_tag group, :image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
-                <span class="profile-name"><%= group.name %></span>
-              <% end %>
-            </div>
-          </div>
-          <hr>
-        <% end %>
+        <%= render 'search', search_groups: @search_groups %>
       <% end %>
     </div>
   </div>

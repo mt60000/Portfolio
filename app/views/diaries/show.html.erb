@@ -22,23 +22,35 @@
       </div>
     </div>
     <div class="diary-content">
+      <div class="time">
+        <h4 class="day text-center mb-3"><%= @diary.start_time.strftime('%m月%d日') %></h4>
+      </div>
       <div class="mood mb-3 text-center">
         <%= image_tag(asset_path("/assets/#{@diary.mood.image}.png"), class: "diary-mood", alt: "mood", size: "120x120") %><br/>
-        <%= @diary.mood.image %>
+        <strong class="mood-name"><%= @diary.mood.image %></strong>
       </div>
       <div class="diary-kpt">
-        <p class="mb-3"><%= Diary.human_attribute_name(:keep) %>：<%= @diary.keep %></p>
-        <p class="mb-3"><%= Diary.human_attribute_name(:problem) %>：<%= @diary.problem %></p>
-        <p class="mb-4"><%= Diary.human_attribute_name(:try) %>：<%= @diary.try %></p>
+        <% if @diary.keep.present? %>
+          <p class="mb-3 text-center">
+           <span class="kpt"><%= Diary.human_attribute_name(:keep) %></span><br/>
+           <strong><%= @diary.keep %></strong>
+          </p>
+        <% end %>
+        <% if @diary.problem.present? %>
+          <p class="mb-3 text-center"><span class="kpt"><%= Diary.human_attribute_name(:problem) %></span><br/><strong><%= @diary.problem %></strong></p>
+        <% end %>
+        <% if @diary.try.present? %>
+          <p class="mb-4 text-center"><span class="kpt"><%= Diary.human_attribute_name(:try) %></span><br/><strong><%= @diary.try %></strong></p>
+        <% end %>
       </div>
-      <div class="diary-text class="mb-3"">
+      <div class="diary-text mb-3 text-center">
         <p><%= @diary.text %></p>
       </div>
       <div class="diary-img mb-3 text-center">
         <%= attachment_image_tag @diary, :image, :fill, 400, 400, class: "diary-image" %>
       </div>
       <div class="row mt-3 ml-auto">
-        <div class="row ml-auto">
+        <div class="row ml-auto mr-1">
           <div id="comment_<%= @diary.id %>">
           <%= render 'comments/comment-count', diary: @diary %>
         </div>

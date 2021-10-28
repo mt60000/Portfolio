@@ -22,12 +22,12 @@ class GroupsController < ApplicationController
   end
 
   def index
-    @groups = current_user.groups
+    @groups = current_user.groups.order(created_at: 'desc').page(params[:page]).per(10)
   end
 
   def search
-    @groups = Group.all
-    @search_groups = Group.search(params[:keyword])
+    @groups = Group.all.order(created_at: 'desc').page(params[:page]).per(10)
+    @search_groups = Group.search(params[:keyword]).order(created_at: 'desc').page(params[:page]).per(10)
     @keyword = params[:keyword]
     render :search
   end
@@ -43,7 +43,7 @@ class GroupsController < ApplicationController
   end
 
   def calendar
-    @group = Group.find_by(params[:id])
+    @group = Group.find(params[:id])
     @group_users = @group.users
   end
 
