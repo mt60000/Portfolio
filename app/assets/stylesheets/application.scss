@@ -82,6 +82,11 @@
   }
  }
 
+ .notice-checked {
+  font-size: 10px;
+  color: #bfc13d;
+ }
+
  .menu {
   list-style: none;
   text-decoration: none;
@@ -169,6 +174,17 @@
   }
  }
 
+ .group-count div {
+  &:nth-child(1) {
+   width: 49%;
+  }
+  &:nth-child(2) {
+   width: 49%;
+   padding: 0 30px;
+   border-left: 1px solid #999;
+  }
+ }
+
  .user-btn {
   width: 45%;
   display: block;
@@ -184,6 +200,12 @@
  }
 
 //日記投稿機能のcss//
+ .diary-link {
+  &:hover {
+   color: inherit;
+  }
+ }
+
 
  .diary-moods {
   display: flex;
@@ -222,7 +244,30 @@
   margin-left: auto;
  }
 
- //ここまで//
+ .image-input-btn {
+  display: block;
+  padding: 10px 40px;
+  border-radius: 5px;
+  border: 1px solid #007bff;
+  font-size: 17px;
+  &:hover {
+   color: white;
+   background-color: #007bff;
+  }
+ }
+
+ #image-input-name {
+  margin-top: 10px;
+ }
+
+ .image-form {
+  display: none;
+ }
+
+ .time-index {
+  font-size: 17px;
+  color: #777;
+ }
 
  .calendar-mood {
   width: 70px;
@@ -278,6 +323,8 @@
 .circle-menu {
  border-radius: 50%;
 }
+
+//ここまで//
 
 .group-info {
  word-break: break-all;

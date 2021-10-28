@@ -4,9 +4,27 @@
   </h2>
   <hr>
   <div class="group-content mx-auto">
-    <div class="group-info my-5 text-center">
-      <p><%= @group.policy %></p>
+    <% if @group.policy.present? %>
+      <div class="group-info my-5 text-center">
+        <p><%= @group.policy %></p>
+      </div>
+      <hr>
+    <% end %>
+    <div class="row group-count">
+      <div class="mx-auto">
+        <p class="text-center">投稿</p>
+        <p class="text-center">
+          <%= @group.group_diaries.count %>
+        </p>
+      </div>
+      <div class="mx-auto">
+        <p class="text-center">メンバー</p>
+        <p class="text-center">
+          <%= @group.group_users.count %>
+        </p>
+      </div>
     </div>
+    <hr>
     <div class="group-btn mb-3 text-center">
       <% if @group.user_join?(current_user) %>
         <%= link_to "日記一覧", group_group_diaries_path(@group), class: "btn btn-outline-primary" %>

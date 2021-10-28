@@ -1,8 +1,8 @@
 <% group_diaries.each do |diary| %>
-  <div class="timeline-item mb-5">
+  <div class="timeline-item mb-4">
     <div class="diary-user mb-3">
       <div class="row">
-        <%= link_to group_diary_path(diary), class: "user-name" do %>
+        <%= link_to user_path(diary.user), class: "user-name" do %>
           <%= attachment_image_tag diary.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
           <%= diary.user.name %>
         <% end %>
@@ -16,43 +16,44 @@
         </div>
       </div>
     </div>
-    <div class="diary-content">
-      <div class="time">
-        <h4 class="day text-center mb-3"><%= diary.start_time.strftime('%m月%d日') %></h4>
-      </div>
-      <div class="mood mb-3 text-center">
-        <%= link_to group_diary_path(diary) do %>
+    <%= link_to group_diary_path(diary), class: "diary-link" do %>
+      <div class="diary-content">
+        <div class="time">
+          <h4 class="day text-center mb-3"><%= diary.start_time.strftime('%m月%d日') %></h4>
+        </div>
+        <div class="mood mb-3 text-center">
           <%= image_tag(asset_path("/assets/#{diary.mood.image}.png"), class: "diary-mood", alt: "mood", size: "120x120") %><br/>
           <strong class="mood-name"><%= diary.mood.image %></strong>
-        <% end %>
+        </div>
+        <div class="diary-kpt">
+          <% if diary.keep.present? %>
+            <p class="mb-3 text-center">
+             <span class="kpt"><%= Diary.human_attribute_name(:keep) %></span><br/>
+             <strong><%= diary.keep %></strong>
+            </p>
+          <% end %>
+          <% if diary.problem.present? %>
+            <p class="mb-3 text-center">
+              <span class="kpt"><%= Diary.human_attribute_name(:problem) %></span><br/>
+              <strong><%= diary.problem %></strong>
+            </p>
+          <% end %>
+          <% if diary.try.present? %>
+            <p class="mb-4 text-center">
+              <span class="kpt"><%= Diary.human_attribute_name(:try) %></span><br/>
+              <strong><%= diary.try %></strong>
+            </p>
+          <% end %>
+        </div>
+        <div class="diary-text mb-3 text-center">
+          <p><%= diary.text %></p>
+        </div>
+        <div class="diary-img mb-3 text-center">
+          <%= attachment_image_tag diary, :image, :fill, 400, 400, class: "diary-image" %>
+        </div>
       </div>
-      <div class="diary-kpt">
-        <% if diary.keep.present? %>
-          <p class="mb-3 text-center">
-           <span class="kpt"><%= Diary.human_attribute_name(:keep) %></span><br/>
-           <strong><%= diary.keep %></strong>
-          </p>
-        <% end %>
-        <% if diary.problem.present? %>
-          <p class="mb-3 text-center">
-            <span class="kpt"><%= Diary.human_attribute_name(:problem) %></span><br/>
-            <strong><%= diary.problem %></strong>
-          </p>
-        <% end %>
-        <% if diary.try.present? %>
-          <p class="mb-4 text-center">
-            <span class="kpt"><%= Diary.human_attribute_name(:try) %></span><br/>
-            <strong><%= diary.try %></strong>
-          </p>
-        <% end %>
-      </div>
-      <div class="diary-text mb-3 text-center">
-        <p><%= diary.text %></p>
-      </div>
-      <div class="diary-img mb-3 text-center">
-        <%= attachment_image_tag diary, :image, :fill, 400, 400, class: "diary-image" %>
-      </div>
-    </div>
+      <p class="text-right time-index"><%= time_ago_in_words(diary.start_time)+"前に投稿" %></p>
+    <% end %>
   </div>
   <hr>
 <% end %>

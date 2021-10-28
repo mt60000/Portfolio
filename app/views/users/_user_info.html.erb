@@ -22,9 +22,9 @@
       </div>
       <hr>
     <% end %>
-    <% unless controller.controller_name == "groups" && controller.action_name == "index" || controller.action_name == "search" %>
+    <% if current_user.groups.count >= 6 %>
       <div class="text-center mb-3">
-        <%= link_to 'もっと見る', groups_path(current_user) %>
+        <%= link_to 'もっと見る', groups_path %>
       </div>
     <% end %>
   </div>

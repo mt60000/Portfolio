@@ -54,9 +54,10 @@ class GroupDiariesController < ApplicationController
 
   def destroy
     @diary = GroupDiary.find(params[:id])
+    @group = @diary.group
     @diary.destroy
     flash[:notice] = "日記を削除しました！"
-    redirect_to group_diaries_url(@diary.group)
+    redirect_to group_group_diaries_url(@group)
   end
 
 

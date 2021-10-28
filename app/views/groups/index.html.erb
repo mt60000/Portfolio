@@ -13,7 +13,12 @@
       <% if @groups.blank? %>
         <p class="text-center mt-5">参加中のグループはありません</p>
       <% else %>
+      <div id="group-index">
         <%= render 'index', groups: @groups %>
+      </div>
+      <div class="more text-center my-5">
+        <%= link_to_next_page @groups, "もっと見る", remote: true, id: "groups_more" %>
+      </div>
       <% end %>
     </div>
   </div>

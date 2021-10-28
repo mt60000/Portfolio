@@ -16,7 +16,12 @@
   </li>
   <li>
     <%= link_to notifications_path, class: "fas fa-bell nav-link text-center" do %>
-     <p>通知</p>
+      <p>
+        通知
+        <% if unchecked_notifications.any? %>
+          <span class="fa fa-circle notice-checked"></span>
+        <% end %>
+      </p>
     <% end %>
   </li>
   <li>

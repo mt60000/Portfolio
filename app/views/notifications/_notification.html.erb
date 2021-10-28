@@ -3,10 +3,12 @@
 <div class="mx-auto">
   <div class="form-inline">
     <span>
-      <%= attachment_image_tag visitor, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
-      <strong>
-        <%= visitor.name %>
-      </strong>
+      <%= link_to user_path(visitor) do %>
+        <%= attachment_image_tag visitor, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
+        <strong>
+          <%= visitor.name %>
+        </strong>
+      <% end %>
       <%= 'さんが' %>
 
       <% case notification.action %>
@@ -39,7 +41,7 @@
     </span>
   </div>
   <div class="small text-muted text-right">
-    <%= time_ago_in_words(notification.created_at).upcase %>
+    <%= time_ago_in_words(notification.created_at)+'前' %>
   </div>
   <hr>
 </div>

@@ -2,7 +2,7 @@ class GroupCommentsController < ApplicationController
   def create
     @diary = GroupDiary.find(params[:group_diary_id])
     @comment = @diary.group_comments.new(group_comment_params)
-    @comment.user_id = @diary.user_id
+    @comment.user_id = current_user.id
     if @comment.save
       @diary.create_notification_comment!(current_user, @comment.id)
     else
@@ -13,9 +13,8 @@ class GroupCommentsController < ApplicationController
 
   def destroy
     @diary = GroupDiary.find(params[:group_diary_id])
-    @comment = GroupComment.find_by(params[:id])
+    @comment = @diary.group_comments.find_by(params[:id])
     @comment.destroy
-    flash[:alert] = "コメントを削除しました！"
     @comments = @diary.group_comments.order(created_at: 'desc')
   end
 

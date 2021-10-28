@@ -4,8 +4,14 @@
       <%= link_to "ホーム", root_path, class: "nav-link" %>
     </li>
     <li class="menu-item">
-      <%= link_to "通知", notifications_path, class: "nav-link" %>
-    </li class="menu-item">
+      <%= link_to notifications_path, class: "nav-link" do %>
+        通知
+        <% if unchecked_notifications.any? %>
+          <span class="fa fa-circle notice-checked"></span>
+        <% end %>
+      <% end %>
+    </li>
+
     <li class="menu-item">
       <%= link_to "お気に入り", favorite_diaries_path, class: "nav-link" %>
     </li>

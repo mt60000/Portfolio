@@ -1,5 +1,6 @@
 <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
 <h3 class="text-center">通知</h3>
+<hr>
 <% if notifications.exists? %>
     <%= link_to notifications_destroy_all_path, method: :delete do %>
       <i class="fas fa-trash" style="color: black;"></i>

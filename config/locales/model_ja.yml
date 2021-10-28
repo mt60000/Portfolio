@@ -21,10 +21,15 @@ ja:
         try: もくひょう
         text: 本文
         image: 画像
-      mood:
-        image:
-          so_bad!!: さいあく!!
-          bad: いまいち...
-          so_so: わるくない
-          good!: いいね!
-          so_good!!: さいこう!!
+      group:
+        name: 名前
+        policy: ポリシー
+        image: プロフィール画像
+      group_diary:
+        user_id: ユーザーID
+        mood: 気分
+        keep: がんばったこと
+        problem: だめだったこと
+        try: もくひょう
+        text: 本文
+        image: 画像

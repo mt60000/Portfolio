@@ -38,8 +38,13 @@
           <hr>
         <% end %>
       <% else %>
-        <%= render 'search', search_groups: @search_groups %>
+        <div id="group-index">
+          <%= render 'search', search_groups: @search_groups %>
+        </div>
       <% end %>
+      <div class="more text-center my-5">
+        <%= link_to_next_page @groups, "もっと見る", remote: true, id: "groups_more" %>
+      </div>
     </div>
   </div>
 </div>
