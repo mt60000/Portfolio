@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :current_user?, only: [:edit, :update, :leave]
+
   def show
     @user = User.find(params[:id])
     @groups = @user.groups.order(created_at: 'desc').page(params[:page]).per(10)
@@ -46,5 +48,13 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :policy, :profile_image)
+    end
+
+    def current_user?
+      @user = User.find(params[:id])
+      unless @user == current_user
+        flash[:alert] = "他人の情報は変更できません。"
+        redirect_to user_path(current_user)
+      end
     end
 end

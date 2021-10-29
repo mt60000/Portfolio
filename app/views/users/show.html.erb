@@ -25,19 +25,19 @@
     <hr>
     <div class="row user-count">
       <div class="mx-auto">
-        <p class="text-center">投稿</p>
+        <p class="text-center font-weight-bold">投稿</p>
         <p class="text-center">
           <%= @user.diaries.count + @user.group_diaries.count %>
         </p>
       </div>
       <div class="mx-auto">
-        <p class="text-center">グループ</p>
+        <p class="text-center font-weight-bold">グループ</p>
         <p class="text-center">
           <%= @user.group_users.count %>
         </p>
       </div>
       <div class="">
-        <p class="text-center">お気に入り</p>
+        <p class="text-center font-weight-bold">お気に入り</p>
         <p class="text-center">
           <%= @user.favorites.count + @user.group_favorites.count %>
         </p>

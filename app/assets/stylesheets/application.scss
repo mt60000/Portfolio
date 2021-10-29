@@ -140,7 +140,7 @@
   font-size: 40px;
  }
 
- .profile-name {
+ .profile_name {
   font-size: 20px;
   &:hover {
    border-bottom: 2px solid orange;
@@ -183,6 +183,13 @@
    padding: 0 30px;
    border-left: 1px solid #999;
   }
+ }
+
+ .group-profile {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
  }
 
  .user-btn {

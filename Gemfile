@@ -75,6 +75,7 @@ gem "simple_calendar", "~> 2.4"
 gem 'rspec-rails'
 gem 'rails-i18n'
 gem 'enum_help'
+gem 'listen', '>= 3.0.5', '< 3.2'
 
 gem 'dotenv-rails'
 group :production do

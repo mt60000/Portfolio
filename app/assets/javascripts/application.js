@@ -20,8 +20,10 @@
 //= require_tree .
 /*global $*/
 
-$(function() {
-  $('#back').click(function() {
-    $("body, html").animate({scrollTop:0}, 800);
+document.addEventListener("turbolinks:load", function () {
+  $(function() {
+    $('#back').click(function() {
+      $("body, html").animate({scrollTop:0}, 800);
+    });
   });
 });
