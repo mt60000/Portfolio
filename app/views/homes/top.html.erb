@@ -1,18 +1,90 @@
-<div class="container mt-5">
-  <div class="row">
-    <div class="top mx-auto">
+<div class="container my-5">
+  <div class="top">
+    <div class="top-main mx-auto">
       <div class="text-center">
-        <%= image_tag(asset_path("/assets/いいね！.png"), alt: "mood", size: "300x300") %>
+        <%= image_tag(asset_path("good.png"), alt: "mood", size: "300x300") %>
       </div>
-      <h1 class="text-center mb-3">ようこそ <span class="logo">Moods</span> へ！</h1>
+      <h1 class="text-center mb-5">ようこそ <span class="logo">Moods</span> へ！</h1>
+      <div class="buttons text-center">
+        <%= link_to "Moodsを始める！", new_user_registration_path, class: "btn-lg btn-success font-weight-bold mr-2" %>
+        <%= link_to "ログインする！", new_user_session_path, class: "btn-lg btn-primary font-weight-bold" %>
+      </div>
       <h5 class="text-center">
         <span class="logo">Moods</span> はSNS風の日記投稿サイトです。<br/>
         だれもが気軽に続けられる日記を目指し、作成しました。
       </h5>
-      <div class="buttons text-center mt-4">
-        <%= link_to "Moodsを始める！", new_user_registration_path, class: "btn btn-success font-weight-bold" %>
-        <%= link_to "ログインする！", new_user_session_path, class: "btn btn-primary font-weight-bold" %>
+    </div>
+  </div>
+  <div class="top-sub">
+    <h2 class="text-center mb-3">使い方</h2>
+    <h4 class="text-center mb-5">まずは5段階から今の気分を選びます。</h4>
+    <div class="top-moods">
+      <div class="top-mood mr-3">
+        <%= image_tag(asset_path("so_bad.png"), alt: "mood", size: "100x100") %><br/>
+        <strong>さいあく！！</strong>
+      </div>
+      <div class="top-mood mr-3">
+        <%= image_tag(asset_path("bad.png"), alt: "mood", size: "100x100") %><br/>
+        <strong>いまいち...</strong>
+      </div>
+      <div class="top-mood mr-3">
+        <%= image_tag(asset_path("so_so.png"), alt: "mood", size: "100x100") %><br/>
+        <strong>わるくない</strong>
+      </div>
+      <div class="top-mood mr-3">
+        <%= image_tag(asset_path("good.png"), alt: "mood", size: "100x100") %><br/>
+        <strong>いいね！</strong>
+      </div>
+      <div class="top-mood">
+        <%= image_tag(asset_path("so_good.png"), alt: "mood", size: "100x100") %><br/>
+        <strong>さいこう！！</strong>
       </div>
     </div>
+    <h4 class="text-center mt-5">
+      これで日記を投稿することが可能になりました
+    </h4>
+    <h4 class="top-h text-center" >
+      あとはお好みで各項目を書き込んで...
+    </h4>
+    <div class="mt-5">
+      <div class="text-center mb-3">
+        <span class="kpt"><%= Diary.human_attribute_name(:keep) %></span><br/>
+        <strong>がんばった！！</strong>
+      </div>
+      <div class="text-center mb-3">
+        <span class="kpt"><%= Diary.human_attribute_name(:problem) %></span><br/>
+        <strong>がんばった！！</strong>
+      </div>
+      <div class="text-center mb-3">
+        <span class="kpt"><%= Diary.human_attribute_name(:try) %></span><br/>
+        <strong>がんばった！！</strong>
+      </div>
+      <div class="text-center mb-4">
+        ここにテキストを入力。画像も投稿できます！！
+      </div>
+      <div class="diary-img text-center mb-3">
+        <%= image_tag(asset_path("cat.jpg"), alt: "mood", size: "500x500", class: "diary-image") %>
+      </div>
+    </div>
+    <div class="mt-5">
+      <h4 class="text-center mb-5">これで日記が完成です！！</h4>
+    </div>
+    <div>
+      <h4 class="text-center mb-5">さっそく今日の気分を記録してみましょう！</h4>
+    </div>
+    <div class="buttons text-center">
+      <%= link_to "Moodsを始める！", new_user_registration_path, class: "btn-lg btn-success font-weight-bold mr-2" %>
+      <%= link_to "ログインする！", new_user_session_path, class: "btn-lg btn-primary font-weight-bold" %>
+    </div>
+  </div>
+  <div class="about">
+    <h4 class="text-center about-text">このアプリについて</h4>
+    <p class="text-center">
+      一日を振り返る時間は、精神的健康に良いと言われています。<br/>
+      日記を書こうとするけれどなかなか続かない！！という人のための日記アプリを作りました。<br/>
+      今の気分を記録するだけでも、自分の気分の推移を知ることが出来ます。<br/>
+      それはとっても良いことだと思います。<br/>
+      このアプリが少しでもあなたの役に立つことができれば幸いです！！
+    </p>
   </div>
 </div>

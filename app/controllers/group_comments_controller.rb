@@ -15,7 +15,7 @@ class GroupCommentsController < ApplicationController
 
   def destroy
     @diary = GroupDiary.find(params[:group_diary_id])
-    @comment = @diary.group_comments.find_by(params[:id])
+    @comment = @diary.group_comments.find(params[:id])
     @comment.destroy
     @comments = @diary.group_comments.order(created_at: 'desc')
   end

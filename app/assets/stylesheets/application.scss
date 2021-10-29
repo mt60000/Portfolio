@@ -106,7 +106,37 @@
  }
 
  .top {
-  height: 400px;
+  margin-bottom: 100px;
+  .top-main {
+
+  }
+  .buttons {
+   margin: 70px 0;
+  }
+ }
+
+ .top-sub {
+  .top-moods {
+   display: flex;
+   justify-content: center;
+   .top-mood {
+    text-align: center;
+   }
+  }
+  .top-h {
+   margin-top: 70px;
+  }
+  .buttons {
+   margin-top: 70px;
+  }
+ }
+
+ .about {
+  margin-top: 170px;
+  .about-text {
+   padding-bottom: 5px;
+   border-bottom: dashed 2px #b5b5b5;
+  }
  }
 
  .logo {
@@ -251,26 +281,6 @@
   margin-left: auto;
  }
 
- .image-input-btn {
-  display: block;
-  padding: 10px 40px;
-  border-radius: 5px;
-  border: 1px solid #007bff;
-  font-size: 17px;
-  &:hover {
-   color: white;
-   background-color: #007bff;
-  }
- }
-
- #image-input-name {
-  margin-top: 10px;
- }
-
- .image-form {
-  display: none;
- }
-
  .time-index {
   font-size: 17px;
   color: #777;
@@ -300,6 +310,7 @@
  }
 
  .diary-image {
+  object-fit: cover;
   border-radius: 15px;
  }
 

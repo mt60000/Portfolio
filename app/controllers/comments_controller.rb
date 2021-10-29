@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @diary = Diary.find(params[:diary_id])
-    @comment = Comment.find_by(params[:id])
+    @comment = Comment.find(params[:id])
     @comments = @diary.comments.order(created_at: 'desc')
     @comment.destroy
   end
