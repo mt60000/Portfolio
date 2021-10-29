@@ -17,6 +17,15 @@
       </ul>
     <% if user_signed_in? %>
       <li>
+        <% if @group && @group.user_join?(current_user) && controller.controller_name == "groups" %>
+          <%= link_to "投稿", new_group_group_diary_path(@group), class: "nav-link" %>
+        <% elsif @group && @group.user_join?(current_user) && controller.controller_name == "group_diaries" %>
+          <%= link_to "投稿", new_group_group_diary_path(@group), class: "nav-link" %>
+        <% else %>
+          <%= link_to "投稿", new_diary_path, class: "nav-link" %>
+        <% end %>
+      </li>
+      <li>
         <%= link_to "ホーム", root_path, class: "nav-link" %>
       </li>
       <li>

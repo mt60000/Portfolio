@@ -1,7 +1,7 @@
 <div class="container mt-3">
   <div>
     <%= form_with model: @diary, local: true do |f| %>
-      <h2 class="text-center mb-2">日記投稿</h2>
+      <h2 class="text-center mb-2">グループの日記投稿</h2>
       <hr>
       <%= render 'layouts/errors', model: f.object %>
       <%= f.hidden_field :start_time, :value => Time.now %>
