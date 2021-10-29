@@ -22,7 +22,7 @@
           <h4 class="day text-center mb-3"><%= diary.start_time.strftime('%m月%d日') %></h4>
         </div>
         <div class="mood mb-3 text-center">
-          <%= image_tag(asset_path("/assets/#{diary.mood.image}.png"), class: "diary-mood", alt: "mood", size: "120x120") %><br/>
+          <%= image_tag(asset_path("#{diary.mood.image}.png"), class: "diary-mood", alt: "mood", size: "120x120") %><br/>
           <strong class="mood-name"><%= t(diary.mood.image) %></strong>
         </div>
         <div class="diary-kpt">
