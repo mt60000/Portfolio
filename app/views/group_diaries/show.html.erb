@@ -27,7 +27,7 @@
       </div>
       <div class="mood mb-3 text-center">
         <%= image_tag(asset_path("/assets/#{@diary.mood.image}.png"), class: "diary-mood", alt: "mood", size: "120x120") %><br/>
-        <strong class="mood-name"><%= @diary.mood.image %></strong>
+        <strong class="mood-name"><%= t(@diary.mood.image) %></strong>
       </div>
       <div class="diary-kpt">
         <% if @diary.keep.present? %>
