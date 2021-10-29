@@ -20,17 +20,17 @@ class GroupCommentsController < ApplicationController
     @comments = @diary.group_comments.order(created_at: 'desc')
   end
 
-
   private
-    def group_comment_params
-      params.require(:group_comment).permit(:user_id, :group_diary_id, :text)
-    end
 
-    def current_user?
-      @comment = GroupComment.find(params[:id])
-      unless @comment.user_id == current_user.id
-        flash[:alert] = "他人のコメントです。"
-        redirect_to group_diary_url(@comment.group_diary)
-      end
+  def group_comment_params
+    params.require(:group_comment).permit(:user_id, :group_diary_id, :text)
+  end
+
+  def current_user?
+    @comment = GroupComment.find(params[:id])
+    unless @comment.user_id == current_user.id
+      flash[:alert] = '他人のコメントです。'
+      redirect_to group_diary_url(@comment.group_diary)
     end
+  end
 end

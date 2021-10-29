@@ -13,13 +13,10 @@ class GroupFavoritesController < ApplicationController
     @favorite.destroy
   end
 
-
   private
 
-    def current_user?
-      @favorite = GroupFavorite.find(params[:id])
-      unless @favorite.user_id == current_user.id
-        flash[:alert] = "他人のお気に入りを解除することはできません。"
-      end
-    end
+  def current_user?
+    @favorite = GroupFavorite.find(params[:id])
+    flash[:alert] = '他人のお気に入りを解除することはできません。' unless @favorite.user_id == current_user.id
+  end
 end

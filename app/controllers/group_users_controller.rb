@@ -3,7 +3,7 @@ class GroupUsersController < ApplicationController
 
   def role
     @group = Group.find(params[:group_id])
-    @group_users = @group.group_users
+    @group_users = @group.group_users.includes(:user).includes(:authority)
   end
 
   def role_change
@@ -14,7 +14,7 @@ class GroupUsersController < ApplicationController
       group_user.update_attributes(group_user_params)
       group_user
     end
-    flash[:notice] = "権限を変更しました！"
+    flash[:notice] = '権限を変更しました！'
     redirect_to group_url(@group)
   end
 
@@ -31,23 +31,22 @@ class GroupUsersController < ApplicationController
     @group_user = GroupUser.find(params[:id])
     @group = @group_user.group
     if @group_user.destroy
-      if @group.group_users.blank?  #メンバーが0のときグループを削除
+      if @group.group_users.blank?  # メンバーが0のときグループを削除
         @group.destroy
         flash[:notice] = "グループ「#{@group.name}」を削除しました。"
         return redirect_to groups_search_url
       end
-      if @group_user == current_user
-        flash[:notice] = "グループ「#{@group.name}」を退会しました。"
-      else
-        flash[:notice] = "「#{@group_user.user.name}」さんをグループ「#{@group.name}」から退会させました。"
-      end
+      flash[:notice] = if @group_user == current_user
+                         "グループ「#{@group.name}」を退会しました。"
+                       else
+                         "「#{@group_user.user.name}」さんをグループ「#{@group.name}」から退会させました。"
+                       end
       redirect_to group_url(@group_user.group)
     else
       flash[:alert] = "グループ「#{@group.name}」を退会できませんでした。"
       redirect_to group_url(@group_user.group)
     end
   end
-
 
   private
 
@@ -62,8 +61,6 @@ class GroupUsersController < ApplicationController
   def authority_member_control
     @group = Group.find(params[:group_id])
     @group_user = @group.group_users.find_by(user_id: current_user.id, group_id: @group.id)
-    unless @group_user.authority.id == 1 || @group_user.authority.id == 2
-      redirect_to group_search_url
-    end
+    redirect_to group_search_url unless @group_user.authority.id == 1 || @group_user.authority.id == 2
   end
 end

@@ -20,35 +20,35 @@ User.create!(
 )
 
 Mood.create!(
-  image: "so_bad"
+  image: 'so_bad'
 )
 
 Mood.create!(
-  image: "bad"
+  image: 'bad'
 )
 
 Mood.create!(
-  image: "so_so"
+  image: 'so_so'
 )
 
 Mood.create!(
-  image: "good"
+  image: 'good'
 )
 
 Mood.create!(
-  image: "so_good"
+  image: 'so_good'
 )
 
 Authority.create!(
-  role: "リーダー"
+  role: 'リーダー'
 )
 
 Authority.create!(
-  role: "サブリーダー"
+  role: 'サブリーダー'
 )
 
 Authority.create!(
-  role: "メンバー"
+  role: 'メンバー'
 )
 
 Diary.create!(
@@ -80,7 +80,7 @@ Diary.create!(
 
 Group.create!(
   name: '勉強頑張る会',
-  policy: '一日の振り返りはしっかりと！わからないことは気軽に質問しよう！',
+  policy: '一日の振り返りはしっかりと！わからないことは気軽に質問しよう！'
 )
 
 GroupUser.create!(
@@ -114,17 +114,17 @@ GroupDiary.create!(
 GroupComment.create!(
   user_id: 2,
   group_diary_id: 2,
-  text: "よろしければ、お教えしましょうか?"
+  text: 'よろしければ、お教えしましょうか?'
 )
 
 GroupComment.create!(
   user_id: 1,
   group_diary_id: 2,
-  text: "ありがとうございます！通話つなげます。"
+  text: 'ありがとうございます！通話つなげます。'
 )
 
 GroupComment.create!(
   user_id: 2,
   group_diary_id: 2,
-  text: "了解です。"
+  text: '了解です。'
 )

@@ -25,15 +25,14 @@ class User < ApplicationRecord
   validates :is_valid, presence: true
 
   def already_favorited?(diary)
-    self.favorites.exists?(diary_id: diary.id)
+    favorites.exists?(diary_id: diary.id)
   end
 
   def group_already_favorited?(group_diary)
-    self.group_favorites.exists?(group_diary_id: group_diary.id)
+    group_favorites.exists?(group_diary_id: group_diary.id)
   end
 
   def active_for_authentication?
-    super && (self.is_valid == true)
+    super && (is_valid == true)
   end
-
 end

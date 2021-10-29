@@ -14,16 +14,15 @@ class GroupDiary < ApplicationRecord
   validates :start_time, presence: true
 
   def create_notification_favorite!(current_user)
-    temp = Notification.where(["visitor_id = ? and visited_id = ? and group_diary_id = ? and action= ? ", current_user.id, user_id, id, 'group_favorite'])
+    temp = Notification.where(['visitor_id = ? and visited_id = ? and group_diary_id = ? and action= ? ',
+                               current_user.id, user_id, id, 'group_favorite'])
     if temp.blank?
       notification = current_user.active_notifications.new(
         group_diary_id: id,
         visited_id: user_id,
         action: 'group_favorite'
       )
-      if notification.visitor_id == notification.visited_id
-        notification.checked = true
-      end
+      notification.checked = true if notification.visitor_id == notification.visited_id
       notification.save if notification.valid?
     end
   end
@@ -43,9 +42,7 @@ class GroupDiary < ApplicationRecord
       visited_id: visited_id,
       action: 'group_comment'
     )
-    if notification.visitor_id == notification.visited_id
-      notification.checked = true
-    end
+    notification.checked = true if notification.visitor_id == notification.visited_id
     notification.save if notification.valid?
   end
 end

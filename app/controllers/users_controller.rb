@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :current_user?, only: [:edit, :update, :leave]
+  before_action :current_user?, only: %i[edit update leave]
 
   def show
     @user = User.find(params[:id])
@@ -23,10 +23,10 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      flash[:notice] = "ユーザー情報を変更しました！"
+      flash[:notice] = 'ユーザー情報を変更しました！'
       redirect_to root_url
     else
-      flash.now[:alert] = "ユーザー情報の変更に失敗しました。"
+      flash.now[:alert] = 'ユーザー情報の変更に失敗しました。'
       render :edit
     end
   end
@@ -40,21 +40,20 @@ class UsersController < ApplicationController
     @user.update(is_valid: false)
     reset_session
     redirect_to top_url
-    flash[:notice] = "退会が完了しました。ご利用ありがとうございました！"
+    flash[:notice] = '退会が完了しました。ご利用ありがとうございました！'
   end
-
 
   private
 
-    def user_params
-      params.require(:user).permit(:name, :policy, :profile_image)
-    end
+  def user_params
+    params.require(:user).permit(:name, :policy, :profile_image)
+  end
 
-    def current_user?
-      @user = User.find(params[:id])
-      unless @user == current_user
-        flash[:alert] = "他人の情報は変更できません。"
-        redirect_to user_path(current_user)
-      end
+  def current_user?
+    @user = User.find(params[:id])
+    unless @user == current_user
+      flash[:alert] = '他人の情報は変更できません。'
+      redirect_to user_path(current_user)
     end
+  end
 end

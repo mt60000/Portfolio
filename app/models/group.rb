@@ -17,7 +17,8 @@ class Group < ApplicationRecord
 
   def create_notification_apply!(current_user, group, apply)
     group.users.each do |user|
-      temp = Notification.where(["visitor_id = ? and visited_id = ? and group_id = ? and action= ? ", current_user.id, user.id, id, 'apply'])
+      temp = Notification.where(['visitor_id = ? and visited_id = ? and group_id = ? and action= ? ', current_user.id,
+                                 user.id, id, 'apply'])
       if temp.blank?
         notification = current_user.active_notifications.new(
           group_id: id,
@@ -26,14 +27,12 @@ class Group < ApplicationRecord
           action: 'apply'
         )
       end
-      if notification.visitor_id == notification.visited_id
-        notification.checked = true
-      end
+      notification.checked = true if notification.visitor_id == notification.visited_id
       notification.save if notification.valid?
     end
   end
 
   def self.search(keyword)
-    where(["name LIKE?", "%#{keyword}%"])
+    where(['name LIKE?', "%#{keyword}%"])
   end
 end
