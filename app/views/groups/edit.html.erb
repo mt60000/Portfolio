@@ -22,6 +22,9 @@
       <div class="from-group row">
         <%= f.submit "変更", class: "btn btn-outline-primary ml-auto" %>
       </div>
+      <div class="form-group">
+        <%= link_to "グループを削除", group_path(@group), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-outline-danger" %>
+      </div>
     <% end %>
   </div>
 </div>

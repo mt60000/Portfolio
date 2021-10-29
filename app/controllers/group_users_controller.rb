@@ -36,10 +36,14 @@ class GroupUsersController < ApplicationController
         flash[:notice] = "グループ「#{@group.name}」を削除しました。"
         return redirect_to groups_search_url
       end
-      flash[:notice] = "グループ「#{@group.name}」を退会しました。"
+      if @group_user == current_user
+        flash[:notice] = "グループ「#{@group.name}」を退会しました。"
+      else
+        flash[:notice] = "「#{@group_user.user.name}」さんをグループ「#{@group.name}」から退会させました。"
+      end
       redirect_to group_url(@group_user.group)
     else
-      flash[:alert] = "グループ「#{@group.name}」を退会できませんでした。。"
+      flash[:alert] = "グループ「#{@group.name}」を退会できませんでした。"
       redirect_to group_url(@group_user.group)
     end
   end
@@ -58,7 +62,7 @@ class GroupUsersController < ApplicationController
   def authority_member_control
     @group = Group.find(params[:group_id])
     @group_user = @group.group_users.find_by(user_id: current_user.id, group_id: @group.id)
-    unless @group_user.authority.role == "leader" || @group_user.authority.role == "subleader"
+    unless @group_user.authority.id == 1 || @group_user.authority.id == 2
       redirect_to group_search_url
     end
   end

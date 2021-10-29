@@ -1,4 +1,6 @@
 class DiariesController < ApplicationController
+  before_action :current_user?, only: [:show, :edit, :update, :destroy]
+
   def new
     @diary = Diary.new
   end
@@ -63,5 +65,13 @@ class DiariesController < ApplicationController
 
     def diary_params
       params.require(:diary).permit(:user_id, :mood_id, :keep, :problem, :try, :text, :image, :start_time)
+    end
+
+    def current_user?
+      @diary = Diary.find(params[:id])
+      unless @diary.user_id == current_user.id
+        flash[:alert] = "他人の投稿です。"
+        redirect_to root_url
+      end
     end
 end

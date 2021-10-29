@@ -1,0 +1,3 @@
+$('#member_list').append("<%= escape_javascript(render 'members', members: @members, group: @group) %>");
+$("#member_more").replaceWith("<%= escape_javascript(
+link_to_next_page(@members, "もっと見る", remote: true, id: "member_more")) %>");

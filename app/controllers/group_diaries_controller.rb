@@ -70,6 +70,7 @@ class GroupDiariesController < ApplicationController
     def current_user?
       @diary = GroupDiary.find(params[:id])
       unless @diary.user_id == current_user.id
+        flash[:alert] = "他人の投稿です。"
         redirect_to group_group_diaries_url(@diary.group)
       end
     end

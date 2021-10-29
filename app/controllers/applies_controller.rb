@@ -1,4 +1,7 @@
 class AppliesController < ApplicationController
+  before_action :current_user?, only: [:destroy]
+  before_action :user_join?, only: [:index]
+
   def index
     @group = Group.find(params[:group_id])
     @applies = @group.applies
@@ -28,5 +31,21 @@ class AppliesController < ApplicationController
 
     def apply_params
       params.permit(:user_id, :group_id)
+    end
+
+    def current_user?
+      @apply = Apply.find(params[:id])
+      unless @apply.user_id == current_user.id
+        flash[:alert] = "他人の申請を取り消すことはできません。"
+        redirect_to group_url(@apply.group)
+      end
+    end
+
+    def user_join?
+      @group = Group.find(params[:group_id])
+      unless @group.users.include?(current_user)
+        flash[:alert] = "「#{@group.name}」に参加していません。"
+        redirect_to group_url(@group)
+      end
     end
 end

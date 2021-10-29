@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :current_user?, only: [:destroy]
+
   def create
     @diary = Diary.find(params[:diary_id])
     @comment = @diary.comments.new(comment_params)
@@ -20,5 +22,13 @@ class CommentsController < ApplicationController
   private
     def comment_params
       params.require(:comment).permit(:user_id, :diary_id, :text)
+    end
+
+    def current_user?
+      @comment = Comment.find(params[:id])
+      unless @comment.user_id == current_user.id
+        flash[:alert] = "他人のコメントです。"
+        redirect_to diary_url(@comment.diary)
+      end
     end
 end

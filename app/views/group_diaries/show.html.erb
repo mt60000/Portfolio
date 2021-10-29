@@ -8,15 +8,17 @@
           <%= attachment_image_tag @diary.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
           <%= @diary.user.name %>
         <% end %>
-        <div class="dropdown diary-menu">
-          <a class="btn btn-outline-secondary circle-menu" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-ellipsis-h"></i>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <%= link_to "削除", group_diary_path(@diary), method: :delete, data: {confirm: "日記を削除しますか？"}, class: "dropdown-item" %>
-            <%= link_to "編集", edit_group_diary_path(@diary), class: "dropdown-item" %>
+        <% if @diary.user_id == current_user.id %>
+          <div class="dropdown diary-menu">
+            <a class="btn btn-outline-secondary circle-menu" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-ellipsis-h"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <%= link_to "削除", group_diary_path(@diary), method: :delete, data: {confirm: "日記を削除しますか？"}, class: "dropdown-item" %>
+              <%= link_to "編集", edit_group_diary_path(@diary), class: "dropdown-item" %>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     </div>
     <div class="diary-content">

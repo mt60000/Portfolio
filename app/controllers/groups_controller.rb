@@ -1,6 +1,6 @@
 class GroupsController < ApplicationController
   before_action :ensure_correct_group_user, only: [:edit, :update, :destroy, :calendar]
-  before_action :authority_deletem, only: [:destroy]
+  before_action :authority_delete, only: [:destroy]
   before_action :authority_change, only: [:edit, :update]
 
   def new
@@ -38,6 +38,7 @@ class GroupsController < ApplicationController
       @group_user = @group.group_users.find_by(user_id: current_user.id, group_id: @group.id)
       @authority = @group_user.authority
     end
+    @members = @group.group_users.page(params[:page]).per(10)
     @applies = current_user.applies
     @apply = @applies.find_by(group_id: @group.id)
   end
@@ -63,7 +64,7 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    @group = Group.find_by(params[:id])
+    @group = Group.find(params[:id])
     if @group.destroy
       flash[:notice] = "グループ「#{@group.name}」を削除しました！"
       redirect_to groups_url(current_user)
@@ -88,7 +89,7 @@ class GroupsController < ApplicationController
     def authority_delete
       @group = Group.find(params[:id])
       @group_user = @group.group_users.find_by(user_id: current_user.id, group_id: @group.id)
-      unless @group_user.authority.role == "leader"
+      unless @group_user.authority.id == 1
         redirect_to group_search_url
       end
     end
@@ -96,7 +97,7 @@ class GroupsController < ApplicationController
     def authority_change
       @group = Group.find(params[:id])
       @group_user = @group.group_users.find_by(user_id: current_user.id, group_id: @group.id)
-      unless @group_user.authority.role == "leader" || @group_user.authority.role == "subleader"
+      unless @group_user.authority.id == 1 || @group_user.authority.id == 2
         redirect_to group_search_url
       end
     end

@@ -11,7 +11,7 @@
   </div>
   <hr>
   <div class="user-group mt-4">
-    <% current_user.groups.last(5).each do |group| %>
+    <% current_user.groups.last(5).sort.reverse.each do |group| %>
       <div class="row">
         <div class="mr-3">
           <%= link_to group_group_diaries_path(group) do %>

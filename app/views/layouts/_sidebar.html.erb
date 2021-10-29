@@ -30,6 +30,13 @@
     </li>
     <li class="menu-item">
       <% if @group && @group.user_join?(current_user) && controller.controller_name == "groups" %>
+        <%= link_to "グループ詳細", group_path(@group), class: "nav-link" %>
+      <% elsif @group && @group.user_join?(current_user) && controller.controller_name == "group_diaries" %>
+        <%= link_to "グループ詳細", group_path(@group), class: "nav-link" %>
+      <% end %>
+    </li>
+    <li class="menu-item">
+      <% if @group && @group.user_join?(current_user) && controller.controller_name == "groups" %>
         <%= link_to "グループホーム", group_group_diaries_path(@group), class: "nav-link" %>
       <% elsif @group && controller.controller_name == "group_diaries" %>
         <%= link_to "グループホーム", group_group_diaries_path(@group), class: "nav-link" %> <!-- 引数を渡す調整 -->

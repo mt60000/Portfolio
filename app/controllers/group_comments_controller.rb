@@ -1,4 +1,6 @@
 class GroupCommentsController < ApplicationController
+  before_action :current_user?, only: [:destroy]
+
   def create
     @diary = GroupDiary.find(params[:group_diary_id])
     @comment = @diary.group_comments.new(group_comment_params)
@@ -22,5 +24,13 @@ class GroupCommentsController < ApplicationController
   private
     def group_comment_params
       params.require(:group_comment).permit(:user_id, :group_diary_id, :text)
+    end
+
+    def current_user?
+      @comment = GroupComment.find(params[:id])
+      unless @comment.user_id == current_user.id
+        flash[:alert] = "他人のコメントです。"
+        redirect_to group_diary_url(@comment.group_diary)
+      end
     end
 end

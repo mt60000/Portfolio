@@ -1,4 +1,6 @@
 class GroupFavoritesController < ApplicationController
+  before_action :current_user?, only: [:destroy]
+
   def create
     @favorite = current_user.group_favorites.create(group_diary_id: params[:group_diary_id])
     @diary = @favorite.group_diary
@@ -10,4 +12,14 @@ class GroupFavoritesController < ApplicationController
     @diary = @favorite.group_diary
     @favorite.destroy
   end
+
+
+  private
+
+    def current_user?
+      @favorite = GroupFavorite.find(params[:id])
+      unless @favorite.user_id == current_user.id
+        flash[:alert] = "他人のお気に入りを解除することはできません。"
+      end
+    end
 end
