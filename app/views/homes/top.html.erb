@@ -9,6 +9,11 @@
         <%= link_to "Moodsを始める！", new_user_registration_path, class: "btn-lg btn-success font-weight-bold mr-2" %>
         <%= link_to "ログインする！", new_user_session_path, class: "btn-lg btn-primary font-weight-bold" %>
       </div>
+      <div class="buttons text-center">
+        <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+          Googleアカウントでログイン
+        <% end %>
+      </div>
       <h5 class="text-center">
         <span class="logo">Moods</span> はSNS風の日記投稿サイトです。<br/>
         だれもが気軽に続けられる日記を目指し、作成しました。
