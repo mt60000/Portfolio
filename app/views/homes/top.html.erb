@@ -9,9 +9,9 @@
         <%= link_to "Moodsを始める！", new_user_registration_path, class: "btn-lg btn-success font-weight-bold mr-2" %>
         <%= link_to "ログインする！", new_user_session_path, class: "btn-lg btn-primary font-weight-bold" %>
       </div>
-      <div class="buttons text-center">
+      <div class="sns-btn text-center">
         <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do %>
-          Googleアカウントでログイン
+          <%= image_tag(asset_path("btn_google_signin_light_normal_web.png"), alt: "google-signin", class: "google-btn") %>
         <% end %>
       </div>
       <h5 class="text-center">

@@ -19,7 +19,9 @@
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>
-  <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", user_google_oauth2_omniauth_authorize_path, method: :post %><br />
-  <% end %>
+  <div class="sns-btn text-center">
+    <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do %>
+      <%= image_tag(asset_path("btn_google_signin_light_normal_web.png"), alt: "google-signin", class: "google-btn") %>
+    <% end %>
+  </div>
 <% end %>
