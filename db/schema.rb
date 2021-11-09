@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_08_065953) do
+ActiveRecord::Schema.define(version: 2021_11_09_001607) do
 
   create_table "applies", force: :cascade do |t|
     t.integer "user_id"
@@ -141,15 +141,6 @@ ActiveRecord::Schema.define(version: 2021_11_08_065953) do
     t.index ["visitor_id"], name: "index_notifications_on_visitor_id"
   end
 
-  create_table "sns_credentials", force: :cascade do |t|
-    t.string "provider"
-    t.string "uid"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
     t.string "policy"
@@ -162,6 +153,8 @@ ActiveRecord::Schema.define(version: 2021_11_08_065953) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

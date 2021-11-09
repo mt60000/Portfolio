@@ -10,7 +10,7 @@
         <%= link_to "ログインする！", new_user_session_path, class: "btn-lg btn-primary font-weight-bold" %>
       </div>
       <div class="buttons text-center">
-        <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+        <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do %>
           Googleアカウントでログイン
         <% end %>
       </div>

@@ -79,7 +79,7 @@ gem 'rubocop-rails', require: false
 gem 'simple_calendar', '~> 2.4'
 gem 'bullet'
 
-gem 'omniauth'
+gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 group :production do
