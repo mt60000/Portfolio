@@ -21,7 +21,7 @@ class GroupUsersController < ApplicationController
   def create
     @group = Group.find(params[:group_id])
     @apply = Apply.find(params[:apply_id])
-    @group_user = @group.group_users.create(user_id: group_user_params[:user_id], authority_id: 3)
+    @group_user = @group.group_users.create(user_id: group_user_params[:user_id], authority_id: "member")
     Apply.find(group_user_params[:apply_id]).destroy!
     flash[:notice] = "「#{@group_user.user.name}」さんがグループ「#{@group.name}」に参加しました！"
     redirect_to group_applies_url(@group)
@@ -61,6 +61,6 @@ class GroupUsersController < ApplicationController
   def authority_member_control
     @group = Group.find(params[:group_id])
     @group_user = @group.group_users.find_by(user_id: current_user.id, group_id: @group.id)
-    redirect_to group_search_url unless @group_user.authority.id == 1 || @group_user.authority.id == 2
+    redirect_to group_search_url unless @group_user.authority.role == "leader" || @group_user.authority.role == "subleader"
   end
 end

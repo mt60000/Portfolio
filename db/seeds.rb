@@ -40,15 +40,15 @@ Mood.create!(
 )
 
 Authority.create!(
-  role: 'リーダー'
+  role: 'leader'
 )
 
 Authority.create!(
-  role: 'サブリーダー'
+  role: 'subleader'
 )
 
 Authority.create!(
-  role: 'メンバー'
+  role: 'member'
 )
 
 Diary.create!(
@@ -86,13 +86,13 @@ Group.create!(
 GroupUser.create!(
   user_id: 1,
   group_id: 1,
-  authority_id: 2
+  authority_id: "subleader"
 )
 
 GroupUser.create!(
   user_id: 2,
   group_id: 1,
-  authority_id: 1
+  authority_id: "leader"
 )
 
 GroupDiary.create!(

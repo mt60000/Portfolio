@@ -4,7 +4,7 @@
     <%= attachment_image_tag member.user, :profile_image, :fill, 300, 300, fallback: "no_image.jpg", class: "header-profile" %>
     <%= member.user.name %>
   <% end %>
-  <% if @authority && @authority.id == 1 && member.user != current_user %>
+  <% if @authority && @authority.role == "leader" && member.user != current_user %>
     <%= link_to "退会", group_group_user_path(group.id, member), method: :delete, data: {confirm: "本当に退会させますか？"}, class: "btn btn-outline-danger leave_btn ml-auto" %>
   <% end %>
   </div>
