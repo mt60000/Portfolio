@@ -21,65 +21,86 @@
     </div>
   </div>
   <div class="top-sub">
-    <h2 class="text-center mb-3">使い方</h2>
-    <h4 class="text-center mb-5">まずは5段階から今の気分を選びます。</h4>
-    <div class="top-moods">
-      <div class="top-mood mr-3">
-        <%= image_tag(asset_path("so_bad.png"), alt: "mood", size: "100x100") %><br/>
-        <strong>さいあく！！</strong>
+    <div class="diary-about">
+      <h2 class="text-center mb-3 about-text">使い方</h2>
+      <h4 class="text-center mb-5">まずは5段階から今の気分を選びます。</h4>
+      <div class="top-moods">
+        <div class="top-mood mr-3">
+          <%= image_tag(asset_path("so_bad.png"), alt: "mood", size: "100x100") %><br/>
+          <strong>さいあく！！</strong>
+        </div>
+        <div class="top-mood mr-3">
+          <%= image_tag(asset_path("bad.png"), alt: "mood", size: "100x100") %><br/>
+          <strong>いまいち...</strong>
+        </div>
+        <div class="top-mood mr-3">
+          <%= image_tag(asset_path("so_so.png"), alt: "mood", size: "100x100") %><br/>
+          <strong>わるくない</strong>
+        </div>
+        <div class="top-mood mr-3">
+          <%= image_tag(asset_path("good.png"), alt: "mood", size: "100x100") %><br/>
+          <strong>いいね！</strong>
+        </div>
+        <div class="top-mood">
+          <%= image_tag(asset_path("so_good.png"), alt: "mood", size: "100x100") %><br/>
+          <strong>さいこう！！</strong>
+        </div>
       </div>
-      <div class="top-mood mr-3">
-        <%= image_tag(asset_path("bad.png"), alt: "mood", size: "100x100") %><br/>
-        <strong>いまいち...</strong>
+      <h4 class="text-center mt-5">
+        これで日記を投稿することが可能になりました
+      </h4>
+      <h4 class="top-h text-center" >
+        あとはお好みで各項目を書き込んで...
+      </h4>
+      <div class="mt-5">
+        <div class="text-center mb-3">
+          <span class="kpt"><%= Diary.human_attribute_name(:keep) %></span><br/>
+          <strong>がんばった！！</strong>
+        </div>
+        <div class="text-center mb-3">
+          <span class="kpt"><%= Diary.human_attribute_name(:problem) %></span><br/>
+          <strong>がんばった！！</strong>
+        </div>
+        <div class="text-center mb-3">
+          <span class="kpt"><%= Diary.human_attribute_name(:try) %></span><br/>
+          <strong>がんばった！！</strong>
+        </div>
+        <div class="text-center mb-4">
+          ここにテキストを入力。画像も投稿できます！！
+        </div>
+        <div class="diary-img text-center mb-3">
+          <%= image_tag(asset_path("cat.jpg"), alt: "mood", size: "500x500", class: "diary-image") %>
+        </div>
       </div>
-      <div class="top-mood mr-3">
-        <%= image_tag(asset_path("so_so.png"), alt: "mood", size: "100x100") %><br/>
-        <strong>わるくない</strong>
-      </div>
-      <div class="top-mood mr-3">
-        <%= image_tag(asset_path("good.png"), alt: "mood", size: "100x100") %><br/>
-        <strong>いいね！</strong>
-      </div>
-      <div class="top-mood">
-        <%= image_tag(asset_path("so_good.png"), alt: "mood", size: "100x100") %><br/>
-        <strong>さいこう！！</strong>
+      <div class="mt-5">
+        <h4 class="text-center mb-5">これで日記が完成です！！</h4>
       </div>
     </div>
-    <h4 class="text-center mt-5">
-      これで日記を投稿することが可能になりました
-    </h4>
-    <h4 class="top-h text-center" >
-      あとはお好みで各項目を書き込んで...
-    </h4>
-    <div class="mt-5">
-      <div class="text-center mb-3">
-        <span class="kpt"><%= Diary.human_attribute_name(:keep) %></span><br/>
-        <strong>がんばった！！</strong>
-      </div>
-      <div class="text-center mb-3">
-        <span class="kpt"><%= Diary.human_attribute_name(:problem) %></span><br/>
-        <strong>がんばった！！</strong>
-      </div>
-      <div class="text-center mb-3">
-        <span class="kpt"><%= Diary.human_attribute_name(:try) %></span><br/>
-        <strong>がんばった！！</strong>
-      </div>
-      <div class="text-center mb-4">
-        ここにテキストを入力。画像も投稿できます！！
-      </div>
-      <div class="diary-img text-center mb-3">
-        <%= image_tag(asset_path("cat.jpg"), alt: "mood", size: "500x500", class: "diary-image") %>
+    <div class="group-about">
+      <h4 class="text-center mb-5">他にも、グループ機能があります！</h4>
+      <div>
+        <p class="text-center">図：現在参加中のグループ一覧画面</p>
+        <%= image_tag(asset_path("Moods-about.png"), alt: "about1-image", class: "about-image mb-4") %>
+        <p class="text-center">
+          サイドバー左の「グループ」を<br/>
+          クリックすると現在参加中のグループ一覧が表示されます。<br/>
+          サイドバー右のプロフィール下にも<br/>
+          最近参加したグループが5件まで表示されます。<br/>
+          グループ検索をクリックすると<br/>
+          「Moods」上にあるすべてのグループ一覧画面を表示します。<br/>
+          キーワードでグループを検索することも可能です！
+        </p>
       </div>
     </div>
-    <div class="mt-5">
-      <h4 class="text-center mb-5">これで日記が完成です！！</h4>
-    </div>
-    <div>
-      <h4 class="text-center mb-5">さっそく今日の気分を記録してみましょう！</h4>
-    </div>
+    <h4 class="text-center mb-5 mt-5">さっそく今日の気分を記録してみましょう！</h4>
     <div class="buttons text-center">
       <%= link_to "Moodsを始める！", new_user_registration_path, class: "btn-lg btn-success font-weight-bold mr-2" %>
       <%= link_to "ログインする！", new_user_session_path, class: "btn-lg btn-primary font-weight-bold" %>
+    </div>
+    <div class="sns-btn text-center mt-4">
+      <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do %>
+        <%= image_tag(asset_path("btn_google_signin_light_normal_web.png"), alt: "google-signin", class: "google-btn") %>
+      <% end %>
     </div>
   </div>
   <div class="about">

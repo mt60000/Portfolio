@@ -128,27 +128,39 @@
  }
 
  .top-sub {
-  .top-moods {
-   display: flex;
-   justify-content: center;
-   .top-mood {
-    text-align: center;
+  .diary-about {
+   .top-moods {
+    display: flex;
+    justify-content: center;
+    .top-mood {
+     text-align: center;
+    }
+   }
+   .top-h {
+    margin-top: 70px;
+   }
+   .buttons {
+    margin-top: 70px;
    }
   }
-  .top-h {
-   margin-top: 70px;
-  }
-  .buttons {
-   margin-top: 70px;
+  .group-about {
+   .about-image {
+    width: 100%;
+    padding: 8px;
+    border-radius: 10px;
+    border: 2px solid #b5b5b5;
+    object-fit: cover;
+   }
   }
  }
 
  .about {
   margin-top: 170px;
-  .about-text {
-   padding-bottom: 5px;
-   border-bottom: dashed 2px #b5b5b5;
-  }
+ }
+
+ .about-text {
+  padding-bottom: 5px;
+  border-bottom: dashed 2px #b5b5b5;
  }
 
  .logo {
