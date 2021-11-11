@@ -2,6 +2,7 @@
   <h2 class="text-center">
     <%= @group.name %>
   </h2>
+  <%= attachment_image_tag @group, :image, :fill, 300, 300, fallback: "no_image.jpg", class: "profile-image mx-auto my-3" %>
   <hr>
   <div class="group-content mx-auto">
     <% if @group.policy.present? %>

@@ -144,8 +144,9 @@
    }
   }
   .group-about {
+   text-align: center;
    .about-image {
-    width: 100%;
+    width: 90%;
     padding: 8px;
     border-radius: 10px;
     border: 2px solid #b5b5b5;
@@ -155,11 +156,11 @@
  }
 
  .about {
-  margin-top: 170px;
+  margin-top: 40px;
  }
 
  .about-text {
-  padding-bottom: 5px;
+  padding-bottom: 40px;
   border-bottom: dashed 2px #b5b5b5;
  }
 

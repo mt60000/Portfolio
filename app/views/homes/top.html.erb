@@ -73,38 +73,70 @@
         </div>
       </div>
       <div class="mt-5">
-        <h4 class="text-center mb-5">これで日記が完成です！！</h4>
+        <h4 class="text-center mb-5 about-text">これで日記が完成です！！</h4>
       </div>
     </div>
     <div class="group-about">
-      <h4 class="text-center mb-5">他にも、グループ機能があります！</h4>
+      <h3 class="text-center mb-5">グループ機能について</h3>
+      <p class="text-center">
+        <span class="logo">Moods</span> には承認制のグループ機能があります。<br/>
+        グループのメンバーにはそれぞれ権限が設定されています。<br/>
+        グループを作成した人は自動的にリーダーとなります。<br/>
+        グループのリーダーは、<br/>
+        グループの編集・メンバーの退会・権限の変更・グループの削除など<br/>
+        すべての権限があります。<br/>
+        サブリーダーは参加申請の承認を行うことができます。<br/>
+        メンバーはグループに変更を加えることはできません。
+      </p>
       <div>
         <p class="text-center">図：現在参加中のグループ一覧画面</p>
         <%= image_tag(asset_path("Moods-about.png"), alt: "about1-image", class: "about-image mb-4") %>
-        <p class="text-center">
+        <p class="text-center about-text mb-5">
           サイドバー左の「グループ」を<br/>
           クリックすると現在参加中のグループ一覧が表示されます。<br/>
-          サイドバー右のプロフィール下にも<br/>
+          サイドバー右のプロフィール下にも、<br/>
           最近参加したグループが5件まで表示されます。<br/>
+          グループ名をクリックすると、<br/>
+          そのグループのタイムラインに飛ぶことができます！
+        </p>
+        <p class="text-center">図：「Moods」上にあるすべてのグループ一覧画面</p>
+        <%= image_tag(asset_path("Moods-about2.png"), alt: "about1-image", class: "about-image mb-4") %>
+        <p class="text-center about-text mb-5">
           グループ検索をクリックすると<br/>
           「Moods」上にあるすべてのグループ一覧画面を表示します。<br/>
           キーワードでグループを検索することも可能です！
         </p>
+        <h3 class="text-center mb-4">サイドバーについて</h3>
+        <p class="text-center">図：グループのタイムライン画面</p>
+        <%= image_tag(asset_path("Moods-about3.png"), alt: "about1-image", class: "about-image mb-4") %>
+        <p class="text-center">
+          グループのタイムライン・詳細画面・カレンダーなどの<br/>
+          画面を開いているときは、サイドバー左のメニューにグループのメニューが表示されます。<br/>
+          「グループ詳細」をクリックするとグループの詳細画面を表示します。<br/>
+          「グループホーム」をクリックするとグループのタイムラインが表示されます。<br/>
+          「みんなの気分」をクリックすると<br/>
+          グループメンバー週ごとの気分一覧が表示されます。<br/>
+          「グループに投稿」ボタンをクリックすると<br/>
+          今開いているグループのタイムラインに日記を投稿することができます！
+        </p>
+        <h4 class="text-center about-text mt-4">グループ機能で友達や家族と日記を共有してみましょう！</h4>
       </div>
     </div>
-    <h4 class="text-center mb-5 mt-5">さっそく今日の気分を記録してみましょう！</h4>
+    <h4 class="text-center mb-5 mt-5">
+      <span class="logo">Moods</span> でさっそく今日の気分を記録してみましょう！
+    </h4>
     <div class="buttons text-center">
       <%= link_to "Moodsを始める！", new_user_registration_path, class: "btn-lg btn-success font-weight-bold mr-2" %>
       <%= link_to "ログインする！", new_user_session_path, class: "btn-lg btn-primary font-weight-bold" %>
     </div>
-    <div class="sns-btn text-center mt-4">
+    <div class="sns-btn text-center mt-4 about-text">
       <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post do %>
         <%= image_tag(asset_path("btn_google_signin_light_normal_web.png"), alt: "google-signin", class: "google-btn") %>
       <% end %>
     </div>
   </div>
   <div class="about">
-    <h4 class="text-center about-text">このアプリについて</h4>
+    <h3 class="text-center">このアプリについて</h3>
     <p class="text-center">
       一日を振り返る時間は、精神的健康に良いと言われています。<br/>
       日記を書こうとするけれどなかなか続かない！！という人のための日記アプリを作りました。<br/>
