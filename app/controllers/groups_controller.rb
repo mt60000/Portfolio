@@ -10,8 +10,8 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.users << current_user
-    @owner = @group.group_users.first
-    @owner.authority_id = "leader"  # seed.rbでroleを作成
+    owner = group.group_users.first
+    owner.authority_id = "leader"  # seed.rbでroleを作成
     if @group.save
       flash[:notice] = 'グループを作成しました！'
       redirect_to group_url(@group)
@@ -64,9 +64,9 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    @group = Group.find(params[:id])
-    if @group.destroy
-      flash[:notice] = "グループ「#{@group.name}」を削除しました！"
+    group = Group.find(params[:id])
+    if group.destroy
+      flash[:notice] = "グループ「#{group.name}」を削除しました！"
       redirect_to groups_url(current_user)
     else
       flash[:alert] = 'グループを削除できませんでした。'

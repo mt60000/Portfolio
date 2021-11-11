@@ -8,21 +8,22 @@ class AppliesController < ApplicationController
   end
 
   def create
-    @apply = current_user.applies.create(group_id: apply_params[:group_id])
-    @group = @apply.group
-    @group.create_notification_apply!(current_user, @group, @apply)
+    apply = current_user.applies.create(group_id: apply_params[:group_id])
+    @group = apply.group
+    @group.create_notification_apply!(current_user, @group, apply)
     flash[:notice] = "グループ「#{@group.name}」に参加申請を送信しました！"
     redirect_to group_url(@group)
   end
 
   def destroy
-    @apply = Apply.find(params[:id])
-    if @apply.destroy
-      flash[:notice] = "グループ「#{@apply.group.name}」への参加申請を取り消しました！"
-      redirect_to group_url(@apply.group)
+    apply = Apply.find(params[:id])
+    @group = apply.group
+    if apply.destroy
+      flash[:notice] = "グループ「#{@group.name}」への参加申請を取り消しました！"
+      redirect_to group_url(@group)
     else
-      flash[:alert] = "グループ「#{@apply.group.name}」への参加申請を取り消せませんでした。"
-      redirect_to group_url(@apply.group)
+      flash[:alert] = "グループ「#{@group.name}」への参加申請を取り消せませんでした。"
+      redirect_to group_url(@group)
     end
   end
 

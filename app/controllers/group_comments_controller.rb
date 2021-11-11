@@ -6,7 +6,7 @@ class GroupCommentsController < ApplicationController
     @comment = @diary.group_comments.new(group_comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      @diary.create_notification_comment!(current_user, @comment.id)
+      @diary.create_notification_comment!(current_user, comment.id)
     else
       render :error
     end
@@ -15,8 +15,8 @@ class GroupCommentsController < ApplicationController
 
   def destroy
     @diary = GroupDiary.find(params[:group_diary_id])
-    @comment = @diary.group_comments.find(params[:id])
-    @comment.destroy
+    comment = @diary.group_comments.find(params[:id])
+    comment.destroy
     @comments = @diary.group_comments.order(created_at: 'desc')
   end
 

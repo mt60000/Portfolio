@@ -10,9 +10,9 @@ class GroupDiariesController < ApplicationController
 
   def create
     @diary = GroupDiary.new(group_diary_params)
-    @group = Group.find_by(id: params[:group_diary][:group_id])
+    group = Group.find_by(id: params[:group_diary][:group_id])
     @diary.user_id = current_user.id
-    @diary.group_id = @group.id
+    @diary.group_id = group.id
     if @diary.save
       flash[:notice] = '日記を投稿しました！'
       redirect_to group_group_diaries_url(@diary.group_id)
@@ -25,7 +25,6 @@ class GroupDiariesController < ApplicationController
   def index
     @group = Group.find_by(id: params[:group_id])
     @diaries = @group.group_diaries.includes(:mood).includes(:user).order(created_at: 'desc').page(params[:page]).per(6)
-    @favorite = GroupFavorite.new
   end
 
   def show
@@ -33,7 +32,6 @@ class GroupDiariesController < ApplicationController
     @group = @diary.group
     @comment = GroupComment.new
     @comments = @diary.group_comments.includes(:user).order(created_at: 'desc')
-    @favorite = GroupFavorite.new
   end
 
   def edit
@@ -53,9 +51,9 @@ class GroupDiariesController < ApplicationController
   end
 
   def destroy
-    @diary = GroupDiary.find(params[:id])
+    diary = GroupDiary.find(params[:id])
     @group = @diary.group
-    @diary.destroy
+    diary.destroy
     flash[:notice] = '日記を削除しました！'
     redirect_to group_group_diaries_url(@group)
   end

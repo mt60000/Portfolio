@@ -6,9 +6,8 @@ class DiariesController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @diary = @user.diaries.new(diary_params)
-    if @diary.save
+    diary = current_user.diaries.new(diary_params)
+    if diary.save
       flash[:notice] = '日記を投稿しました！'
       redirect_to root_url
     else
@@ -18,9 +17,7 @@ class DiariesController < ApplicationController
   end
 
   def index
-    @user = current_user
-    @diaries = @user.diaries.includes(:mood).order(created_at: 'desc').page(params[:page]).per(6)
-    @favorite = Favorite.new
+    @diaries = current_user.diaries.includes(:mood).order(created_at: 'desc').page(params[:page]).per(6)
   end
 
   def calendar
@@ -31,7 +28,6 @@ class DiariesController < ApplicationController
     @diary = Diary.find(params[:id])
     @comment = Comment.new
     @comments = @diary.comments.includes(:user)
-    @favorite = Favorite.new
   end
 
   def edit
@@ -40,7 +36,7 @@ class DiariesController < ApplicationController
 
   def update
     @diary = Diary.find(params[:id])
-    if @diary.update(diary_params)
+    if diary.update(diary_params)
       flash[:notice] = '日記を更新しました！'
       redirect_to diary_url(@diary)
     else
@@ -50,8 +46,8 @@ class DiariesController < ApplicationController
   end
 
   def destroy
-    @diary = Diary.find(params[:id])
-    if @diary.destroy
+    diary = Diary.find(params[:id])
+    if diary.destroy
       flash[:notice] = '日記を削除しました！'
       redirect_to root_url
     else
