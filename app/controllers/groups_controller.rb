@@ -10,7 +10,7 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
     @group.users << current_user
-    owner = group.group_users.first
+    owner = @group.group_users.first
     owner.authority_id = "leader"  # seed.rbでroleを作成
     if @group.save
       flash[:notice] = 'グループを作成しました！'
