@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :mood do
-    image "good"
+    image { "good" }
   end
 end

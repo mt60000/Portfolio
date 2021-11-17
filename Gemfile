@@ -39,6 +39,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'rspec-rails'
   gem 'factory_bot_rails'
 end
 
@@ -74,7 +75,6 @@ gem 'pry-byebug'
 gem 'rails-i18n'
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
-gem 'rspec-rails'
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
 gem 'simple_calendar', '~> 2.4'

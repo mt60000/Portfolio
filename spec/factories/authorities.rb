@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :authority do
-    role "leader"
+    role { "leader" }
   end
 end
