@@ -6,8 +6,8 @@ class DiariesController < ApplicationController
   end
 
   def create
-    diary = current_user.diaries.new(diary_params)
-    if diary.save
+    @diary = current_user.diaries.new(diary_params)
+    if @diary.save
       flash[:notice] = '日記を投稿しました！'
       redirect_to root_url
     else
@@ -35,10 +35,10 @@ class DiariesController < ApplicationController
   end
 
   def update
-    @diary = Diary.find(params[:id])
+    diary = Diary.find(params[:id])
     if diary.update(diary_params)
       flash[:notice] = '日記を更新しました！'
-      redirect_to diary_url(@diary)
+      redirect_to diary_url(diary)
     else
       flash.now[:alert] = '日記の更新に失敗しました。'
       render :edit

@@ -6,7 +6,7 @@ class GroupCommentsController < ApplicationController
     @comment = @diary.group_comments.new(group_comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      @diary.create_notification_comment!(current_user, comment.id)
+      @diary.create_notification_comment!(current_user, @comment.id)
     else
       render :error
     end
